@@ -2,7 +2,6 @@ const db = require('./db');
 const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { INTEGER } = require('sequelize');
 const JWT = process.env.JWT;
 
 

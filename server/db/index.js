@@ -8,5 +8,6 @@ module.exports = {
     Equipment,
     Merch,
     User,
+    Order,
     db
 };
