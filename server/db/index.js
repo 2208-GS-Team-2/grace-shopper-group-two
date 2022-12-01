@@ -6,7 +6,7 @@ module.exports = {
     seed,
     CoffeeBean,
     Equipment,
-
+    Merch,
     User,
     db
 };

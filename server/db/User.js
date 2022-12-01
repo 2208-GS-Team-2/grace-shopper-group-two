@@ -1,7 +1,8 @@
 const db = require('./db');
-const { STRING, UUID, UUIDV4 } = db.Sequelize;
+const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { INTEGER } = require('sequelize');
 const JWT = process.env.JWT;
 
 
@@ -25,7 +26,20 @@ const User = db.define('user', {
         validate: {
             notEmpty: true
         }
-    }
+    },
+    paymentMethod: {
+        type: INTEGER,
+        allowNull: true,
+    },
+    email: {
+        type: STRING,
+        allowNull: false,
+        unique: true,
+    },
+    shoppingCart: {
+        type: STRING,
+        allowNull: true,
+    },
 });
 
 User.addHook('beforeSave', async (user) => {
