@@ -26,7 +26,7 @@ const Equipment = db.define("equipment", {
   },
   img: {
     //!How do I do this?
-    type: Sequelize.BLOB,
+    type: TEXT,
     //allowNull: false,
   },
 })

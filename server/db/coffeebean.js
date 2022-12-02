@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("./db");
-const { UUID, UUIDV4 } = db.Sequelize;
+const { ENUM, INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
 
 const CoffeeBean = db.define("coffeeBean", {
   id: {
@@ -9,40 +9,37 @@ const CoffeeBean = db.define("coffeeBean", {
     defaultValue: UUIDV4
   },
   name: {
-    type: Sequelize.STRING,
+    type: STRING,
     allowNull: false,
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: INTEGER,
     allowNull: false,
   },
   origin: {
-    type: Sequelize.STRING,
+    type: STRING,
     allowNull: false,
   },
   description: {
-    type: Sequelize.TEXT,
+    type: TEXT,
     allowNull: false,
   },
   roastLevel: {
-    type: Sequelize.ENUM("light", "medium", "dark"),
+    type: ENUM("light", "medium", "dark"),
     allowNull: false,
   },
   type: {
-    type: Sequelize.ENUM("espresso", "filter"),
+    type: STRING,
     allowNull: false,
-
   },
   treatmentProcess: {
-    type: Sequelize.INTEGER,
+    type: STRING,
     allowNull: false,
-
   },
   img: {
     //!How do I do this?
-    type: Sequelize.BLOB,
+    type: STRING,
     //allowNull: false,
-
   },
 })
 
