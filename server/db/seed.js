@@ -188,7 +188,7 @@ const merch = [
     },
 
   ];
-
+console.log("testing")
 
 const seed = async () => {
     await db.sync({ force: true });
