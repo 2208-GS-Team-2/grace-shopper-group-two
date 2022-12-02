@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("./db");
 const { ENUM, INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
 
-const CoffeeBean = db.define("coffeeBean", {
+const Product = db.define("product", {
   id: {
     type: UUID,
     primaryKey: true,
@@ -15,10 +15,13 @@ const CoffeeBean = db.define("coffeeBean", {
   price: {
     type: INTEGER,
     allowNull: false,
+    validate: {
+      isDecimal: false,
+    }
   },
   origin: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
   },
   description: {
     type: TEXT,
@@ -26,21 +29,25 @@ const CoffeeBean = db.define("coffeeBean", {
   },
   roastLevel: {
     type: ENUM("light", "medium", "dark"),
-    allowNull: false,
+    allowNull: true,
   },
-  type: {
+  brewMethod: {
     type: STRING,
+    allowNull: true
+  }
+  type: {
+    type: ENUM,
     allowNull: false,
+    values: ["EQUIPMENT", "MERCH", "COFFEEBEAN"],
   },
   treatmentProcess: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
   },
   img: {
-    //!How do I do this?
     type: STRING,
-    //allowNull: false,
+    allowNull: false,
   },
 })
 
-module.exports = CoffeeBean;
+module.exports = Product;

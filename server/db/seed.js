@@ -84,6 +84,7 @@ const merch = [
       description: "lorem",
       img: "",
       brewMethod: "espresso",
+      type: ""
     },
     {
       id: 2,
@@ -92,6 +93,7 @@ const merch = [
       description: "lorem",
       img: "",
       brewMethod: ["espresso", "filter"],
+      type: ""
     },
     {
       id: 3,
@@ -100,6 +102,7 @@ const merch = [
       description: "lorem",
       img: "",
       brewMethod: "filter",
+      type: ""
     },
     {
       id: 4,
@@ -108,6 +111,7 @@ const merch = [
       description: "lorem",
       img: "",
       brewMethod: "filter",
+      type: ""
     },
     {
       id: 5,
@@ -116,6 +120,7 @@ const merch = [
       description: "lorem",
       img: "",
       brewMethod: "filter",
+      type: ""
     },
   ];
 
@@ -127,6 +132,7 @@ const merch = [
       origin: "Ethiopia",
       description: "lorem",
       roastLevel: "medium",
+
       type: "filter",
       treatmentProcess: ["washed", "natural"],
       img: "",
