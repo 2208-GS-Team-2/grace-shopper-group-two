@@ -208,5 +208,5 @@ const seed = async () => {
         },
     };
 };
-
+console.log("this is not Topher")
 module.exports = seed;
