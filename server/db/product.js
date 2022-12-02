@@ -1,4 +1,3 @@
-const Sequelize = require("sequelize");
 const db = require("./db");
 const { ENUM, INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
 
@@ -34,7 +33,7 @@ const Product = db.define("product", {
   brewMethod: {
     type: STRING,
     allowNull: true
-  }
+  },
   type: {
     type: ENUM,
     allowNull: false,
