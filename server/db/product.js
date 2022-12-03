@@ -1,5 +1,5 @@
 const db = require("./db");
-const { ENUM, INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
+const {ENUM, INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
 
 const Product = db.define("product", {
   id: {
@@ -10,6 +10,11 @@ const Product = db.define("product", {
   name: {
     type: STRING,
     allowNull: false,
+  },
+  type: {
+    type: ENUM("EQUIPMENT", "MERCH", "COFFEEBEAN"),
+    defaultValue: "COFFEEBEAN",
+    allowNull: true,
   },
   price: {
     type: INTEGER,
@@ -26,18 +31,14 @@ const Product = db.define("product", {
     type: TEXT,
     allowNull: false,
   },
-  roastLevel: {
-    type: ENUM("light", "medium", "dark"),
-    allowNull: true,
-  },
+  // roastLevel: {
+  //   type: Sequelize.ENUM("LIGHT", "MEDIUM", "DARK"),
+  //   defaultValue: null,
+  //   allowNull: true,
+  // },
   brewMethod: {
     type: STRING,
     allowNull: true
-  },
-  type: {
-    type: ENUM,
-    allowNull: false,
-    values: ["EQUIPMENT", "MERCH", "COFFEEBEAN"],
   },
   treatmentProcess: {
     type: STRING,
