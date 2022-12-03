@@ -2,7 +2,6 @@ const db = require('./db');
 const { ARRAY, STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { Sequelize } = require('sequelize');
 const JWT = process.env.JWT;
 
 const User = db.define('user', {
@@ -32,7 +31,7 @@ const User = db.define('user', {
     },
     email: {
         type: STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         validate: {
             notEmpty: false,

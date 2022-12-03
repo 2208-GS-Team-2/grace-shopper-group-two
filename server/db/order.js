@@ -9,16 +9,18 @@ const {BOOLEAN, INTEGER, UUID, UUIDV4, ARRAY } = db.Sequelize;
 //! lists a user's list of items ordered.
 
 const Order = db.define('order', {
-  // id: {
-  //   type: UUID,
-  //   primaryKey: true,
-  //   defaultValue: UUIDV4
-  // },
+  id: {
+    type: UUID,
+    primaryKey: true,
+    defaultValue: UUIDV4
+  },
   totalPrice: {
     type: INTEGER,
     allowNull: true,
     defaultValue: 0,
   },
+
+  //! We can't use userId in here, blows the code up, we should use associations.
   // userId: {
   //   type: STRING,
   //   // type: ARRAY(UUID),
