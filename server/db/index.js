@@ -14,12 +14,19 @@ const seed = require('./seed');
 //!How to seed order through table
 
 // order to usr is one to many relationship
-// Order.belongsTo(User) //,
+//*this is a good association pair
+Order.belongsTo(User)
 User.hasMany(Order)
 
 // User.hasMany(Order)
 
 //product to order is many-to-many relationship
+//* User association with Orders
+//*order_products tables
+
+//*shopping cart table
+
+
 Order.hasMany(Product)
 Product.hasMany(Order)
 

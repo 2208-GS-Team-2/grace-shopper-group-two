@@ -27,7 +27,6 @@ const Order = db.define('order', {
   //   allowNull: false,
   // },
   items: {
-    // type: ARRAY(UUID),
     type: STRING,
     allowNull: false,
   }

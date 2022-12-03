@@ -1,5 +1,5 @@
 const db = require('./db');
-const { ARRAY, STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
+const {STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT = process.env.JWT;
@@ -39,8 +39,7 @@ const User = db.define('user', {
         }
     },
     shoppingCart: {
-        type: ARRAY(UUID),
-        defaultValue: [],
+        type: STRING,
         allowNull: true,
     },
 });

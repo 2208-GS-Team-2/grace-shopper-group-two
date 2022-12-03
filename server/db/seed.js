@@ -113,7 +113,7 @@ const merch = [
       price: "100000",
       description: "lorem",
       img: "",
-      brewMethod: ["espresso", "filter"],
+      brewMethod: "espresso/filter",
       type: ""
     },
     {
@@ -150,7 +150,7 @@ const merch = [
       description: "lorem",
       roastLevel: "medium",
       type: "coffeeBean",
-      treatmentProcess: ["washed", "natural"],
+      treatmentProcess: "washed/natural",
       img: "",
     },
     {
@@ -166,11 +166,11 @@ const merch = [
     {
       name: "Espresso House Blend",
       price: "1800",
-      origin: ["Ethiopian", "Guatemalan"],
+      origin: "Ethiopian/Guatemalan",
       description: "lorem",
       roastLevel: "medium",
       type: "coffeeBean",
-      treatmentProcess: ["washed" , "natural"],
+      treatmentProcess: "washed/natural",
       img: "",
     },
     {
@@ -207,20 +207,19 @@ const merch = [
   ];
   //! Note: make user order looks like an array
   //! use this?
-  /*
-  campus1.addStudents([student7]);
-  student7.addCampus([campus1]);
-  */
 
 const seed = async () => {
     await db.sync({ force: true });
     console.log('CREATING PRODUCTS...');
 
+    //!Create products table
     // const [
     //   product1,
     //   product2,
     //   product3,
     // ] = await Promise.all(products.map((product)=>Product.create(product)))
+
+    //!Create a dummy Order
 
     const [moe, lucy, larry, ethyl] = await Promise.all([
         User.create({ username: "steve", password: "123" }),
