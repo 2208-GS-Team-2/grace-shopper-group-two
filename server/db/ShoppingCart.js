@@ -1,11 +1,8 @@
 const db = require("./db");
 const Sequelize = require("sequelize");
-const { INTEGER } = require("sequelize");
+const { INTEGER, UUID } = require("sequelize");
 
 const ShoppingCart = db.define('shoppingCart', {
-  //productId
-  //userId
-  //Quantity
   quantity: {
     type: INTEGER
   },

@@ -23,11 +23,11 @@ User.hasMany(Order)
 //* User association with Orders
 //*order_products tables
 
-
 //*one to one relationship between user and cart
-// User.hasOne(Cart)
-// Cart.belongsTo(User)
+// User.hasOne(ShoppingCart)
+// ShoppingCart.belongsTo(User)
 
+//*relating Products to User via ShoppingCart
 Product.belongsToMany(User, { through: ShoppingCart})
 User.belongsToMany(Product, { through: ShoppingCart})
 
