@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   router.get("/:id", async (req, res, next) => {
     const id = req.params.id;
     const user = await User.findByPk(id, {
-      // include: ShoppingCart
+      include: shoppingCarts
     });
     res.send(user);
   });

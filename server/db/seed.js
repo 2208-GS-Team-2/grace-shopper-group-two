@@ -218,8 +218,8 @@ const seed = async () => {
     product1,
     product2,
     product3,
-  ] = await Promise.all(products.map((item)=>Product.create(item)));
 
+  ] = await Promise.all(products.map((item)=>Product.create(item)));
 
   const [steve, lena, topher, anton] = await Promise.all([
     User.create({ username: "steve", password: "123" }),
@@ -228,7 +228,15 @@ const seed = async () => {
     User.create({ username: "anton", password: "123" }),
   ]);
 
-steve.addProducts([product1, product3])
+  // const cart1 = await ShoppingCart.create({
+  //   userId: steve.id
+  // })
+  //   cart1.addProducts([ product1, product2 ])
+  // steve.addProducts([product1, product2, product3])
+  // anton.addProducts([product1, product3])
+  // topher.addProducts([product1])
+
+
 
   console.log('DONE RUNNING SEED...')
 

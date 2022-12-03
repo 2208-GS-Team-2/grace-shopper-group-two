@@ -19,12 +19,13 @@ const Product = require('./Product');
 Order.belongsTo(User)
 User.hasMany(Order)
 
-// User.hasOne(ShoppingCart)
-// ShoppingCart.belongsTo(User)
-
 //*relating Products to User via ShoppingCart
 Product.belongsToMany(User, { through: ShoppingCart})
 User.belongsToMany(Product, { through: ShoppingCart})
+
+
+
+ShoppingCart.belongsTo(User);
 
 Order.hasMany(Product)
 Product.hasMany(Order)
