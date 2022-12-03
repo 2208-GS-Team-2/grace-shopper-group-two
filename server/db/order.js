@@ -1,6 +1,5 @@
-const { STRING } = require("sequelize");
 const db = require("./db");
-const {BOOLEAN, INTEGER, UUID, UUIDV4, ARRAY } = db.Sequelize;
+const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 
 // Order History
 
@@ -19,7 +18,6 @@ const Order = db.define('order', {
     allowNull: true,
     defaultValue: 0,
   },
-
   //! We can't use userId in here, blows the code up, we should use associations.
   // userId: {
   //   type: STRING,

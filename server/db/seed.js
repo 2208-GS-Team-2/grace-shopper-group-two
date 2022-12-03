@@ -1,8 +1,7 @@
 const db = require("./db");
-const User = require("./User");
-
-//!use uuids
-//!create a products thru table
+const{
+   User, Product, Cart, ShoppingCart
+} = require("./index.js");
 
 
 const products = [
@@ -39,13 +38,13 @@ const products = [
 ]
 
 const merch = [
-    {
-      name: "White-Shirt",
-      price: "2400",
-      description: "lorem",
-      img: ""
-    },
-    {
+  {
+    name: "White-Shirt",
+    price: "2400",
+    description: "lorem",
+    img: ""
+  },
+  {
       name: "Stickers",
       price: "200",
       description: "lorem",
@@ -91,12 +90,14 @@ const merch = [
       name: "Hat2",
       price: "1000",
       description: "lorem",
-      img: "" },
+      img: ""
+    },
     {
       name: "Shirt-logo",
       price: "500",
       description: "lorem",
-      img: "" },
+      img: ""
+    },
   ];
 
   const equipment = [
@@ -141,7 +142,7 @@ const merch = [
       type: ""
     },
   ];
-//coffeeBean is in product
+  //coffeeBean is in product
   const coffeeBean = [
     {
       name: "Drip House Blend",
@@ -209,33 +210,55 @@ const merch = [
   //! use this?
 
 const seed = async () => {
-    await db.sync({ force: true });
-    console.log('CREATING PRODUCTS...');
+  await db.sync({ force: true });
+  console.log('CREATING PRODUCTS...');
 
     //!Create products table
-    // const [
-    //   product1,
-    //   product2,
-    //   product3,
-    // ] = await Promise.all(products.map((product)=>Product.create(product)))
+  const [
+    product1,
+    product2,
+    product3,
+  ] = await Promise.all(products.map((item)=>Product.create(item)));
 
-    //!Create a dummy Order
+  // const cart1 = await ShoppingCart.create({
 
-    const [moe, lucy, larry, ethyl] = await Promise.all([
-        User.create({ username: "steve", password: "123" }),
-        User.create({ username: "lena", password: "123" }),
-        User.create({ username: "topher", password: "123" }),
-        User.create({ username: "anton", password: "123" }),
-    ]);
-    console.log('DONE RUNNING SEED...')
-    return {
-        users: {
-            moe,
-            lucy,
-            larry,
-            ethyl
-        },
-    };
+
+  // })
+  const [steve, lena, topher, anton] = await Promise.all([
+    User.create({ username: "steve", password: "123" }),
+    User.create({ username: "lena", password: "123" }),
+    User.create({ username: "topher", password: "123" }),
+    User.create({ username: "anton", password: "123" }),
+  ]);
+
+  // cart1.addProducts([product1, product2, product3])
+
+  console.log('DONE RUNNING SEED...')
+
+  /*
+    const post1 = await Post.create({
+      title: "Louis' Post",
+      content: "I am awesome!",
+      userId: louis.id
+    });
+  */
+
+
+
+
+    // console.log('DONE RUNNING SEED...')
+    // return {
+    //     users: {
+    //         steve,
+    //         lena,
+    //         topher,
+    //         anton
+    //     },
+    // };
+
+
+
+
 };
 
-module.exports = seed;
+seed();

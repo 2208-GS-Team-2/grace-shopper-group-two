@@ -1,5 +1,7 @@
 const db = require('./db');
 const User = require('./User');
+const Cart = require('./Cart');
+const ShoppingCart = require('./ShoppingCart');
 const Order = require('./Order');
 const Product = require('./Product');
 const seed = require('./seed');
@@ -18,14 +20,22 @@ const seed = require('./seed');
 Order.belongsTo(User)
 User.hasMany(Order)
 
-// User.hasMany(Order)
-
 //product to order is many-to-many relationship
 //* User association with Orders
 //*order_products tables
 
 //*shopping cart table
 
+//*one to one relationship between user and cart
+// User.hasOne(Cart)
+// Cart.belongsTo(User)
+
+Product.belongsToMany(User, { through: ShoppingCart})
+User.belongsToMany(Product, { through: ShoppingCart})
+
+// Many to Many relationship between cart and product, we create the through table
+// Cart.belongsToMany(Product, { through: CartProduct})
+// Product.belongsToMany(Cart,{ through: CartProduct})
 
 Order.hasMany(Product)
 Product.hasMany(Order)
@@ -34,7 +44,9 @@ Product.hasMany(Order)
 module.exports = {
     seed,
     Product,
+    ShoppingCart,
     User,
+    Cart,
     Order,
     db
 };

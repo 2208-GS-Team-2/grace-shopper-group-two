@@ -38,10 +38,10 @@ const User = db.define('user', {
             isEmail: true
         }
     },
-    shoppingCart: {
-        type: STRING,
-        allowNull: true,
-    },
+    // shoppingCart: {
+    //     type: STRING,
+    //     allowNull: true,
+    // },
 });
 
 User.addHook('beforeSave', async (user) => {
