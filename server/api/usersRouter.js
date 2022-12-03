@@ -3,22 +3,24 @@ const { User } = require("../db");
 const router = express.Router();
 
 
-//get all products
+//get all users
 router.get("/", async (req, res, next) => {
     const users = await User.findAll();
     res.send(users);
   });
 
 
-//get single product by product id
+//get single user by user id
   router.get("/:id", async (req, res, next) => {
     const id = req.params.id;
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+      // include: ShoppingCart
+    });
     res.send(user);
   });
 
 
-//delete product by product id
+//delete user by user id
   router.delete("/:id", async (req, res, next) => {
     try {
       const { id } = req.params;

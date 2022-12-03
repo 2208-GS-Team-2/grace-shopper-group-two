@@ -26,7 +26,7 @@ const Order = db.define('order', {
   // },
   items: {
     type: STRING,
-    allowNull: false,
+    allowNull: true,
   }
 });
 

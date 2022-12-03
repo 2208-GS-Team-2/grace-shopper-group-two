@@ -19,11 +19,6 @@ const Product = require('./Product');
 Order.belongsTo(User)
 User.hasMany(Order)
 
-//product to order is many-to-many relationship
-//* User association with Orders
-//*order_products tables
-
-//*one to one relationship between user and cart
 // User.hasOne(ShoppingCart)
 // ShoppingCart.belongsTo(User)
 
@@ -31,13 +26,8 @@ User.hasMany(Order)
 Product.belongsToMany(User, { through: ShoppingCart})
 User.belongsToMany(Product, { through: ShoppingCart})
 
-// Many to Many relationship between cart and product, we create the through table
-// Cart.belongsToMany(Product, { through: CartProduct})
-// Product.belongsToMany(Cart,{ through: CartProduct})
-
 Order.hasMany(Product)
 Product.hasMany(Order)
-
 
 module.exports = {
     Product,

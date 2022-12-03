@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
   });
 
 
-//get single shoppingcart by product id
+//get single shoppingcart by cart id
   router.get("/:id", async (req, res, next) => {
     const id = req.params.id;
     const cart = await ShoppingCart.findByPk(id);
@@ -18,11 +18,11 @@ router.get("/", async (req, res, next) => {
   });
 
 
-//delete cart by product id
+//delete cart by cart id
   router.delete("/:id", async (req, res, next) => {
     try {
       const { id } = req.params;
-      const toDelete = await User.findByPk(id);
+      const toDelete = await ShoppingCart.findByPk(id);
       if (!toDelete) {
         throw new Error("User does not exist");
       }
