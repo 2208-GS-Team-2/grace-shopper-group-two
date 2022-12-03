@@ -10,7 +10,11 @@ const ShoppingCart = db.define('shoppingCart', {
     type: INTEGER
   },
   //! this is attached to productId currentpriceperitem: {},
-  //! maybe do this on front-end or a function within here totalPrice: {}
+  //! maybe do this on front-end or a function within here
+  // totalPrice: {
+
+  //   defaultValue:
+  // }
 })
 
 module.exports = ShoppingCart;

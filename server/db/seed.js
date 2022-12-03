@@ -1,6 +1,6 @@
 const db = require("./db");
 const{
-   User, Product, Cart, ShoppingCart
+   User, Product, ShoppingCart
 } = require("./index.js");
 
 
