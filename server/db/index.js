@@ -4,7 +4,7 @@ const Cart = require('./Cart');
 const ShoppingCart = require('./ShoppingCart');
 const Order = require('./Order');
 const Product = require('./Product');
-const seed = require('./seed');
+
 
 //!create associations here
 //order association
@@ -24,7 +24,6 @@ User.hasMany(Order)
 //* User association with Orders
 //*order_products tables
 
-//*shopping cart table
 
 //*one to one relationship between user and cart
 // User.hasOne(Cart)
@@ -42,7 +41,6 @@ Product.hasMany(Order)
 
 
 module.exports = {
-    seed,
     Product,
     ShoppingCart,
     User,
