@@ -42,14 +42,7 @@ const carts = [
 const seed = async () => {
   await db.sync({ force: true });
 
-  // const cartProduct = await CartProduct.create({
-  //   userId: User.userId,
-  //   productId: Product.productId,
-  // });
-
-  // console.log('cartProduct', cartProduct);
   console.log('CREATING PRODUCTS...');
-
   const [product1, product2, product3] = await Promise.all(
     products.map((item) => Product.create(item))
   );
@@ -66,6 +59,7 @@ const seed = async () => {
   ]);
 
   cart1.addProducts([product1, product2]);
+  cart2.addProducts([product1, product2, product3]);
   console.log('DONE RUNNING SEED...');
 };
 
