@@ -35,7 +35,7 @@ const products = [
 ];
 
 const carts = [
-  { totalPrice: 200, quantity: 2 },
+  { userId: User.steve, totalPrice: 200, quantity: 2 },
   { totalPrice: 10, quantity: 5 },
 ];
 
@@ -47,10 +47,6 @@ const seed = async () => {
     products.map((item) => Product.create(item))
   );
 
-  const [cart1, cart2] = await Promise.all(
-    carts.map((cartItem) => Cart.create(cartItem))
-  );
-  console.log('cart1', cart1);
   const [steve, lena, topher, anton] = await Promise.all([
     User.create({ username: 'steve', password: '123' }),
     User.create({ username: 'lena', password: '123' }),
@@ -58,8 +54,14 @@ const seed = async () => {
     User.create({ username: 'anton', password: '123' }),
   ]);
 
+  const [cart1, cart2] = await Promise.all(
+    carts.map((cartItem) => Cart.create(cartItem))
+  );
+
   cart1.addProducts([product1, product2]);
   cart2.addProducts([product1, product2, product3]);
+  // User.steve.addCart(cart1);
+  cart1.setUser(steve);
   console.log('DONE RUNNING SEED...');
 };
 

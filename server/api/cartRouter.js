@@ -25,6 +25,18 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+//To create a new cart
+//Post localhost:3000/api/carts
+router.post('/', async (req, res, next) => {
+  try {
+    const { totalPrice, quantity } = req.body;
+    const newCart = await Cart.create({ totalPrice, quantity });
+    res.sendStatus(204);
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
+
 //delete a cart
 // Delete localhost:3000/carts/:id
 router.delete('/:id', async (req, res, next) => {
