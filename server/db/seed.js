@@ -10,7 +10,7 @@ const products = [
     roastLevel: 'dark',
     type: 'coffeeBean',
     treatmentProcess: 'washed',
-    img: '',
+    img: '/images/colomianDecaf.png',
   },
   {
     name: 'Ethiopian',
