@@ -1,6 +1,6 @@
 const db = require("./db");
 const{
-   User, Product, ShoppingCart
+   User, Product, ShoppingCart, CartProduct
 } = require("./index.js");
 
 
@@ -228,10 +228,10 @@ const seed = async () => {
     User.create({ username: "anton", password: "123" }),
   ]);
 
-  // const cart1 = await ShoppingCart.create({
-  //   userId: steve.id
-  // })
-  //   cart1.addProducts([ product1, product2 ])
+  const cart1 = await ShoppingCart.create({
+    userId: steve.id
+  })
+    cart1.addProducts([ product1, product2 ])
   // steve.addProducts([product1, product2, product3])
   // anton.addProducts([product1, product3])
   // topher.addProducts([product1])
