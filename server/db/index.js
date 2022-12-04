@@ -1,8 +1,8 @@
-const db = require('./db');
-const User = require('./User');
-const CartProduct = require('./cartProduct');
-const Cart = require('./Cart');
-const Product = require('./Product');
+const db = require("./db");
+const User = require("./User");
+const CartProduct = require("./cartProduct");
+const Cart = require("./Cart");
+const Product = require("./Product");
 
 //One-to-One relationship between user and cart tables.
 // user can have only one cart, and one cart can only belong to one user.

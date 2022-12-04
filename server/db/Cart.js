@@ -1,7 +1,7 @@
-const db = require('./db');
+const db = require("./db");
 const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 
-const Cart = db.define('cart', {
+const Cart = db.define("cart", {
   id: {
     type: UUID,
     primaryKey: true,
@@ -11,10 +11,18 @@ const Cart = db.define('cart', {
     type: INTEGER,
     allowNull: true,
     defaultValue: 0,
+    //get a total price it all items in this cart
+    // get() {
+    //   const totalPrice += this.product.price;
+    //   return totalPrice;
+    // },
   },
   quantity: {
     type: INTEGER,
     allowNull: true,
+    get() {
+      return this.products.length;
+    },
   },
 });
 
