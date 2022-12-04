@@ -1,11 +1,11 @@
-const db = require("./db");
+const db = require('./db');
 const { INTEGER, TEXT, STRING, UUID, UUIDV4 } = db.Sequelize;
 
-const Product = db.define("product", {
+const Product = db.define('product', {
   id: {
     type: UUID,
     primaryKey: true,
-    defaultValue: UUIDV4
+    defaultValue: UUIDV4,
   },
   name: {
     type: STRING,
@@ -20,7 +20,7 @@ const Product = db.define("product", {
     allowNull: false,
     validate: {
       isDecimal: false,
-    }
+    },
   },
   origin: {
     type: STRING,
@@ -36,7 +36,7 @@ const Product = db.define("product", {
   },
   brewMethod: {
     type: STRING,
-    allowNull: true
+    allowNull: true,
   },
   treatmentProcess: {
     type: STRING,
@@ -46,6 +46,6 @@ const Product = db.define("product", {
     type: STRING,
     allowNull: false,
   },
-})
+});
 
 module.exports = Product;

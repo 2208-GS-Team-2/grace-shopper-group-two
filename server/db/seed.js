@@ -1,261 +1,72 @@
-const db = require("./db");
-const{
-   User, Product, ShoppingCart
-} = require("./index.js");
-
+const db = require('./db');
+const { User, Product, Cart, CartProduct } = require('./');
 
 const products = [
   {
-    name: "Decaf Colombian",
-    price: "1800",
-    origin: "Colombia",
-    description: "decaf",
-    roastLevel: "dark",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
+    name: 'Decaf Colombian',
+    price: '1800',
+    origin: 'Colombia',
+    description: 'decaf',
+    roastLevel: 'dark',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: '',
   },
   {
-    name: "Ethiopian",
-    price: "2500",
-    origin: "Ethiopia",
-    description: "from East Guji",
-    roastLevel: "medium",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
+    name: 'Ethiopian',
+    price: '2500',
+    origin: 'Ethiopia',
+    description: 'from East Guji',
+    roastLevel: 'medium',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: '',
   },
   {
-    name: "Decaf Colombian",
-    price: "1800",
-    origin: "Colombia",
-    description: "decaf",
-    roastLevel: "dark",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
-  },
-]
-
-const merch = [
-  {
-    name: "White-Shirt",
-    price: "2400",
-    description: "lorem",
-    img: ""
-  },
-  {
-      name: "Stickers",
-      price: "200",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Blue-Shirt",
-      price: "1000",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Cup",
-      price: "1500",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Cup-Sleeve",
-      price: "1000",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Hat",
-      price: "1000",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Coffe-Mug",
-      price: "2000",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Tumbler",
-      price: "1000",
-      description: "insulated cup",
-      img: "",
-    },
-    {
-      name: "Hat2",
-      price: "1000",
-      description: "lorem",
-      img: ""
-    },
-    {
-      name: "Shirt-logo",
-      price: "500",
-      description: "lorem",
-      img: ""
-    },
-  ];
-
-const equipment = [
-  {
-    name: "Espesso-machine",
-    price: "10000",
-    description: "lorem",
-    img: "",
-    brewMethod: "espresso",
-    type: ""
-  },
-  {
-    name: "EK43 ",
-    price: "100000",
-    description: "lorem",
-    img: "",
-    brewMethod: "espresso/filter",
-    type: ""
-  },
-  {
-    name: "Chemex-brewer",
-    price: "10000",
-    description: "lorem",
-    img: "",
-    brewMethod: "filter",
-    type: ""
-  },
-  {
-    name: "V60-brewer",
-    price: "10000",
-    description: "lorem",
-    img: "",
-    brewMethod: "filter",
-    type: ""
-  },
-  {
-    name: "French-Press",
-    price: "10000",
-    description: "lorem",
-    img: "",
-    brewMethod: "filter",
-    type: ""
+    name: 'Decaf Colombian',
+    price: '1800',
+    origin: 'Colombia',
+    description: 'decaf',
+    roastLevel: 'dark',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: '',
   },
 ];
-//coffeeBean is in product
-const coffeeBean = [
-  {
-    name: "Drip House Blend",
-    price: "2000",
-    origin: "Ethiopia",
-    description: "lorem",
-    roastLevel: "medium",
-    type: "coffeeBean",
-    treatmentProcess: "washed/natural",
-    img: "",
-  },
-  {
-    name: "Ethiopian",
-    price: "2500",
-    origin: "Ethiopia",
-    description: "from East Guji",
-    roastLevel: "medium",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
-  },
-  {
-    name: "Espresso House Blend",
-    price: "1800",
-    origin: "Ethiopian/Guatemalan",
-    description: "lorem",
-    roastLevel: "medium",
-    type: "coffeeBean",
-    treatmentProcess: "washed/natural",
-    img: "",
-  },
-  {
-    name: "Decaf Colombian",
-    price: "1800",
-    origin: "Colombia",
-    description: "decaf",
-    roastLevel: "dark",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
-  },
-  {
-    name: "Colombian",
-    price: "2500",
-    origin: "Colombia",
-    description: "lorem",
-    roastLevel: "light",
-    type: "coffeeBean",
-    treatmentProcess: "natural",
-    img: "",
-  },
-  {
-    name: "Guatemalan",
-    price: "2500",
-    origin: "huista",
-    description: "lorem",
-    roastLevel: "medium",
-    type: "coffeeBean",
-    treatmentProcess: "washed",
-    img: "",
-  },
 
+const carts = [
+  { totalPrice: 200, quantity: 2 },
+  { totalPrice: 10, quantity: 5 },
 ];
-  //! Note: make user order looks like an array
-  //! use this?
 
 const seed = async () => {
   await db.sync({ force: true });
+
+  // const cartProduct = await CartProduct.create({
+  //   userId: User.userId,
+  //   productId: Product.productId,
+  // });
+
+  // console.log('cartProduct', cartProduct);
   console.log('CREATING PRODUCTS...');
 
-    //!Create products table
-  const [
-    product1,
-    product2,
-    product3,
-  ] = await Promise.all(products.map((item)=>Product.create(item)));
+  const [product1, product2, product3] = await Promise.all(
+    products.map((item) => Product.create(item))
+  );
 
-
+  const [cart1, cart2] = await Promise.all(
+    carts.map((cartItem) => Cart.create(cartItem))
+  );
+  console.log('cart1', cart1);
   const [steve, lena, topher, anton] = await Promise.all([
-    User.create({ username: "steve", password: "123" }),
-    User.create({ username: "lena", password: "123" }),
-    User.create({ username: "topher", password: "123" }),
-    User.create({ username: "anton", password: "123" }),
+    User.create({ username: 'steve', password: '123' }),
+    User.create({ username: 'lena', password: '123' }),
+    User.create({ username: 'topher', password: '123' }),
+    User.create({ username: 'anton', password: '123' }),
   ]);
 
-steve.addProducts([product1, product3])
-
-  console.log('DONE RUNNING SEED...')
-
-  /*
-    const post1 = await Post.create({
-      title: "Louis' Post",
-      content: "I am awesome!",
-      userId: louis.id
-    });
-  */
-
-
-
-
-    // console.log('DONE RUNNING SEED...')
-    // return {
-    //     users: {
-    //         steve,
-    //         lena,
-    //         topher,
-    //         anton
-    //     },
-    // };
-
-
-
-
+  cart1.addProducts([product1, product2]);
+  console.log('DONE RUNNING SEED...');
 };
 
 module.exports = seed;

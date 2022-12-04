@@ -1,38 +1,24 @@
 const db = require('./db');
 const User = require('./User');
-const ShoppingCart = require('./ShoppingCart');
-const Order = require('./Order');
+const CartProduct = require('./cartProduct');
+const Cart = require('./Cart');
 const Product = require('./Product');
 
+//One-to-One relationship between user and cart tables.
+// user can have only one cart, and one cart can only belong to one user.
+User.hasOne(Cart);
+Cart.belongsTo(User);
 
-//!create associations here
-//order association
-//order has many products-- and vice versa?
-//through table?
-//*user shopping becomes an order
-//*that order has user.id into order table
-//*user also has a order.id
-//!How to seed order through table
-
-// order to usr is one to many relationship
-//*this is a good association pair
-Order.belongsTo(User)
-User.hasMany(Order)
-
-// User.hasOne(ShoppingCart)
-// ShoppingCart.belongsTo(User)
-
-//*relating Products to User via ShoppingCart
-Product.belongsToMany(User, { through: ShoppingCart})
-User.belongsToMany(Product, { through: ShoppingCart})
-
-Order.hasMany(Product)
-Product.hasMany(Order)
+//Many-to-Many relationship between cart and product tables.
+//One cart can have multiple products, and one product can belong to many carts.
+// We create a through table called cartProduct table.
+Cart.belongsToMany(Product, { through: CartProduct });
+Product.belongsToMany(Cart, { through: CartProduct });
 
 module.exports = {
-    Product,
-    ShoppingCart,
-    User,
-    Order,
-    db
+  Product,
+  CartProduct,
+  User,
+  db,
+  Cart,
 };
