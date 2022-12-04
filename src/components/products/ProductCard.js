@@ -2,8 +2,8 @@ import React from 'react';
 
 const ProductCard = ({ product }) => {
   return (
-    <div>
-      <img src={product.img} alt="productImage" />
+    <div style={{ display: 'flex' }}>
+      <img style={{ width: '20%' }} src={product.img} alt="productImage" />
       <div>
         <h1>{product.name}</h1>
         <h3>{product.price}</h3>

@@ -45,6 +45,8 @@ const Product = db.define('product', {
   img: {
     type: STRING,
     allowNull: false,
+    defaultValue:
+      'https://images.unsplash.com/photo-1551610290-e153ec567dd8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=726&q=80',
   },
 });
 

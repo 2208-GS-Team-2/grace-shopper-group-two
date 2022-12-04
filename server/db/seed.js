@@ -10,7 +10,7 @@ const products = [
     roastLevel: 'dark',
     type: 'coffeeBean',
     treatmentProcess: 'washed',
-    img: '/images/colomianDecaf.png',
+    img: 'static/images/colombianDecaf.png',
   },
   {
     name: 'Ethiopian',
@@ -20,7 +20,7 @@ const products = [
     roastLevel: 'medium',
     type: 'coffeeBean',
     treatmentProcess: 'washed',
-    img: '',
+    img: 'static/images/EthiopianCoffe.png',
   },
   {
     name: 'Decaf Colombian',
@@ -30,7 +30,7 @@ const products = [
     roastLevel: 'dark',
     type: 'coffeeBean',
     treatmentProcess: 'washed',
-    img: '',
+    img: 'static/images/colombianDecaf.png',
   },
 ];
 

@@ -7,9 +7,6 @@ const volleyball = require('volleyball');
 app.use(volleyball);
 app.use(express.json());
 
-// static middleware
-app.use(express.static(path.join(__dirname, '..', 'static')));
-
 // Set up routes
 app.use('/api', require('./api'));
 
