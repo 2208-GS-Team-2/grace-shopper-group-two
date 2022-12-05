@@ -5,11 +5,11 @@ const jwt = require('jsonwebtoken');
 const JWT = process.env.JWT;
 
 const User = db.define('user', {
-  id: {
-    type: UUID,
-    primaryKey: true,
-    defaultValue: UUIDV4,
-  },
+  // id: {
+  //   type: UUID,
+  //   primaryKey: true,
+  //   defaultValue: UUIDV4,
+  // },
   username: {
     type: STRING,
     allowNull: false,
