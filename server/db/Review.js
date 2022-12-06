@@ -1,7 +1,7 @@
-const db = require('./db');
+const db = require("./db");
 const { STRING, INTEGER, UUID, UUIDV4, TEXT } = db.Sequelize;
 
-const Review = db.define('review', {
+const Review = db.define("review", {
   message: {
     type: TEXT,
     allowNull: true,
