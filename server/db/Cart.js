@@ -11,19 +11,27 @@ const Cart = db.define("cart", {
     allowNull: true,
     defaultValue: 0,
     //! get a total price it all items in this cart
-    get: async function() {
-      const products = await this.getProducts();
-      const itemTotalPrice = products[0].CartProduct.itemTotalPrice;
-      const totalPrice = itemTotalPrice;
-      console.log(totalPrice);
-      return totalPrice;
-    },
+    // get: function() {
+      // const products = this.getProducts();
+
+      // const itemTotalPrice = products[0].CartProduct.itemTotalPrice;
+      // const totalPrice = itemTotalPrice;
+      // console.log("💰", totalPrice);
+      // return this.totalPrice = ; //totalPrice;
+    // },
   },
-  quantity: {
+  cartQuantity: {
     type: INTEGER,
     allowNull: true,
-    get() {
-      return this.products.length;
+    get: function() {
+       const quantities = this.products.map(product => product.CartProduct.productQuantity)
+       const initialValue = 0;
+       const sumQuantity = quantities.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+      );
+      //  console.log("🤌", sumQuantity)
+       return this.cartQuantity = sumQuantity;
     },
   },
 });
