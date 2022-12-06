@@ -190,8 +190,6 @@ const seed = async () => {
   console.log("STARTING SEED");
   await db.sync({ force: true });
 
-  console.log("CREATING PRODUCTS...");
-
   const [
     product1,
     product2,
@@ -221,7 +219,6 @@ const seed = async () => {
     User.create({ username: "lena", password: "123" }),
     User.create({ username: "topher", password: "123" }),
     User.create({ username: "anton", password: "123" }),
-    // allow null password User.create({ username: "anton", password: NULL }),
   ]);
 
   const [cart1, cart2, cart3, cart4] = await Promise.all(
