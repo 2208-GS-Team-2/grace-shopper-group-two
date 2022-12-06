@@ -1,5 +1,5 @@
 const db = require("./db");
-const { User, Product, Cart, CartProduct } = require("./");
+const { User, Product, Cart, Review } = require("./");
 
 const products = [
   {
@@ -181,6 +181,11 @@ const carts = [
   { totalPrice: 10, quantity: 5 },
 ];
 
+const reviews = [
+  { message: 'good products', rating: 4 },
+  { message: 'bad products', rating: 2 },
+];
+
 const seed = async () => {
   await db.sync({ force: true });
 
@@ -221,6 +226,10 @@ const seed = async () => {
     carts.map((cartItem) => Cart.create(cartItem))
   );
 
+  const [review1, review2] = await Promise.all(
+    reviews.map((reviewItem) => Review.create(reviewItem))
+  );
+
   cart1.addProducts([product1, product2]);
   cart2.addProducts([product1, product2, product3]);
   cart3.addProducts([product16, product10, product15]);
@@ -233,6 +242,9 @@ const seed = async () => {
     product6,
     product7,
   ]);
+
+  review1.setUser(steve);
+  review2.setUser(topher);
 
   cart1.setUser(steve);
   cart2.setUser(anton);
