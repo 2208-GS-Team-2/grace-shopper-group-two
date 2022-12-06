@@ -1,6 +1,6 @@
 const db = require('./db');
-const Sequelize = require('sequelize');
 const { INTEGER, UUID, UUIDV4 } = require('sequelize');
+
 
 const CartProduct = db.define('CartProduct', {
   id: {
@@ -8,16 +8,16 @@ const CartProduct = db.define('CartProduct', {
     primaryKey: true,
     defaultValue: UUIDV4,
   },
-  // productPrice: {
-  //   type: INTEGER,
-  //   get() {
-  //     // get: function() {
-  //     // return this.productPrice = cart.product.price
-  //     // return this.productPrice = this.product.price;
-  //     // console.log("💩", products.map(product => product.price) );
-  //     // return this.productPrice = this.price;
-  //   },
-  // },
+  productPrice: {
+    type: INTEGER,
+    get() {
+      // get: function() {
+      // return this.productPrice = cart.product.price
+      // return this.productPrice = this.product.price;
+      // console.log("💩", products.map(product => product.price) );
+      // return this.productPrice = this.price;
+    },
+  },
   productQuantity: {
     type: INTEGER,
     defaultValue: 2,
@@ -33,9 +33,10 @@ const CartProduct = db.define('CartProduct', {
       // console.log(producstMapping);
       const productQuantityInCart = this.productQuantity;
 
-      const carts = this.products;
-      console.log('**carts ', carts);
-      console.log('productQuantityInCart', productQuantityInCart);
+      const itemPrice = this.Product;
+      console.log(itemPrice);
+      // console.log('**carts ', carts);
+      // console.log('productQuantityInCart', productQuantityInCart);
     },
   },
 });
