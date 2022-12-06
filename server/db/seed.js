@@ -1,108 +1,3 @@
-<<<<<<< HEAD
-const db = require('./db');
-const { User, Product, Cart, CartProduct } = require('./');
-
-const products = [
-  {
-    name: 'Decaf Colombian',
-    price: '1800',
-    origin: 'Colombia',
-    description: 'decaf',
-    roastLevel: 'dark',
-    type: 'coffeeBean',
-    treatmentProcess: 'washed',
-    img: 'static/images/colombianDecaf.png',
-  },
-  {
-    name: 'Ethiopian',
-    price: '2500',
-    origin: 'Ethiopia',
-    description: 'from East Guji',
-    roastLevel: 'medium',
-    type: 'coffeeBean',
-    treatmentProcess: 'washed',
-    img: 'static/images/EthiopianCoffe.png',
-  },
-  {
-    name: 'Drip House Blend',
-    price: '2000',
-    origin: 'Ethiopia',
-    description: 'lorem',
-    roastLevel: 'medium',
-    type: 'coffeeBean',
-    treatmentProcess: 'washed/natural',
-    img: '',
-  },
-  {
-    name: 'Espresso House Blend',
-    price: '1800',
-    origin: 'Ethiopian/Guatemalan',
-    description: 'lorem',
-    roastLevel: 'medium',
-    type: 'coffeeBean',
-    treatmentProcess: 'washed/natural',
-    img: '',
-  },
-  {
-    name: 'Colombian',
-    price: '2500',
-    origin: 'Colombia',
-    description: 'lorem',
-    roastLevel: 'light',
-    type: 'coffeeBean',
-    treatmentProcess: 'natural',
-    img: '',
-  },
-  {
-    name: 'Guatemalan',
-    price: '2500',
-    origin: 'huista',
-    description: 'lorem',
-    roastLevel: 'medium',
-    type: 'coffeeBean',
-    treatmentProcess: 'washed',
-    img: '',
-  },
-  {
-    name: 'Espesso-machine',
-    price: '10000',
-    description: 'lorem',
-    img: '',
-    brewMethod: 'espresso',
-    type: 'equipment',
-  },
-  {
-    name: 'EK43 ',
-    price: '100000',
-    description: 'lorem',
-    img: 'static/images/mahlkonig-ek43-black-front-angle-wbg__26387.jpeg',
-    brewMethod: 'espresso/filter',
-    type: 'equipment',
-  },
-  {
-    name: 'Chemex-brewer',
-    price: '10000',
-    description: 'lorem',
-    img: '',
-    brewMethod: 'filter',
-    type: 'equipment',
-  },
-  {
-    name: 'V60-brewer',
-    price: '10000',
-    description: 'lorem',
-    img: '',
-    brewMethod: 'filter',
-    type: 'equipment',
-  },
-  {
-    name: 'French-Press',
-    price: '10000',
-    description: 'lorem',
-    img: '',
-    brewMethod: 'filter',
-    type: 'equipment',
-=======
 const db = require("./db");
 const { User, Product, Cart, Review } = require("./");
 
@@ -206,7 +101,6 @@ const products = [
     img: "static/images/FrenchPress.jpeg",
     brewMethod: "filter",
     type: "equipment",
->>>>>>> refs/remotes/origin/SeedDatabase
   },
   {
     name: 'White-Shirt',
@@ -216,19 +110,11 @@ const products = [
     type: 'merch',
   },
   {
-<<<<<<< HEAD
-    name: 'Stickers',
-    price: '200',
-    description: 'lorem',
-    img: '',
-    type: 'merch',
-=======
     name: "Stickers",
     price: "200",
     description: "lorem",
     img: "static/images/Sticker.png",
     type: "merch",
->>>>>>> refs/remotes/origin/SeedDatabase
   },
   {
     name: 'Blue-Shirt',
@@ -266,19 +152,11 @@ const products = [
     type: 'merch',
   },
   {
-<<<<<<< HEAD
-    name: 'Tumbler',
-    price: '1000',
-    description: 'insulated cup',
-    img: '',
-    type: 'merch',
-=======
     name: "Tumbler",
     price: "1000",
     description: "insulated cup",
     img: "static/images/TravelTumbler.webp",
     type: "merch",
->>>>>>> refs/remotes/origin/SeedDatabase
   },
   {
     name: 'Hat2',
@@ -312,10 +190,6 @@ const seed = async () => {
   console.log("STARTING SEED");
   await db.sync({ force: true });
 
-<<<<<<< HEAD
-  console.log('CREATING PRODUCTS...');
-=======
->>>>>>> refs/remotes/origin/SeedDatabase
   const [
     product1,
     product2,
@@ -341,18 +215,10 @@ const seed = async () => {
   ] = await Promise.all(products.map((item) => Product.create(item)));
 
   const [steve, lena, topher, anton] = await Promise.all([
-<<<<<<< HEAD
-    User.create({ username: 'steve', password: '123' }),
-    User.create({ username: 'lena', password: '123' }),
-    User.create({ username: 'topher', password: '123' }),
-    User.create({ username: 'anton', password: '123' }),
-    // allow null password User.create({ username: "anton", password: NULL }),
-=======
     User.create({ username: "steve", password: "123" }),
     User.create({ username: "lena", password: "123" }),
     User.create({ username: "topher", password: "123" }),
     User.create({ username: "anton", password: "123" }),
->>>>>>> refs/remotes/origin/SeedDatabase
   ]);
 
   const [cart1, cart2, cart3, cart4] = await Promise.all(
