@@ -1,5 +1,5 @@
 const express = require('express');
-const { Product, CartProduct } = require('../db');
+const { Product, CartProduct, Cart } = require('../db');
 const router = express.Router();
 
 //get all products
