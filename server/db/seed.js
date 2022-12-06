@@ -243,6 +243,8 @@ const seed = async () => {
     product7,
   ]);
 
+  review1.setProduct(product1);
+  review2.setProduct(product2);
   review1.setUser(steve);
   review2.setUser(topher);
 
