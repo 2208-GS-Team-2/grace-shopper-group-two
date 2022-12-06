@@ -1,6 +1,5 @@
 const db = require("./db");
-const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
-
+const { INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const Cart = db.define("cart", {
   id: {
     type: UUID,
@@ -11,11 +10,14 @@ const Cart = db.define("cart", {
     type: INTEGER,
     allowNull: true,
     defaultValue: 0,
-    //get a total price it all items in this cart
-    // get() {
-    //   const totalPrice += this.product.price;
-    //   return totalPrice;
-    // },
+    //! get a total price it all items in this cart
+    get: async function() {
+      const products = await this.getProducts();
+      const itemTotalPrice = products[0].CartProduct.itemTotalPrice;
+      const totalPrice = itemTotalPrice;
+      console.log(totalPrice);
+      return totalPrice;
+    },
   },
   quantity: {
     type: INTEGER,
