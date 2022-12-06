@@ -187,9 +187,11 @@ const reviews = [
 ];
 
 const seed = async () => {
+  console.log("STARTING SEED");
   await db.sync({ force: true });
 
   console.log("CREATING PRODUCTS...");
+
   const [
     product1,
     product2,
@@ -255,4 +257,4 @@ const seed = async () => {
   console.log("DONE RUNNING SEED...");
 };
 
-module.exports = seed;
+seed();
