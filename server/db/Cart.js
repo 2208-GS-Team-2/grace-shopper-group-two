@@ -1,5 +1,6 @@
 const db = require('./db');
 const { INTEGER, UUID, UUIDV4 } = db.Sequelize;
+
 const Cart = db.define('cart', {
   id: {
     type: UUID,
@@ -23,11 +24,12 @@ const Cart = db.define('cart', {
     // ! get the total price of all items in the cart
     get: function () {
       const products = this.products;
+      // console.log(products.price);
       // console.log('products in cart', products);
-      const producstMapping = products.map(
+      const productsMapping = products && products.map(
         (product) => product.price * product.CartProduct.productQuantity
       );
-      const totalCartPrice = producstMapping.reduce(
+      const totalCartPrice = productsMapping && productsMapping.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         0
       );
@@ -42,7 +44,7 @@ const Cart = db.define('cart', {
     defaultValue: 200,
     get: function () {
       const products = this.products;
-      const producstMapping = products.map(
+      const producstMapping = products && products.map(
         (product) => product.price * product.CartProduct.productQuantity
       );
       return (this.totalPriceProductQuantity = producstMapping);
@@ -53,11 +55,12 @@ const Cart = db.define('cart', {
     type: INTEGER,
     allowNull: true,
     get: function () {
-      const quantities = this.products.map(
+      const products = this.products
+      const quantities = products && products.map(
         (product) => product.CartProduct.productQuantity
       );
       const initialValue = 0;
-      const sumQuantity = quantities.reduce(
+      const sumQuantity = quantities && quantities.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue
       );

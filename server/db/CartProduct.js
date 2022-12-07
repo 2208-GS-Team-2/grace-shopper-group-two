@@ -10,13 +10,11 @@ const CartProduct = db.define('CartProduct', {
   },
   productPrice: {
     type: INTEGER,
-    get() {
-      // get: function() {
-      // return this.productPrice = cart.product.price
-      // return this.productPrice = this.product.price;
-      // console.log("💩", products.map(product => product.price) );
-      // return this.productPrice = this.price;
-    },
+  //   defaultValue: productId.price,
+  //   get: async function () {
+
+  //     console.log(prices.data);
+  //   },
   },
   productQuantity: {
     type: INTEGER,
@@ -31,10 +29,10 @@ const CartProduct = db.define('CartProduct', {
       // const products = this.products;
       // const producstMapping = products.map((product) => product.price);
       // console.log(producstMapping);
-      const productQuantityInCart = this.productQuantity;
+      // const productQuantityInCart = this.productQuantity;
 
-      const itemPrice = this.Product;
-      console.log(itemPrice);
+      // const itemPrice = this.Product;
+      // console.log(itemPrice);
       // console.log('**carts ', carts);
       // console.log('productQuantityInCart', productQuantityInCart);
     },
