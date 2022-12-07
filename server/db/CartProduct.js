@@ -8,12 +8,19 @@ const CartProduct = db.define("CartProduct", {
     primaryKey: true,
     defaultValue: UUIDV4,
   },
-  price: {
+  productPrice: {
     type: INTEGER,
+    get() {
+    // get: function() {
+      // return this.productPrice = cart.product.price
+      // return this.productPrice = this.product.price;
+      // console.log("💩", products.map(product => product.price) );
+      // return this.productPrice = this.price;
+    }
   },
-  quantity: {
+  productQuantity: {
     type: INTEGER,
-    defaultValue: 1,
+    defaultValue: 2,
   },
   itemTotalPrice: {
     type: INTEGER,
