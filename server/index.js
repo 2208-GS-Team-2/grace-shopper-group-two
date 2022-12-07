@@ -1,4 +1,5 @@
 const app = require('./app');
+
 const seed = require('./db/seed');
 
 const init = async () => {

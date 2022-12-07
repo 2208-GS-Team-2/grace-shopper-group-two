@@ -23,18 +23,8 @@ const CartProduct = db.define('CartProduct', {
   itemTotalPrice: {
     type: INTEGER,
     get() {
-      // const totalPrice = this.productQuantity * this.productPrice;
-      // console.log('💩Product Price', this.productPrice);
-      // return totalPrice;
-      // const products = this.products;
-      // const producstMapping = products.map((product) => product.price);
-      // console.log(producstMapping);
-      // const productQuantityInCart = this.productQuantity;
-
-      // const itemPrice = this.Product;
-      // console.log(itemPrice);
-      // console.log('**carts ', carts);
-      // console.log('productQuantityInCart', productQuantityInCart);
+      const totalPrice = this.quantity * this.price;
+      return totalPrice;
     },
   },
 });
