@@ -1,5 +1,5 @@
 const db = require('./db');
-const { STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
+const { BOOLEAN, STRING, INTEGER, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT = process.env.JWT;
@@ -38,6 +38,10 @@ const User = db.define('user', {
       isEmail: true,
     },
   },
+  isAdmin: {
+    type: BOOLEAN,
+    defaultValue: false,
+  }
 });
 
 User.addHook('beforeSave', async (user) => {
