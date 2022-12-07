@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from '../../store/productSlice.js';
 import ProductCard from './ProductCard.js';
+import './productStyle.css';
 const Products = () => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Products = () => {
   }, []);
   return (
     <>
-      <h1>All Products</h1>
+      <h1 className={'title'}>All Products</h1>
       <div>
         {products.map((product) => {
           return (
