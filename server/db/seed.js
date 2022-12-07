@@ -254,4 +254,4 @@ const seed = async () => {
   console.log('DONE RUNNING SEED...');
 };
 
-seed();
+module.exports = seed;
