@@ -1,11 +1,11 @@
 const express = require('express');
-const { Product, Review} = require('../db');
+const { Product, Review } = require('../db');
 const router = express.Router();
 
 //get all products
 router.get('/', async (req, res, next) => {
   const products = await Product.findAll({
-    include:[Review]
+    include: [Review],
   });
   console.log(Product);
   res.send(products);
