@@ -1,8 +1,8 @@
-const db = require("./db");
-const Sequelize = require("sequelize");
-const { INTEGER, UUID, UUIDV4 } = require("sequelize");
+const db = require('./db');
+const { INTEGER, UUID, UUIDV4 } = require('sequelize');
 
-const CartProduct = db.define("CartProduct", {
+
+const CartProduct = db.define('CartProduct', {
   id: {
     type: UUID,
     primaryKey: true,
@@ -10,13 +10,11 @@ const CartProduct = db.define("CartProduct", {
   },
   productPrice: {
     type: INTEGER,
-    get() {
-    // get: function() {
-      // return this.productPrice = cart.product.price
-      // return this.productPrice = this.product.price;
-      // console.log("💩", products.map(product => product.price) );
-      // return this.productPrice = this.price;
-    }
+  //   defaultValue: productId.price,
+  //   get: async function () {
+
+  //     console.log(prices.data);
+  //   },
   },
   productQuantity: {
     type: INTEGER,

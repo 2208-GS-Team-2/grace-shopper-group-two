@@ -10,7 +10,7 @@ const products = [
     roastLevel: "dark",
     type: "coffeeBean",
     treatmentProcess: "washed",
-    img: "static/images/colombianDecaf.png",
+    img: "static/images/decaf-1.jpeg",
   },
   {
     name: "Ethiopian",
@@ -20,7 +20,7 @@ const products = [
     roastLevel: "light",
     type: "coffeeBean",
     treatmentProcess: "washed",
-    img: "static/images/EthiopianCoffe.png",
+    img: "static/images/Ethiopia-Yirgacheffe-Idido-Gr-1-Washed.jpeg",
   },
   {
     name: "Drip House Blend",
@@ -30,7 +30,7 @@ const products = [
     roastLevel: "medium",
     type: "coffeeBean",
     treatmentProcess: "washed/natural",
-    img: "",
+    img: "static/images/drip house blend.jpeg",
   },
   {
     name: "Espresso House Blend",
@@ -40,7 +40,7 @@ const products = [
     roastLevel: "medium",
     type: "coffeeBean",
     treatmentProcess: "washed/natural",
-    img: "",
+    img: "static/images/house blend spro.jpeg",
   },
   {
     name: "Geisha",
@@ -50,7 +50,7 @@ const products = [
     roastLevel: "light",
     type: "coffeeBean",
     treatmentProcess: "natural",
-    img: "",
+    img: "static/images/geisha crown jew.jpeg",
   },
   {
     name: "Guatemalan",
@@ -60,7 +60,7 @@ const products = [
     roastLevel: "medium",
     type: "coffeeBean",
     treatmentProcess: "washed",
-    img: "",
+    img: "static/images/COUNTER-CULTURE-CONCEPCION-HUI-2T.jpeg",
   },
   {
     name: "L.A.S.T KB90",
@@ -89,7 +89,7 @@ const products = [
   {
     name: "V60-brewer",
     price: "2000",
-    description: "My favourite brewer so far, pretty afforadle and simple",
+    description: "My favourite brewer so far, pretty afforadle and simple, best performance brew-method by L.A.S.T champion barista",
     img: "static/images/v60brewer.jpeg",
     brewMethod: "filter",
     type: "equipment",
@@ -97,59 +97,59 @@ const products = [
   {
     name: "French-Press",
     price: "10000",
-    description: "lorem",
+    description: "old school, pretty classic, no skills required, just add hot water and wait then press. Heavy body and bold flavor, good for lazy people",
     img: "static/images/FrenchPress.jpeg",
     brewMethod: "filter",
     type: "equipment",
   },
   {
-    name: "White-Shirt",
-    price: "2400",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'White-Shirt',
+    price: '2400',
+    description: 'pure clean, what else can I ask for, only for the cool kids, and it is the best color ever',
+    img: 'static/images/whitecoffeeshirt.webp',
+    type: 'merch',
   },
   {
     name: "Stickers",
     price: "200",
-    description: "lorem",
+    description: "L.A.S.T coffee shop stickers that has superpower, put it there and make it shiny",
     img: "static/images/Sticker.png",
     type: "merch",
   },
   {
-    name: "Blue-Shirt",
-    price: "1000",
-    description: "lorem",
-    img: "static/images/M10093625_7.webp",
-    type: "merch",
+    name: 'Blue-Shirt',
+    price: '1000',
+    description: 'awesome sharp color, suitable for different style',
+    img: 'static/images/bluecoffeeshirt.jpeg',
+    type: 'merch',
   },
   {
-    name: "Cup",
-    price: "1500",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Cup',
+    price: '1500',
+    description: 'to showcase the beauty of the coffee, this is the best vessel to put your coffee in without hesitation.',
+    img: 'static/images/glasscup.webp',
+    type: 'merch',
   },
   {
-    name: "Cup-Sleeve",
-    price: "1000",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Cup-Sleeve',
+    price: '1000',
+    description: 'for your weak hand, loser',
+    img: 'static/images/sleeve.webp',
+    type: 'merch',
   },
   {
-    name: "Hat",
-    price: "1000",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Hat',
+    price: '1000',
+    description: 'you can not find this hat anywhere else but L.A.S.T coffee shop.',
+    img: 'static/images/hat.webp',
+    type: 'merch',
   },
   {
-    name: "Coffe-Mug",
-    price: "2000",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Coffe-Mug',
+    price: '2000',
+    description: 'trap the heat pretty well and its shape keeps the aroma sourrnding your nose',
+    img: 'static/images/coffeemug.jpeg',
+    type: 'merch',
   },
   {
     name: "Tumbler",
@@ -159,26 +159,26 @@ const products = [
     type: "merch",
   },
   {
-    name: "Hat2",
-    price: "1000",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Hat2',
+    price: '1000',
+    description: 'vintage coffee hat only for the L.A.S.T coffee people',
+    img: 'static/images/hat2.webp',
+    type: 'merch',
   },
   {
-    name: "Shirt-logo",
-    price: "500",
-    description: "lorem",
-    img: "",
-    type: "merch",
+    name: 'Shirt-logo',
+    price: '500',
+    description: 'beautiful latte art, unbeatable logo',
+    img: 'static/images/glasscup2.webp',
+    type: 'merch',
   },
 ];
 
 const carts = [
-  { totalPrice: 200, quantity: 2 },
-  { totalPrice: 10, quantity: 5 },
-  { totalPrice: 10, quantity: 5 },
-  { totalPrice: 10, quantity: 5 },
+  { totalPrice: 200 },
+  { totalPrice: 10 },
+  { totalPrice: 10 },
+  { totalPrice: 10 },
 ];
 
 const reviews = [
@@ -219,6 +219,7 @@ const seed = async () => {
     User.create({ username: "lena", password: "123" }),
     User.create({ username: "topher", password: "123" }),
     User.create({ username: "anton", password: "123" }),
+    User.create({ username: "admin", password: "123", isAdmin: true }),
   ]);
 
   const [cart1, cart2, cart3, cart4] = await Promise.all(
@@ -251,7 +252,7 @@ const seed = async () => {
   cart2.setUser(anton);
   cart3.setUser(topher);
   cart4.setUser(lena);
-  console.log("DONE RUNNING SEED...");
+  console.log('DONE RUNNING SEED...');
 };
 
 seed();
