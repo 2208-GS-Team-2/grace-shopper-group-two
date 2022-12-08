@@ -38,6 +38,10 @@ const User = db.define('user', {
       isEmail: true,
     },
   },
+  isAdmin: {
+    type: BOOLEAN,
+    defaultValue: false,
+  }
 });
 
 User.addHook('beforeSave', async (user) => {
