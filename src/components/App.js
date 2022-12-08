@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Products from './products/Products';
+import SingleProduct from './products/SingleProduct.js';
 
 const App = () => {
   const { user } = useSelector((state) => state.user);
@@ -40,6 +41,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>
     </div>

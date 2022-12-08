@@ -56,15 +56,17 @@ const Cart = db.define('cart', {
     type: INTEGER,
     allowNull: true,
     get: function () {
-      const products = this.products
-      const quantities = products && products.map(
-        (product) => product.CartProduct.productQuantity
-      );
+      const products = this.products;
+      const quantities =
+        products &&
+        products.map((product) => product.CartProduct.productQuantity);
       const initialValue = 0;
-      const sumQuantity = quantities && quantities.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        initialValue
-      );
+      const sumQuantity =
+        quantities &&
+        quantities.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          initialValue
+        );
       //  console.log("🤌", sumQuantity)
       return (this.cartQuantity = sumQuantity);
     },

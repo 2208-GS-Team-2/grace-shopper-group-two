@@ -7,6 +7,10 @@ const volleyball = require('volleyball');
 app.use(volleyball);
 app.use(express.json());
 
+// Body parsing middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Set up routes
 app.use('/api', require('./api'));
 
