@@ -47,8 +47,7 @@ const SingleProduct = () => {
           style={{ width: "500px", height: "auto" }}
         />
         <h2>{singleProduct.name}</h2>
-        {/* const dollars = (cents / 100).toLocaleString("en-US", {style:"currency", currency:"USD"});
-         */}
+
         <h2>{`${(singleProduct.price / 100).toLocaleString("en-US", {
           style: "currency",
           currency: "USD",
