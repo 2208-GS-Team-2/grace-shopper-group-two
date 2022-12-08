@@ -41,12 +41,12 @@ const Products = () => {
   if (hasError) {
     return <p>There is some issue fetching the data from the server</p>;
   }
-  if (!Object.keys(products).length)
-    return (
-      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
-        <CircularProgress />
-      </div>
-    );
+  // if (!Object.keys(products).length)
+  //   return (
+  //     <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+  //       <CircularProgress />
+  //     </div>
+  //   );
 
   useEffect(() => {
     fetchProducts();
