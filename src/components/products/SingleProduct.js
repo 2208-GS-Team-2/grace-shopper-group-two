@@ -21,7 +21,7 @@ const fetchSingleProduct = async () => {
     dispatch(setLoadingProduct(false));
   } catch (err) {
     dispatch(setLoadingProduct(false));
-    // next(err);
+    next(err);
   }
 };
 
@@ -42,7 +42,7 @@ useEffect(() => {
   return (
     <div>
       <div>
-        <p>Herro World.</p>
+        <p>{singleProduct.name}</p>
 
       </div>
     </div>
