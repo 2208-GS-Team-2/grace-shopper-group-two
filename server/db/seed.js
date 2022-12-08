@@ -219,7 +219,6 @@ const seed = async () => {
     User.create({ username: "lena", password: "123" }),
     User.create({ username: "topher", password: "123" }),
     User.create({ username: "anton", password: "123" }),
-    User.create({ username: "admin", password: "123", isAdmin: true }),
   ]);
 
   const [cart1, cart2, cart3, cart4] = await Promise.all(
@@ -255,4 +254,4 @@ const seed = async () => {
   console.log('DONE RUNNING SEED...');
 };
 
-seed();
+module.exports = seed;
