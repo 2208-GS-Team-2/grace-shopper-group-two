@@ -9,6 +9,12 @@ router.get('/', async (req, res, next) => {
   res.send(carts);
 });
 
+//!cartproducts
+router.get('/', async (req, res, next) => {
+  const cartproducts = await CartProduct.findAll({ include: [productPrice] });
+  res.send(cartproducts);
+});
+
 //Get a cart
 //Get localhost:3000/api/carts/:id
 router.get('/:id', async (req, res, next) => {
