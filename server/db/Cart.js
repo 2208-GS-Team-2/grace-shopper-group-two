@@ -23,9 +23,10 @@ const Cart = db.define('cart', {
     // },
     // ! get the total price of all items in the cart
     get: function () {
-      const products = this.products;
       // console.log(products.price);
       // console.log('products in cart', products);
+      const products = this.products;
+      // console.log(products);
       const productsMapping = products && products.map(
         (product) => product.price * product.CartProduct.productQuantity
       );
