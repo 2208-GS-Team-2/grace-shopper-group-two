@@ -6,8 +6,9 @@ import ProductCard from './ProductCard.js';
 import { setSingleProduct, setLoadingProduct } from '../../store/productSlice';
 
 import './productStyle.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+
 const Products = () => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
@@ -60,8 +61,8 @@ const Products = () => {
             <>
               <ProductCard
                 product={product}
-                // fetchSingleProduct={fetchSingleProduct}
-              />
+                fetchSingleProduct={fetchSingleProduct}
+                />
             </>
           );
         })}

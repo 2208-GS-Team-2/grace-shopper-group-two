@@ -1,5 +1,4 @@
 const db = require('./db');
-const db = require('./db');
 const { INTEGER, UUID, UUIDV4 } = db.Sequelize;
 
 const Cart = db.define('cart', {

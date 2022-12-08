@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
         background: 'lightgray',
       }}
     >
-      <Card
+        <Card
         key={product.id}
         sx={{ maxWidth: 500 }}
         style={{
@@ -30,39 +30,42 @@ const ProductCard = ({ product }) => {
           border: '4mm ridge rgba(193, 188, 188, 0.1)',
           justifyContent: 'center',
         }}
-      >
+        >
+        <Link key={product.id} to={`/products/${product.id}`}>
         <CardMedia
           component="img"
           height="140"
           image={product.img}
           alt="product-image"
-        />
+          />
         <CardContent>
           <Typography
             style={{ color: 'darkblue' }}
             gutterBottom
             variant="h4"
             component="div"
-          >
+            >
             {product.name}
           </Typography>
-          <Typography>{'$' + product.price}</Typography>
+          <Typography>{'$' + (product.price/100)}</Typography>
         </CardContent>
         <CardContent>
-          <Link key={product.id} to={`/products/${product.id}`}>
-            <Button
+
+            {/* <Button
               style={{
                 color: 'dodgerblue',
                 margin: '10px',
                 width: '100%',
               }}
               onClick={''}
-            >
+              >
               Click for more Info
-            </Button>
-          </Link>
+            </Button> */}
+
         </CardContent>
-      </Card>
+      </Link>
+        </Card>
+
     </div>
   );
 };

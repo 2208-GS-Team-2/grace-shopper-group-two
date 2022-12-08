@@ -1,22 +1,54 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { setLoadingProduct, setSingleProduct } from '../../store/productSlice';
 
 const SingleProduct = () => {
-  // const { id } = useParams();
-  // const dispatch = useDispatch();
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const { singleProduct } = useSelector((state) => state.product);
-  // if (!Object.keys(singleProduct).length) {
-  //   return (
-  //     <div style={{ textAlign: 'center', paddingTop: '100px' }}>
-  //       <CircularProgress />
-  //     </div>
-  //   );
-  // }
+  // console.log(object);
 
-  // const renderProductData = (
+//!
+const fetchSingleProduct = async () => {
+  try {
+    dispatch(setLoadingProduct(true));
+    const response = await axios.get(`/api/products/${id}`);
+
+    dispatch(setSingleProduct(response.data));
+    dispatch(setLoadingProduct(false));
+  } catch (err) {
+    dispatch(setLoadingProduct(false));
+    // next(err);
+  }
+};
+
+useEffect(() => {
+  fetchSingleProduct(id);
+}, []);
+
+
+  //!
+  if (!Object.keys(singleProduct).length) {
+    return (
+      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+        <CircularProgress />
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div>
+        <p>Herro World.</p>
+
+      </div>
+    </div>
+  )
+  // const renderProductData =
+  // return (
   //   <div>
   //     <div
   //       style={{ display: 'flex', justifyContent: 'center', margin: '150px' }}
@@ -34,7 +66,7 @@ const SingleProduct = () => {
   //     </div>
   //   </div>
   // );
-  return <div>"hello"</div>;
+  // return <div>renderProductData</div>;
 };
 
 export default SingleProduct;
