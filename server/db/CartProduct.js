@@ -21,7 +21,7 @@ const CartProduct = db.define('CartProduct', {
   },
   productQuantity: {
     type: INTEGER,
-    defaultValue: 2,
+    defaultValue: 1,
   },
   itemTotalPrice: {
     type: INTEGER,
