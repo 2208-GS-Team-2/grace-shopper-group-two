@@ -1,25 +1,69 @@
-import { Box, Grid, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './productStyle.css';
 
 const ProductCard = ({ product }) => {
   return (
-    <Grid container spacing={2} style={{ display: 'flex' }}>
-      <Grid item md={3}>
-        <Box component="img" sx={{ width: '100%' }} src={product.img} />
-        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-          {product.name}
-        </Typography>
-        <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-          {product.description}
-        </Typography>
-        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#ff6d00' }}>
-          {'$' + product.price}
-        </Typography>
-        <Typography variant="subtitle2" sx={{ color: 'gray' }}>
-          {'free shipping'}
-        </Typography>
-      </Grid>
-    </Grid>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        background: 'lightgray',
+      }}
+    >
+      <Card
+        key={product.id}
+        sx={{ maxWidth: 500 }}
+        style={{
+          margin: '50px',
+          display: 'flex',
+          flexDirection: 'row',
+          border: '4mm ridge rgba(193, 188, 188, 0.1)',
+          justifyContent: 'center',
+        }}
+      >
+        <CardMedia
+          component="img"
+          height="140"
+          image={product.img}
+          alt="product-image"
+        />
+        <CardContent>
+          <Typography
+            style={{ color: 'darkblue' }}
+            gutterBottom
+            variant="h4"
+            component="div"
+          >
+            {product.name}
+          </Typography>
+          <Typography>{'$' + product.price}</Typography>
+        </CardContent>
+        <CardContent>
+          <Link key={product.id} to={`/products/${product.id}`}>
+            <Button
+              style={{
+                color: 'dodgerblue',
+                margin: '10px',
+                width: '100%',
+              }}
+              onClick={''}
+            >
+              Click for more Info
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

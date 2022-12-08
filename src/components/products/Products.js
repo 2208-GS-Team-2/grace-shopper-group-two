@@ -1,17 +1,21 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../../store/productSlice.js';
+import { setProducts, setHasError } from '../../store/productSlice.js';
 import ProductCard from './ProductCard.js';
+import { setSingleProduct, setLoadingProduct } from '../../store/productSlice';
+
 import './productStyle.css';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 const Products = () => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
 
   //Selectors to grab redux state from the store
-  const products = useSelector((state) => state.product.products);
+  const { products, hasError } = useSelector((state) => state.product);
 
-  //Fetch the products data from the server
+  //Fetch tall products data
   const fetchProducts = async () => {
     try {
       const fetchedProducts = await axios.get('/api/products');
@@ -22,8 +26,29 @@ const Products = () => {
     }
   };
 
+  //Fetch a single product data
+  const fetchSingleProduct = async (id) => {
+    try {
+      dispatch(setLoadingProduct(true));
+      const response = await axios.get(`/api/products/${id}`);
+      dispatch(setSingleProduct(response.data));
+      dispatch(setLoadingProduct(false));
+    } catch (err) {
+      dispatch(setHasError(true));
+    }
+  };
+
+  if (hasError) {
+    return <p>There is some issue fetching the data from the server</p>;
+  }
+  // if (!Object.keys(products).length)
+  //   return (
+  //     <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+  //       <CircularProgress />
+  //     </div>
+  //   );
+
   useEffect(() => {
-    console.log(fetchProducts());
     fetchProducts();
   }, []);
   return (
@@ -33,7 +58,10 @@ const Products = () => {
         {products.map((product) => {
           return (
             <>
-              <ProductCard product={product} />
+              <ProductCard
+                product={product}
+                // fetchSingleProduct={fetchSingleProduct}
+              />
             </>
           );
         })}
