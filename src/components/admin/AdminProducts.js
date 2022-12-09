@@ -1,10 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-import { getAllProducts } from '../../api';
+import { getAllProducts }  from '../../api';
+
 
 
 const AdminProducts = ({token}) => {
+
+    const fetchProducts = async () => {
+        try {
+          const fetchedProducts = await axios.get('/api/products');
+          console.log(fetchedProducts);
+          dispatch(setProducts(fetchedProducts.data));
+        } catch (err) {
+          console.log(err);
+        }
+      };
+    
+      useEffect(() => {
+        console.log(fetchProducts());
+        fetchProducts();
+      }, []);
 
     const [products, setProducts] = useState([]);
 

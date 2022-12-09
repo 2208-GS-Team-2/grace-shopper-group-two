@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-import { getAllUsers } from '../../api';
+import  { getAllUsers }  from '../../api';
 
 
 
