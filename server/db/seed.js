@@ -256,7 +256,7 @@ const seed = async () => {
     product11,
     product15,
     product6,
-    product7,w
+    product7,
   ]);
 
   review1.setProduct(product1);
