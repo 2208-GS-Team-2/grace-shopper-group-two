@@ -30,18 +30,20 @@ const App = () => {
     loginWithToken();
   }, []);
 
-  if (!user.id) return <Login />;
+  // if (!user.id) return <Login />;
   return (
     <div>
       <h1>L.A.S.T Coffee Shop</h1>
       <div>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/login">login</Link>
           <Link to="/createuser">Create Account</Link>
           <Link to="/products">Products</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />

@@ -28,7 +28,7 @@ const CreateUserPage = () => {
       email,
     });
     //!add try catch later
-    navigate("/");
+    navigate("/login");
   };
 
   return (
