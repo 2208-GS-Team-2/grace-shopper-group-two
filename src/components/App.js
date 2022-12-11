@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Products from './products/Products';
-import AllUsers from './admin/AllUsers';
+import AllUsers from './admin/users/AllUsers';
+import SingleUser from './admin/users/SingleUser';
 import SingleProduct from './products/SingleProduct.js';
 import CreateUserPage from './CreateUser';
 import { setHasError, setUser } from '../store/userSlice';
@@ -56,9 +57,8 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/allUsers" element={<AllUsers />} />
-          {user.isAdmin && (
-            <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
-          )}
+          <Route path="/allUsers/:id" element={<SingleUser />} />
+          <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>
     </div>

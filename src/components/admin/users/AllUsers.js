@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setHasError, setUsers } from '../../store/userSlice';
+import { setHasError, setUsers } from '../../../store/userSlice';
 import UsersTable from './UsersTable';
 
 const AllUsers = () => {
@@ -33,11 +33,12 @@ const AllUsers = () => {
       <div>
         <h1>All users</h1>
         <table border={1}>
-          <thead>
+          <tr>
             <th>Name</th>
             <th>Id</th>
             <th>Password</th>
-          </thead>
+            <th>Update</th>
+          </tr>
           {users.length &&
             users.map((user) => {
               return <UsersTable user={user} />;

@@ -17,7 +17,7 @@ app.use('/api', require('./api'));
 // Pass back everything else / front-end
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/static', express.static(path.join(__dirname, '../static')));
-app.get('/', (req, res) =>
+app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, '../static/index.html'))
 );
 
