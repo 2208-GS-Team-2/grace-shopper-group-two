@@ -48,33 +48,21 @@ router.put("/:id", async (req, res, next) => {
   const productsList = cart.products;
   const productIds = productsList.map((product) => product.id);
   if (productIds.includes(productId)) {
-    let productQty = CartProduct.productQuantity;
-    productQty++;
-    CartProduct.update({
-      productQty,
+    const cartProdcut = await CartProduct.findAll({
+      where: { cartId: id, productId: productId },
+    });
+    let quantity = cartProdcut[0].dataValues.productQuantity + 1;
+
+    await cartProdcut[0].update({
+      productQuantity: quantity,
     });
 
-    //const cartproduct = await CartProduct.findall(where: cartId: id, productId: productId)
-    //cartprdocut.productQuantity ++
-
-    //!add +1 to quantity here
-    let selectedProduct = productsList.indexOf(productId);
-    console.log(selectedProduct);
+    console.log(quantity);
+    return res.sendStatus(200);
   } else {
     const product = await Product.findByPk(productId);
     cart.addProducts(product);
   }
-
-  // const products = cart.map((product) => product.id);
-  // if (products.include(productId)) {
-  //   products.product.quantity++;
-  // } else {
-  //   const product = Product.findByPk(productId);
-  //   cart.addProducts(product);
-  // }
-
-  //!add product.id into the cart (maybe along with quantity)
-  //
 });
 
 //delete a cart
