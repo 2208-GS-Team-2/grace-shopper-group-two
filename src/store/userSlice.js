@@ -30,6 +30,14 @@ export const userSlice = createSlice({
         }),
       ];
     },
+    setUpdatedSingleUser: (state, action) => {
+      const updatedSingleUserInfo = action.payload;
+      const oldUserInfo = state.users;
+      state.users = {
+        ...updatedSingleUserInfo,
+        ...oldUserInfo,
+      };
+    },
     setHasError: (state, action) => {
       state.hasError = action.payload;
     },
@@ -43,5 +51,6 @@ export const {
   setSingleUser,
   setDeleteUser,
   setHasError,
+  setUpdatedSingleUser,
 } = userSlice.actions;
 export default userSlice.reducer;
