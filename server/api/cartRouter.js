@@ -43,7 +43,7 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   const id = req.params.id;
   const { productId } = req.body; //!add quantity later in here too
-  console.log(productId);
+
   const cart = await Cart.findByPk(id, { include: [Product] });
   const productsList = cart.products;
   const productIds = productsList.map((product) => product.id);
