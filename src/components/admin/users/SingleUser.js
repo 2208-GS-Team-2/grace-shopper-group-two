@@ -34,9 +34,8 @@ const SingleUser = () => {
 
   // to delete a single user info by the admin
   const deleteSingleUser = async () => {
-    console.log('delete a user');
     dispatch(setDeleteUser(id));
-    const { data, deleted } = await axios.delete(`/api/users/${id},{}`);
+    const { data, deleted } = await axios.delete(`/api/users/${id}`, {});
     navigate('/allUsers');
   };
 
