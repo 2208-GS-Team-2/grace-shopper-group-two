@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {},
-  users: {},
-  singleUser: [],
+  user: {}, //this is for log in user
+  users: [],
+  singleUser: [], // this is for single user for admin to update their information.
   hasError: false,
 };
 
@@ -23,12 +23,25 @@ export const userSlice = createSlice({
     setSingleUser: (state, action) => {
       state.singleUser = action.payload;
     },
+    setDeleteUser: (state, action) => {
+      state.users = [
+        ...state.users.filter((oneUser) => {
+          return oneUser.id !== action.payload;
+        }),
+      ];
+    },
     setHasError: (state, action) => {
       state.hasError = action.payload;
     },
   },
 });
 
-export const { setUser, resetUser, setUsers, setSingleUser, setHasError } =
-  userSlice.actions;
+export const {
+  setUser,
+  resetUser,
+  setUsers,
+  setSingleUser,
+  setDeleteUser,
+  setHasError,
+} = userSlice.actions;
 export default userSlice.reducer;

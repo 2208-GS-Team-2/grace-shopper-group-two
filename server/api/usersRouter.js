@@ -35,26 +35,44 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-// router.post('/', async (req, res, next) => {
-//   const { username, password, email } = req.body;
+//To delete a user
+router.delete('/:id', async (req, res, next) => {
+  const id = req.params.id;
+  const NOTFOUNDMESSAGE = `The user you are trying to delete does not exists!!`;
+  try {
+    const userToDelete = await User.findByPk(id);
+    if (!userToDelete) {
+      throw new Error(NOTFOUNDMESSAGE);
+    }
+    await userToDelete.destroy();
+    res.sendStatus(202);
+    w;
+  } catch (err) {
+    if (err.message === NOTFOUNDMESSAGE)
+      return res.status(404).send({ message: NOTFOUNDMESSAGE });
+  }
+});
 
-//   const users = await User.findAll();
-//   const usersEmail = users.map((user) => user.email);
+router.post('/', async (req, res, next) => {
+  const { username, password, email } = req.body;
 
-//   if (usersEmail.includes(email)) {
-//     return res.sendStatus(403);
-//   }
+  const users = await User.findAll();
+  const usersEmail = users.map((user) => user.email);
 
-//   const newUser = await User.create({
-//     username,
-//     password,
-//     email,
-//   });
+  if (usersEmail.includes(email)) {
+    return res.sendStatus(403);
+  }
 
-//   const newCart = await Cart.create();
-//   newCart.setUser(newUser);
+  const newUser = await User.create({
+    username,
+    password,
+    email,
+  });
 
-//   res.sendStatus(204);
-// });
+  const newCart = await Cart.create();
+  newCart.setUser(newUser);
+
+  res.sendStatus(204);
+});
 
 module.exports = router;

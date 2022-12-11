@@ -1,14 +1,20 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { setHasError, setSingleUser } from '../../../store/userSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import {
+  setHasError,
+  setSingleUser,
+  setDeleteUser,
+} from '../../../store/userSlice';
 
 const SingleUser = () => {
   //Custom Hooks
   const { id } = useParams();
-  console.log('id', id);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //Selectors
   const { singleUser } = useSelector((state) => state.user);
 
   const fetchSingleUser = async () => {
@@ -19,6 +25,19 @@ const SingleUser = () => {
     } catch (err) {
       dispatch(setHasError(true));
     }
+  };
+
+  // to update a single user information by the admin
+  const updateSingleUser = (id) => {
+    console.log('update');
+  };
+
+  // to delete a single user info by the admin
+  const deleteSingleUser = async () => {
+    console.log('delete a user');
+    dispatch(setDeleteUser(id));
+    const { data, deleted } = await axios.delete(`/api/users/${id},{}`);
+    navigate('/allUsers');
   };
 
   useEffect(() => {
@@ -41,10 +60,12 @@ const SingleUser = () => {
           <td>{singleUser.email}</td>
           <td>{singleUser.isAdmin}</td>
           <td>
-            <button>Edit</button>
+            <button onClick={() => updateSingleUser(singleUser.id)}>
+              Edit
+            </button>
           </td>
           <td>
-            <button>Delete</button>
+            <button onClick={() => deleteSingleUser()}>Delete</button>
           </td>
         </tr>
       </table>
