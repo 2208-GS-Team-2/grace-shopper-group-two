@@ -31,6 +31,7 @@ router.post('/', async (req, res, next) => {
   try {
     const { totalPrice, quantity } = req.body;
     const newCart = await Cart.create({ totalPrice, quantity });
+
     res.sendStatus(204);
   } catch (err) {
     return res.status(501).send(err.message);

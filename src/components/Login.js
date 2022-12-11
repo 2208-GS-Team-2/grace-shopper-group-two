@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import CreateUserPage from './CreateUser';
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     const [credentials, setCredentials] = useState({
         username: '',
@@ -34,6 +38,7 @@ const Login = () => {
         window.localStorage.setItem('token', token);
 
         loginWithToken(token)
+        navigate('/')
     };
 
     return (
@@ -54,6 +59,7 @@ const Login = () => {
                 />
                 <button>Login</button>
             </form>
+            <Link to="/createuser">Create a user account</Link>
         </div>
     );
 };

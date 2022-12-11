@@ -9,9 +9,9 @@ const container = document.querySelector('#root');
 const root = createRoot(container);
 
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );

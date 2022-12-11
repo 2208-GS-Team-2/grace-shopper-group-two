@@ -3,6 +3,8 @@ const User = require("./User");
 const CartProduct = require("./cartProduct");
 const Cart = require("./Cart");
 const Product = require("./Product");
+const Review = require("./Review");
+
 
 //One-to-One relationship between user and cart tables.
 // user can have only one cart, and one cart can only belong to one user.
@@ -15,9 +17,18 @@ Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartProduct });
 Product.belongsToMany(Cart, { through: CartProduct });
 
+//One-to-Many relationship between user and review.One user can have many reviews and one review can belong to one user.
+User.hasMany(Review);
+Review.belongsTo(User);
+
+//One-to-Many relationship between product and review One product can have many reviews and one review can belong to one user.
+Product.hasMany(Review);
+Review.belongsTo(Product);
+
 module.exports = {
   Product,
   CartProduct,
+  Review,
   User,
   db,
   Cart,
