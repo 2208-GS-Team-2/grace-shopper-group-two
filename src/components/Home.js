@@ -17,6 +17,7 @@ const Home = () => {
       <h1>Home</h1>
       <div>
         <p>Welcome {user.username}!!</p>
+        {/* <p>{user.cart}</p> */}
 
         <button onClick={logout}>Logout</button>
       </div>
