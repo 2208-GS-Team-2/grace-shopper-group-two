@@ -31,13 +31,14 @@ const App = () => {
     loginWithToken();
   }, []);
 
+
   useEffect(() => {
     if (user.isAdmin) {
       fetchUsers();
     }
   }, []);
-
-  if (!user.id) return <Login />;
+  //! To be deleted later
+  // if (!user.id) return <Login />;
 
   return (
     <div>
@@ -45,12 +46,14 @@ const App = () => {
       <div>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/login">login</Link>
           <Link to="/createuser">Create Account</Link>
           <Link to="/products">Products</Link>
           {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />

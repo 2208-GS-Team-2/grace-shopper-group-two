@@ -26,6 +26,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //To create a new cart
+//!Might need to change this completely
 //Post localhost:3000/api/carts
 router.post("/", async (req, res, next) => {
   try {
@@ -35,6 +36,32 @@ router.post("/", async (req, res, next) => {
     res.sendStatus(204);
   } catch (err) {
     return res.status(501).send(err.message);
+  }
+});
+
+//update cart info
+router.put("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  const { productId } = req.body; //!add quantity later in here too
+  console.log(productId);
+  const cart = await Cart.findByPk(id, { include: [Product] });
+  const productsList = cart.products;
+  const productIds = productsList.map((product) => product.id);
+  if (productIds.includes(productId)) {
+    const cartProdcut = await CartProduct.findAll({
+      where: { cartId: id, productId: productId },
+    });
+    let quantity = cartProdcut[0].dataValues.productQuantity + 1;
+
+    await cartProdcut[0].update({
+      productQuantity: quantity,
+    });
+
+    console.log(quantity);
+    return res.sendStatus(200);
+  } else {
+    const product = await Product.findByPk(productId);
+    cart.addProducts(product);
   }
 });
 

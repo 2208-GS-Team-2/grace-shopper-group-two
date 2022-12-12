@@ -60,6 +60,7 @@ router.post("/", async (req, res, next) => {
 
   if (usersEmail.includes(email)) {
     return res.sendStatus(403);
+    // return res.status(403).send({ message: USE A DIFFERENT EMAIL })
   }
 
   const newUser = await User.create({
