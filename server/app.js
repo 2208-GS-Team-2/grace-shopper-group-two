@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", require("./api"));
 
 // Pass back everything else / front-end
+
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use("/static", express.static(path.join(__dirname, "../static")));
 app.get("/", (req, res) =>

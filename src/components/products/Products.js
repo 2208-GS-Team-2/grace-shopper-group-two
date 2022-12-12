@@ -16,7 +16,7 @@ const Products = () => {
   //Selectors to grab redux state from the store
   const { products, hasError } = useSelector((state) => state.product);
 
-  //Fetch tall products data
+  //Fetch all products data
   const fetchProducts = async () => {
     try {
       const fetchedProducts = await axios.get('/api/products');
@@ -62,7 +62,7 @@ const Products = () => {
               <ProductCard
                 product={product}
                 fetchSingleProduct={fetchSingleProduct}
-                />
+              />
             </>
           );
         })}
