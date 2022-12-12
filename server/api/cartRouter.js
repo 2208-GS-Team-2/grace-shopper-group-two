@@ -1,17 +1,17 @@
-const express = require('express');
-const { Cart, CartProduct, Product } = require('../db');
+const express = require("express");
+const { Cart, CartProduct, Product } = require("../db");
 const router = express.Router();
 
 //Get all carts
 // Get localhost:3000/api/carts
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const carts = await Cart.findAll({ include: [Product] });
   res.send(carts);
 });
 
 //Get a cart
 //Get localhost:3000/api/carts/:id
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     if (id) {
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res, next) => {
 
 //To create a new cart
 //Post localhost:3000/api/carts
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { totalPrice, quantity } = req.body;
     const newCart = await Cart.create({ totalPrice, quantity });
@@ -40,7 +40,7 @@ router.post('/', async (req, res, next) => {
 
 //delete a cart
 // Delete localhost:3000/carts/:id
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
   const NOTFOUNDMESSAGE = `The cart you are trying to delete does not exists!!`;
   try {

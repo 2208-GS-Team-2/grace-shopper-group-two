@@ -1,14 +1,18 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   setHasError,
   setSingleUser,
   setDeleteUser,
-} from '../../../store/userSlice';
+} from "../../../store/userSlice";
 
 const SingleUser = () => {
+  //STATE
+  const [formIsShown, setFormIsShown] = useState(false);
+
   //Custom Hooks
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -20,7 +24,7 @@ const SingleUser = () => {
   const fetchSingleUser = async () => {
     try {
       const response = await axios.get(`/api/users/${id}`);
-      console.log('single User', response.data);
+      console.log("single User", response.data);
       dispatch(setSingleUser(response.data));
     } catch (err) {
       dispatch(setHasError(true));
@@ -29,21 +33,24 @@ const SingleUser = () => {
 
   // to update a single user information by the admin
   const updateSingleUser = (id) => {
-    console.log('update');
+    console.log("update");
   };
 
   // to delete a single user info by the admin
   const deleteSingleUser = async () => {
     dispatch(setDeleteUser(id));
     const { data, deleted } = await axios.delete(`/api/users/${id}`, {});
-    navigate('/allUsers');
+    navigate("/allUsers");
   };
 
   useEffect(() => {
     fetchSingleUser(id);
-    console.log('singleUser ', singleUser);
+    console.log("singleUser ", singleUser);
   }, []);
 
+  if (formIsShown) {
+    return <h1>Hello</h1>;
+  }
   return (
     <>
       <h3>User Information</h3>
@@ -57,11 +64,9 @@ const SingleUser = () => {
         <tr>
           <td>{singleUser.username}</td>
           <td>{singleUser.email}</td>
-          <td>{singleUser.isAdmin}</td>
+          <td>{singleUser.isAdmin ? "True" : "False"}</td>
           <td>
-            <button onClick={() => updateSingleUser(singleUser.id)}>
-              Edit
-            </button>
+            <button onClick={() => setFormIsShown(true)}>Edit</button>
           </td>
           <td>
             <button onClick={() => deleteSingleUser()}>Delete</button>

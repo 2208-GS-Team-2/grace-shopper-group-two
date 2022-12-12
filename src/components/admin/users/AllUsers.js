@@ -1,10 +1,10 @@
-import { DoNotDisturbOnTotalSilenceSharp } from '@mui/icons-material';
-import axios from 'axios';
-import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setHasError, setUsers } from '../../../store/userSlice';
-import UsersTable from './UsersTable';
+import { DoNotDisturbOnTotalSilenceSharp } from "@mui/icons-material";
+import axios from "axios";
+import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setHasError, setUsers } from "../../../store/userSlice";
+import UsersTable from "./UsersTable";
 
 const AllUsers = () => {
   //Customs Hooks:
@@ -16,8 +16,8 @@ const AllUsers = () => {
   //Fetch all users information
   const fetchUsers = async () => {
     try {
-      const fetchUsers = await axios.get('/api/users');
-      console.log('fetchUsers', fetchUsers.data);
+      const fetchUsers = await axios.get("/api/users");
+      console.log("fetchUsers", fetchUsers.data);
       dispatch(setUsers(fetchUsers.data));
     } catch (err) {
       dispatch(setHasError(true));
@@ -30,9 +30,9 @@ const AllUsers = () => {
   }, []);
   return (
     <>
-      <div>
+      <div style={{ textAlign: "center" }}>
         <h1>All users</h1>
-        <table border={1}>
+        <table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
           <tr>
             <th>Name</th>
             <th>Id</th>

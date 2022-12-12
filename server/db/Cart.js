@@ -1,12 +1,12 @@
-const db = require('./db');
+const db = require("./db");
 const { INTEGER, UUID, UUIDV4 } = db.Sequelize;
 
-const Cart = db.define('cart', {
-  id: {
-    type: UUID,
-    primaryKey: true,
-    defaultValue: UUIDV4,
-  },
+const Cart = db.define("cart", {
+  // id: {
+  //   type: UUID,
+  //   primaryKey: true,
+  //   defaultValue: UUIDV4,
+  // },
 
   totalPrice: {
     type: INTEGER,
@@ -27,13 +27,17 @@ const Cart = db.define('cart', {
       // console.log('products in cart', products);
       const products = this.products;
       // console.log(products);
-      const productsMapping = products && products.map(
-        (product) => product.price * product.CartProduct.productQuantity
-      );
-      const totalCartPrice = productsMapping && productsMapping.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
+      const productsMapping =
+        products &&
+        products.map(
+          (product) => product.price * product.CartProduct.productQuantity
+        );
+      const totalCartPrice =
+        productsMapping &&
+        productsMapping.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          0
+        );
       // console.log('totalCartPrice', totalCartPrice);
       return (this.totalPrice = totalCartPrice);
     },
@@ -45,9 +49,11 @@ const Cart = db.define('cart', {
     defaultValue: 200,
     get: function () {
       const products = this.products;
-      const producstMapping = products && products.map(
-        (product) => product.price * product.CartProduct.productQuantity
-      );
+      const producstMapping =
+        products &&
+        products.map(
+          (product) => product.price * product.CartProduct.productQuantity
+        );
       return (this.totalPriceProductQuantity = producstMapping);
     },
   },
