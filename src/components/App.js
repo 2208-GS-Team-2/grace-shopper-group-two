@@ -37,8 +37,6 @@ const App = () => {
       fetchUsers();
     }
   }, []);
-  //! To be deleted later
-  // if (!user.id) return <Login />;
 
   return (
     <div>
