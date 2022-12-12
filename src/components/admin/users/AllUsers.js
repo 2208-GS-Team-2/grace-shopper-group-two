@@ -1,4 +1,5 @@
 import { DoNotDisturbOnTotalSilenceSharp } from "@mui/icons-material";
+import { Table, TableRow, TableHead, TableCell } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
@@ -27,23 +28,21 @@ const AllUsers = () => {
     fetchUsers();
   }, []);
   return (
-    <>
       <div style={{ textAlign: "center" }}>
-        <h1>All users</h1>
-        <table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <tr>
-            <th>Name</th>
-            <th>Id</th>
-            <th>Password</th>
-            <th>Update</th>
-          </tr>
+        <h2>All users</h2>
+        <Table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <TableHead>
+            <TableCell>Update</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Id</TableCell>
+            <TableCell>Password</TableCell>
+          </TableHead>
           {users.length &&
             users.map((user) => {
               return <UsersTable user={user} />;
             })}
-        </table>
+        </Table>
       </div>
-    </>
   );
 };
 export default AllUsers;
