@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react';
-import Home from './Home';
-import Login from './Login';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import Products from './products/Products';
-import AllUsers from './admin/users/AllUsers';
-import SingleUser from './admin/users/SingleUser';
-import SingleProduct from './products/SingleProduct.js';
-import CreateUserPage from './CreateUser';
-import { setHasError, setUser } from '../store/userSlice';
+import React, { useEffect } from "react";
+import Home from "./Home";
+import Login from "./Login";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import Products from "./products/Products";
+import AllUsers from "./admin/users/AllUsers";
+import SingleUser from "./admin/users/SingleUser";
+import SingleProduct from "./products/SingleProduct.js";
+import CreateUserPage from "./CreateUser";
+import { setHasError, setUser } from "../store/userSlice";
 const App = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const loginWithToken = async () => {
-    const token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem("token");
     if (token) {
-      const response = await axios.get('/api/auth', {
+      const response = await axios.get("/api/auth", {
         headers: {
           authorization: token,
         },
@@ -33,8 +33,6 @@ const App = () => {
 
   useEffect(() => {
     if (user.isAdmin) {
-      console.log('hello');
-      console.log('user', user);
       fetchUsers();
     }
   }, []);

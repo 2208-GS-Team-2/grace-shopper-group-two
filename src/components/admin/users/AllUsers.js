@@ -17,7 +17,6 @@ const AllUsers = () => {
   const fetchUsers = async () => {
     try {
       const fetchUsers = await axios.get("/api/users");
-      console.log("fetchUsers", fetchUsers.data);
       dispatch(setUsers(fetchUsers.data));
     } catch (err) {
       dispatch(setHasError(true));
@@ -25,7 +24,6 @@ const AllUsers = () => {
   };
 
   useEffect(() => {
-    console.log(users);
     fetchUsers();
   }, []);
   return (

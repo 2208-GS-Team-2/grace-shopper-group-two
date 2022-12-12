@@ -8,6 +8,7 @@ import {
   setSingleUser,
   setDeleteUser,
 } from "../../../store/userSlice";
+import UpdateUser from "./UpdateUser";
 
 const SingleUser = () => {
   //STATE
@@ -24,16 +25,10 @@ const SingleUser = () => {
   const fetchSingleUser = async () => {
     try {
       const response = await axios.get(`/api/users/${id}`);
-      console.log("single User", response.data);
       dispatch(setSingleUser(response.data));
     } catch (err) {
       dispatch(setHasError(true));
     }
-  };
-
-  // to update a single user information by the admin
-  const updateSingleUser = (id) => {
-    console.log("update");
   };
 
   // to delete a single user info by the admin
@@ -45,11 +40,14 @@ const SingleUser = () => {
 
   useEffect(() => {
     fetchSingleUser(id);
-    console.log("singleUser ", singleUser);
   }, []);
 
   if (formIsShown) {
-    return <h1>Hello</h1>;
+    return (
+      <>
+        <UpdateUser singleUser={singleUser} setFormIsShown={setFormIsShown} />
+      </>
+    );
   }
   return (
     <>
