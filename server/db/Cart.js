@@ -2,11 +2,11 @@ const db = require("./db");
 const { INTEGER, UUID, UUIDV4 } = db.Sequelize;
 
 const Cart = db.define("cart", {
-  id: {
-    type: UUID,
-    primaryKey: true,
-    defaultValue: UUIDV4,
-  },
+  // id: {
+  //   type: UUID,
+  //   primaryKey: true,
+  //   defaultValue: UUIDV4,
+  // },
 
   totalPrice: {
     type: INTEGER,

@@ -5,10 +5,11 @@ const router = express.Router();
 //get all users
 router.get("/", async (req, res, next) => {
   const users = await User.findAll({ include: [Review, Cart] });
+  console.log(users);
   res.send(users);
 });
 
-//get single user by user id
+//get single user by user id - for admin
 router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -22,7 +23,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //To update a user
-//Put localhost:3000/api/users/:id
+//Put localhost:3000/api/users/:id - for admin
 router.put("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -35,7 +36,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-//To delete a user
+//To delete a user - for admin
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
   const NOTFOUNDMESSAGE = `The user you are trying to delete does not exists!!`;

@@ -9,7 +9,10 @@ import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
+import Cart from "./cart/Cart";
 import { setHasError, setUser } from "../store/userSlice";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Badge, IconButton } from "@mui/material";
 const App = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -31,7 +34,6 @@ const App = () => {
     loginWithToken();
   }, []);
 
-
   useEffect(() => {
     if (user.isAdmin) {
       fetchUsers();
@@ -45,10 +47,16 @@ const App = () => {
       <h1>L.A.S.T Coffee Shop</h1>
       <div>
         <nav>
-          <Link to="/">Home</Link>
           <Link to="/login">login</Link>
+          <Link to="/">Home</Link>
           <Link to="/createuser">Create Account</Link>
           <Link to="/products">Products</Link>
+          <Link to="/cart">
+            {/* <Badge badgeContent={4} color="secondary">
+              <ShoppingCartIcon fontSize={"large"} />
+            </Badge> */}
+            <Cart />
+          </Link>
           {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
         </nav>
         <Routes>
@@ -57,6 +65,7 @@ const App = () => {
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/allUsers" element={<AllUsers />} />
           <Route path="/allUsers/:id" element={<SingleUser />} />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
