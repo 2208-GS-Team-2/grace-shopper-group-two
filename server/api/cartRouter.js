@@ -10,19 +10,20 @@ router.get("/", async (req, res, next) => {
 });
 
 //Get a cart by a user id
-//Get localhost:3000/api/userCart
+//Get localhost:3000/api/cart/userCart
 
-// router.get("/usercart", async (req, res, next) => {
-//   // 1.get req.body from the front end and pass it he } = req.body;
-//   console.log(userId);
-//   // 2. find the cart where the userIds is equal to the userId.
-//   const findCartOfUserId = await Cart.findOne({
-//     where: { userId: userId },
-//   });
+router.get("/usercart", async (req, res, next) => {
+  const userCart = req.body;
+  // 1.get req.body from the front end and pass it he } = req.body;
+  // console.log(userId);
+  // 2. find the cart where the userIds is equal to the userId.
+  const findCartOfUserId = await Cart.findOne({
+    where: { userId: userCart.user },
+  });
 
   // send the findCartOfUserId  to the front end for the user.
-//   res.send(findCartOfUserId);
-// });
+  res.send(findCartOfUserId);
+});
 
 //Get a cart
 //Get localhost:3000/api/carts/:id

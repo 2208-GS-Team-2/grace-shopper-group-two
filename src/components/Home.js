@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from "../store/userSlice";
@@ -7,6 +8,7 @@ const Home = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  console.log(user.id);
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());

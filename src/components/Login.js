@@ -7,13 +7,12 @@ import CreateUserPage from './CreateUser';
 
 const Login = () => {
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
+
     const [credentials, setCredentials] = useState({
         username: '',
         password: ''
     });
-
     const onChange = ev => {
         setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
     };
@@ -26,7 +25,6 @@ const Login = () => {
                     authorization: token
                 }
             });
-
             dispatch(setUser(response.data))
         }
     };
@@ -40,6 +38,7 @@ const Login = () => {
         loginWithToken(token)
         navigate('/')
     };
+
 
     return (
         <div>
