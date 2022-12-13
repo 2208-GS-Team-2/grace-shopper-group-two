@@ -21,8 +21,8 @@ router.get("/", async (req, res, next) => {
 //   });
 
   // send the findCartOfUserId  to the front end for the user.
-  res.send(findCartOfUserId);
-});
+//   res.send(findCartOfUserId);
+// });
 
 //Get a cart
 //Get localhost:3000/api/carts/:id
