@@ -2,7 +2,7 @@ import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { setLoadingProduct, setSingleProduct } from "../../store/productSlice";
 
 const SingleProduct = () => {
@@ -28,20 +28,6 @@ const SingleProduct = () => {
     }
   };
 
-  const fetchUserCart = async () => {
-    console.log("in fetch cart 1");
-    if (user) {
-      console.log(user.id);
-    }
-
-    // const userInfo = await axios.get(`/api/users/${id}`);
-    // console.log(userInfo);
-    // const userCartId = userInfo.cartId;
-    // setCart(userCartId);
-
-    console.log("in fetch cart 2");
-  };
-
   const handleAddToCart = async (productId) => {
     const cartId = cart;
 
@@ -52,8 +38,6 @@ const SingleProduct = () => {
 
   useEffect(() => {
     fetchSingleProduct(id);
-
-    fetchUserCart();
   }, []);
 
   if (!Object.keys(singleProduct).length || !user) {
@@ -77,11 +61,11 @@ const SingleProduct = () => {
           style: "currency",
           currency: "USD",
         })}`}</h2>
-        {console.log("this is user console ", user.id)}
-
-        <button onClick={() => handleAddToCart(singleProduct.id)}>
-          add to cart
-        </button>
+        <Link>
+          <button onClick={() => handleAddToCart(singleProduct.id)}>
+            add to cart
+          </button>
+        </Link>
         <h3>{singleProduct.description}</h3>
       </div>
     </div>

@@ -8,12 +8,18 @@ import axios from "axios";
 import Products from "./products/Products";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
-import { setCart } from '../store/cartSlice'
+import Cart from "./cart/Cart";
+import { setCart } from "../store/cartSlice";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Badge } from "@mui/material";
 
 const App = () => {
+  //custom hooks:
+  const dispatch = useDispatch();
+
+  //selectors:
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -27,28 +33,40 @@ const App = () => {
     }
   };
 
+  //fetch a cart for specific user
   const fetchUserCart = async () => {
-    const userCart = user.id;
-    // console.log(user);
-    // if(user){
-      const response = await axios.get('/api/carts/usercart', {userCart})
-      console.log(response);
-      // }
-      dispatch(setCart(response));
-  }
+    const response = await axios.get("/api/carts");
+    const data = response.data;
+    const filterUserCart =
+      data && data?.filter((cart) => cart.userId === user.id);
+    console.log(data);
+    console.log("filterUserCart ", filterUserCart);
+    // }
+    dispatch(setCart(filterUserCart));
+  };
 
+  //To Display the quantity of the cart as a bade on the cart
+  const cartQuantity =
+    cart.length &&
+    cart.map((cartItem) => {
+      return (
+        <>
+          <p>{cartItem.cartQuantity}</p>
+        </>
+      );
+    });
+
+  useEffect(() => {
+    if (user) {
+      fetchUserCart();
+    }
+  }, [user]);
 
   useEffect(() => {
     loginWithToken();
   }, []);
 
-  // useEffect(() => {
-  //   // if(user){
-  //     fetchUserCart();
-  //   // }
-  // }, [user]); //!dependency
-
-  // if (!user.id) return <Login />;
+  if (!user.id) return <Login />;
   return (
     <div>
       <h1>L.A.S.T Coffee Shop</h1>
@@ -58,6 +76,11 @@ const App = () => {
           <Link to="/login">login</Link>
           <Link to="/createuser">Create Account</Link>
           <Link to="/products">Products</Link>
+          <Link to="/carts/usercart">
+            <Badge badgeContent={cartQuantity}>
+              <ShoppingCartIcon fontSize={"large"} />
+            </Badge>{" "}
+          </Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -65,6 +88,7 @@ const App = () => {
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/carts/usercart" element={<Cart />} />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>
