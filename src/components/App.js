@@ -13,7 +13,6 @@ import { setCart } from '../store/cartSlice'
 const App = () => {
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
-  console.log(cart);
   const dispatch = useDispatch();
 
   const loginWithToken = async () => {
@@ -27,21 +26,27 @@ const App = () => {
       dispatch(setUser(response.data));
     }
   };
+
   const fetchUserCart = async () => {
     const userCart = user.id;
-    if(user){
+    // console.log(user);
+    // if(user){
       const response = await axios.get('/api/carts/usercart', {userCart})
       console.log(response);
-    }
-    dispatch(setCart(response))
+      // }
+      dispatch(setCart(response));
   }
+
 
   useEffect(() => {
     loginWithToken();
-    if(user){
-      fetchUserCart();
-    }
   }, []);
+
+  // useEffect(() => {
+  //   // if(user){
+  //     fetchUserCart();
+  //   // }
+  // }, [user]); //!dependency
 
   // if (!user.id) return <Login />;
   return (

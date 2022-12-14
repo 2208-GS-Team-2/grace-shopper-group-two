@@ -8,7 +8,6 @@ const Home = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  console.log(user.id);
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
