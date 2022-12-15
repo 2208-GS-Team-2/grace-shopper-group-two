@@ -69,7 +69,7 @@ const Products = () => {
     fetchProducts();
   }, []);
   return (
-    <>
+    <div>
       <h1 className={"title"}>All Products</h1>
       <div>
         {user.isAdmin && (
@@ -90,7 +90,7 @@ const Products = () => {
             );
           })}
       </div>
-    </>
+    </div>
   );
 };
 

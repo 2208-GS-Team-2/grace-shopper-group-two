@@ -65,10 +65,6 @@ const App = () => {
     loginWithToken();
   }, []);
 
-
-  if (!user.id) return <Login />;
-
-
   return (
     <div>
       <h1>L.A.S.T Coffee Shop</h1>
