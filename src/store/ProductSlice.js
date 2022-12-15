@@ -20,6 +20,13 @@ const productSlice = createSlice({
     setLoadingProduct: (state, action) => {
       state.loadingProduct = action.payload;
     },
+    setDeleteProduct: (state, action) => {
+      state.products = [
+        ...state.products.filter((product) => {
+          return product.id !== action.payload;
+        }),
+      ];
+    },
     setHasError: (state, action) => {
       state.hasError = action.payload;
     },
@@ -27,7 +34,12 @@ const productSlice = createSlice({
 });
 
 //Actions Creators
-export const { setProducts, setSingleProduct, setLoadingProduct, setHasError } =
-  productSlice.actions;
+export const {
+  setProducts,
+  setSingleProduct,
+  setLoadingProduct,
+  setDeleteProduct,
+  setHasError,
+} = productSlice.actions;
 
 export default productSlice.reducer;

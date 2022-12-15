@@ -3,7 +3,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts, setHasError } from "../../store/productSlice.js";
 import ProductCard from "./ProductCard.js";
-import { setSingleProduct, setLoadingProduct } from "../../store/productSlice";
+import {
+  setSingleProduct,
+  setLoadingProduct,
+  setDeleteProduct,
+} from "../../store/productSlice";
 
 import "./productStyle.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -27,6 +31,13 @@ const Products = () => {
     }
   };
 
+  //Delete a single product
+  const deleteProductHandler = async (id) => {
+    dispatch(setDeleteProduct(id));
+    const { data, deleted } = await axios.delete(`/api/products/${id}`, {});
+    navigate("/products");
+  };
+
   //Fetch a single product data
   const fetchSingleProduct = async (id) => {
     try {
@@ -44,7 +55,7 @@ const Products = () => {
   }
   // if (!Object.keys(products).length)
   //   return (
-  //     <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+  //     <div style={{ textAlign: "center", paddingTop: "100px" }}>
   //       <CircularProgress />
   //     </div>
   //   );
@@ -64,11 +75,7 @@ const Products = () => {
                 product={product}
                 fetchSingleProduct={fetchSingleProduct}
               />
-
             </div>
-
-            </>
-
           );
         })}
       </div>
