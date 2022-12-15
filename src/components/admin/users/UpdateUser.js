@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
@@ -45,32 +46,41 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
 
   const renderForm = (
     <form onSubmit={handleSumbitForm}>
+      <h2>Change User Fields</h2>
       <div>
-        <label htmlFor="username">Name</label>
+        <label htmlFor="username">Name: </label>
         <input
-          id="username"
           type="text"
+          id="username"
           value={username}
           onChange={updateUserNameHandler}
         />
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email: </label>
         <input
+          type="email"
           id="email"
-          type="text"
           value={email}
           onChange={updateEmailHandler}
         />
       </div>
+  {/* Change this to a boolean type field.
+      Site crashes if typing anything else
+      other than True, Yes, False, and No.
+  */}
       <div>
-        <label htmlFor="isAdmin">isAdmin</label>
-        <input
-          id="isAdmin"
+        <label htmlFor="isAdmin">Admin: </label>
+        {/* <input
           type="text"
+          id="isAdmin"
           value={isAdmin}
           onChange={updateIsAdminHandler}
-        />
+        /> */}
+        <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
+        <option value="true">true</option>
+        <option value="false">false</option>
+        </select>
       </div>
       <div
         style={{
@@ -78,21 +88,14 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
           padding: "5px",
         }}
       >
-        <input
-          type="submit"
-          style={{
-            marginLeft: "5px",
-            margin: "5px",
-            padding: "5p",
-            backgroundColor: "dodgerblue",
-          }}
-        />
-        <button
-          style={{ background: "lightgray", color: "black" }}
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
+        <Button variant="contained"
           //   onClick={cancelUpdatedForm}
         >
           Cancel
-        </button>
+        </Button>
       </div>
     </form>
   );
