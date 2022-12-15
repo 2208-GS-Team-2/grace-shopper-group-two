@@ -8,7 +8,7 @@ import axios from "axios";
 import Products from "./products/Products";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
-import { setCart } from '../store/cartSlice'
+import { setCart } from "../store/cartSlice";
 
 const App = () => {
   const { user } = useSelector((state) => state.user);
@@ -29,24 +29,24 @@ const App = () => {
 
   const fetchUserCart = async () => {
     const userCart = user.id;
-    // console.log(user);
+    console.log(user);
+    console.log(userCart);
     // if(user){
-      const response = await axios.get('/api/carts/usercart', {userCart})
-      console.log(response);
-      // }
-      dispatch(setCart(response));
-  }
-
+    const response = await axios.post("/api/carts/usercart", { userCart });
+    console.log(response);
+    // }
+    dispatch(setCart(response));
+  };
 
   useEffect(() => {
     loginWithToken();
   }, []);
 
-  // useEffect(() => {
-  //   // if(user){
-  //     fetchUserCart();
-  //   // }
-  // }, [user]); //!dependency
+  useEffect(() => {
+    if (user.id) {
+      fetchUserCart();
+    }
+  }, [user]); //!dependency
 
   // if (!user.id) return <Login />;
   return (

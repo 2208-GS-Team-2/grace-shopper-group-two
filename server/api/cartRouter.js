@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
 //Get a cart by a user id
 //Get localhost:3000/api/cart/userCart
 
-router.get("/usercart", async (req, res, next) => {
+router.post("/usercart", async (req, res, next) => {
   const userCart = req.body.userCart;
   // 1.get req.body from the front end and pass it he } = req.body;
   // console.log(userId);
