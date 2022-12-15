@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setProducts, setHasError } from '../../store/productSlice.js';
-import ProductCard from './ProductCard.js';
-import { setSingleProduct, setLoadingProduct } from '../../store/productSlice';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts, setHasError } from "../../store/productSlice.js";
+import ProductCard from "./ProductCard.js";
+import { setSingleProduct, setLoadingProduct } from "../../store/productSlice";
 
-import './productStyle.css';
-import { useNavigate, Link } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+import "./productStyle.css";
+import { useNavigate, Link } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 const Products = () => {
   //CUSTOM HOOKS:
@@ -19,7 +19,7 @@ const Products = () => {
   //Fetch all products data
   const fetchProducts = async () => {
     try {
-      const fetchedProducts = await axios.get('/api/products');
+      const fetchedProducts = await axios.get("/api/products");
       console.log(fetchedProducts);
       dispatch(setProducts(fetchedProducts.data));
     } catch (err) {
@@ -54,16 +54,21 @@ const Products = () => {
   }, []);
   return (
     <>
-      <h1 className={'title'}>All Products</h1>
+      <h1 className={"title"}>All Products</h1>
       <div>
         {products.map((product) => {
           return (
-            <>
+            <div key={product.id}>
               <ProductCard
+                key={product.id}
                 product={product}
                 fetchSingleProduct={fetchSingleProduct}
               />
+
+            </div>
+
             </>
+
           );
         })}
       </div>

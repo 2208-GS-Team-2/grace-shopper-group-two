@@ -13,6 +13,7 @@ import './productStyle.css';
 const ProductCard = ({ product }) => {
   return (
     <div
+      key={product.id}
       style={{
         display: 'flex',
         flexDirection: 'row',
@@ -33,6 +34,7 @@ const ProductCard = ({ product }) => {
       >
         <Link key={product.id} to={`/products/${product.id}`}>
           <CardMedia
+            key={product.id}
             component="img"
             height="140"
             image={product.img}
