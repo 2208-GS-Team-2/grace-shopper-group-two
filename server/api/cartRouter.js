@@ -9,6 +9,27 @@ router.get("/", async (req, res, next) => {
   res.send(carts);
 });
 
+//Get localhost:3000/api/cart/userCart
+
+router.post("/usercart", async (req, res, next) => {
+  try {
+    const userCart = req.body.userCart;
+    // 1.get req.body from the front end and pass it he } = req.body;
+    // console.log(userId);
+    // 2. find the cart where the userIds is equal to the userId.
+    const findCartOfUserId = await Cart.findAll({
+      where: { userId: userCart },
+      include: [Product],
+    });
+    res.send(findCartOfUserId);
+    // 1.get req.body from the front end and pass it he } = req.body;
+    // 2. find the cart where the userIds is equal to the userId
+    // send the findCartOfUserId  to the front end for the user.
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
+
 //Get a cart
 //Get localhost:3000/api/carts/:id
 router.get("/:id", async (req, res, next) => {
@@ -43,7 +64,7 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   const id = req.params.id;
   const { productId } = req.body; //!add quantity later in here too
-  console.log(productId);
+
   const cart = await Cart.findByPk(id, { include: [Product] });
   const productsList = cart.products;
   const productIds = productsList.map((product) => product.id);
