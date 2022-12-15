@@ -1,19 +1,18 @@
-const express = require('express');
-const { Product, Review } = require('../db');
+const express = require("express");
+const { Product, Review } = require("../db");
 const router = express.Router();
 
 //get all products
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const products = await Product.findAll({
     include: [Review],
   });
-  console.log(Product);
   res.send(products);
 });
 
 // get a single product by product id
 //Get localhost:3000/api/products/:id
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     if (id) {
@@ -27,7 +26,7 @@ router.get('/:id', async (req, res, next) => {
 
 //create a new product
 // Post localhost:3000/api/products
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const {
       name,
@@ -40,7 +39,6 @@ router.post('/', async (req, res, next) => {
       treatmentProcess,
       img,
     } = req.body;
-    console.log('req.body', req.body);
     const newProduct = await Product.create({
       name,
       type,
@@ -52,7 +50,6 @@ router.post('/', async (req, res, next) => {
       treatmentProcess,
       img,
     });
-    console.log('newProduct', newProduct);
     res.sendStatus(204);
   } catch (err) {
     return res.status(501).send(err.message);
@@ -61,7 +58,7 @@ router.post('/', async (req, res, next) => {
 
 //to update a product
 // Put localhost:3000/api/product/:id
-router.put('/:id', async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     const {
@@ -94,7 +91,7 @@ router.put('/:id', async (req, res, next) => {
 });
 // delete a product
 // Delete localhost:3000/products/:id
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
   const NOTFOUNDMESSAGE = `The product you are trying to delete does not exists!!`;
   try {

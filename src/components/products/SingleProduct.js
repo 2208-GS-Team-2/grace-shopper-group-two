@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -10,11 +11,9 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
-  // console.log(object);
 
   const [cart, setCart] = useState("");
-
-  //!
+  
   const fetchSingleProduct = async () => {
     try {
       dispatch(setLoadingProduct(true));
@@ -42,7 +41,7 @@ const SingleProduct = () => {
 
   if (!Object.keys(singleProduct).length || !user) {
     return (
-      <div style={{ textAlign: "center", paddingTop: "100px" }}>
+      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
         <CircularProgress />
       </div>
     );
@@ -54,7 +53,7 @@ const SingleProduct = () => {
         <img
           src={`/${singleProduct.img}`}
           alt={`${singleProduct.name}`}
-          style={{ width: "500px", height: "auto" }}
+          style={{ width: '500px', height: 'auto' }}
         />
         <h2>{singleProduct.name}</h2>
         <h2>{`${(singleProduct.price / 100).toLocaleString("en-US", {

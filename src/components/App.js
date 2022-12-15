@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import Home from "./Home";
 import Login from "./Login";
-import { setUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Products from "./products/Products";
+import AllUsers from "./admin/users/AllUsers";
+import SingleUser from "./admin/users/SingleUser";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
 import Cart from "./cart/Cart";
 import { setCart } from "../store/cartSlice";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
+import { setHasError, setUser } from "../store/userSlice";
 
 const App = () => {
   //custom hooks:
@@ -63,7 +65,10 @@ const App = () => {
     loginWithToken();
   }, []);
 
+
   if (!user.id) return <Login />;
+
+
   return (
     <div>
       <h1>L.A.S.T Coffee Shop</h1>
@@ -78,7 +83,9 @@ const App = () => {
               <ShoppingCartIcon fontSize={"large"} />
             </Badge>{" "}
           </Link>
+          {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
         </nav>
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

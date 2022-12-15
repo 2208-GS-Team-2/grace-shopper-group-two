@@ -10,9 +10,46 @@ router.get("/", async (req, res, next) => {
 
 //get single user by user id
 router.get("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    if (id) {
+      const user = await User.findByPk(id, { include: [Cart] });
+      res.send(user);
+    }
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
+
+//To update a user
+//Put localhost:3000/api/users/:id
+router.put("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { username, email, password, isAdmin } = req.body;
+    const user = await User.findByPk(id);
+    user.update({ username, email, password, isAdmin });
+    res.send(200);
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
+
+//To delete a user
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
-  const user = await User.findByPk(id, { include: [Cart] });
-  res.send(user);
+  const NOTFOUNDMESSAGE = `The user you are trying to delete does not exists!!`;
+  try {
+    const userToDelete = await User.findByPk(id);
+    if (!userToDelete) {
+      throw new Error(NOTFOUNDMESSAGE);
+    }
+    await userToDelete.destroy();
+    res.sendStatus(202);
+  } catch (err) {
+    if (err.message === NOTFOUNDMESSAGE)
+      return res.status(404).send({ message: NOTFOUNDMESSAGE });
+  }
 });
 
 router.post("/", async (req, res, next) => {
