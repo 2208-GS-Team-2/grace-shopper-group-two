@@ -33,16 +33,13 @@ const App = () => {
     }
   };
 
-  //fetch a cart for specific user
   const fetchUserCart = async () => {
-    const response = await axios.get("/api/carts");
-    const data = response.data;
-    const filterUserCart =
-      data && data?.filter((cart) => cart.userId === user.id);
-    console.log(data);
-    console.log("filterUserCart ", filterUserCart);
-    // }
-    dispatch(setCart(filterUserCart));
+    const userCart = user.id;
+    console.log(user);
+    console.log(userCart);
+    const response = await axios.post("/api/carts/usercart", { userCart });
+    console.log(response.data);
+    dispatch(setCart(response.data));
   };
 
   //To Display the quantity of the cart as a bade on the cart
@@ -57,7 +54,7 @@ const App = () => {
     });
 
   useEffect(() => {
-    if (user) {
+    if (user.id) {
       fetchUserCart();
     }
   }, [user]);

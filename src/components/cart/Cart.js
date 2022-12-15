@@ -7,6 +7,7 @@ const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
 
+  console.log("cart", cart);
   const renderCartData =
     cart.length &&
     cart.map((cartItem) => {
@@ -18,11 +19,11 @@ const Cart = () => {
       );
     });
 
-  const mapOverProducts =
-    cart.length &&
-    cart.map((product) => {
-      return product.products;
-    });
+  // const mapOverProducts =
+  //   cart.length &&
+  //   cart.map((product) => {
+  //     return product.products;
+  //   });
 
   const displayProducts = cart[0]["products"].map((product) => {
     return (

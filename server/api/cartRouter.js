@@ -9,22 +9,26 @@ router.get("/", async (req, res, next) => {
   res.send(carts);
 });
 
-//Get a cart by a user id
 //Get localhost:3000/api/cart/userCart
 
-// router.get("/usercart", async (req, res, next) => {
-//   const userCart = req.body.userCart;
-//   // 1.get req.body from the front end and pass it he } = req.body;
-//   // console.log(userId);
-//   // 2. find the cart where the userIds is equal to the userId.
-//   const findCartOfUserId = await Cart.findOne({
-//     where: { userId: userCart },
-//   });
-//   res.send(findCartOfUserId);
-//   // 1.get req.body from the front end and pass it he } = req.body;
-//   // 2. find the cart where the userIds is equal to the userId
-//   // send the findCartOfUserId  to the front end for the user.
-// });
+router.post("/usercart", async (req, res, next) => {
+  try {
+    const userCart = req.body.userCart;
+    // 1.get req.body from the front end and pass it he } = req.body;
+    // console.log(userId);
+    // 2. find the cart where the userIds is equal to the userId.
+    const findCartOfUserId = await Cart.findAll({
+      where: { userId: userCart },
+      include: [Product],
+    });
+    res.send(findCartOfUserId);
+    // 1.get req.body from the front end and pass it he } = req.body;
+    // 2. find the cart where the userIds is equal to the userId
+    // send the findCartOfUserId  to the front end for the user.
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
 
 //Get a cart
 //Get localhost:3000/api/carts/:id
