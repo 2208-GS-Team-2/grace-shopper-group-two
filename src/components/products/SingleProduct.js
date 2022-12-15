@@ -14,6 +14,7 @@ import {
   setSingleProduct,
   setDeleteProduct,
 } from "../../store/productSlice";
+import UpdateProduct from "./UpdateProduct";
 
 const SingleProduct = () => {
   //Custom Hooks
@@ -25,6 +26,7 @@ const SingleProduct = () => {
   const { singleProduct } = useSelector((state) => state.product);
   //States
   const [cart, setCart] = useState("");
+  const [formIsShown, setFormIsShown] = useState(false);
 
   const fetchSingleProduct = async () => {
     try {
@@ -71,6 +73,16 @@ const SingleProduct = () => {
     );
   }
 
+  if (formIsShown) {
+    return (
+      <>
+        <UpdateProduct
+          singleProduct={singleProduct}
+          setFormIsShown={setFormIsShown}
+        />
+      </>
+    );
+  }
   return (
     <div>
       <div>
@@ -96,7 +108,9 @@ const SingleProduct = () => {
               Delete
             </Button>
           )}
-          {user.isAdmin && <Button>Edit</Button>}
+          {user.isAdmin && (
+            <Button onClick={() => setFormIsShown(true)}>Edit</Button>
+          )}
         </div>
       </div>
     </div>

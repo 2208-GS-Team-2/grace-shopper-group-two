@@ -67,17 +67,18 @@ const Products = () => {
     <>
       <h1 className={"title"}>All Products</h1>
       <div>
-        {products.map((product) => {
-          return (
-            <div key={product.id}>
-              <ProductCard
-                key={product.id}
-                product={product}
-                fetchSingleProduct={fetchSingleProduct}
-              />
-            </div>
-          );
-        })}
+        {products.length &&
+          products?.map((product) => {
+            return (
+              <div key={product.id}>
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  fetchSingleProduct={fetchSingleProduct}
+                />
+              </div>
+            );
+          })}
       </div>
     </>
   );

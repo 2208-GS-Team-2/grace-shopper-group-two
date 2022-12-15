@@ -27,6 +27,14 @@ const productSlice = createSlice({
         }),
       ];
     },
+    setUpdatedProduct: (state, action) => {
+      const updatedProductInfo = action.payload;
+      const oldProduct = state.products;
+      state.products = {
+        ...oldProduct,
+        ...updatedProductInfo,
+      };
+    },
     setHasError: (state, action) => {
       state.hasError = action.payload;
     },
@@ -39,6 +47,7 @@ export const {
   setSingleProduct,
   setLoadingProduct,
   setDeleteProduct,
+  setUpdatedProduct,
   setHasError,
 } = productSlice.actions;
 
