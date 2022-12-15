@@ -53,7 +53,7 @@ const Products = () => {
     fetchProducts();
   }, []);
   return (
-    <>
+    <div>
       <h1 className={"title"}>All Products</h1>
       <div>
         {products.map((product) => {
@@ -64,15 +64,11 @@ const Products = () => {
                 product={product}
                 fetchSingleProduct={fetchSingleProduct}
               />
-
             </div>
-
-            </>
-
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
