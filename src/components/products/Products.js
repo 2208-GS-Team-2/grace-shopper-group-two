@@ -8,17 +8,22 @@ import {
   setLoadingProduct,
   setDeleteProduct,
 } from "../../store/productSlice";
-
 import "./productStyle.css";
 import { useNavigate, Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import CreateNewProduct from "./CreateNewProduct";
+import { useState } from "react";
 
 const Products = () => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
 
+  //States:
+  const [formIsShown, setFormIsShown] = useState(false);
+
   //Selectors to grab redux state from the store
   const { products, hasError } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
 
   //Fetch all products data
   const fetchProducts = async () => {
@@ -67,6 +72,12 @@ const Products = () => {
     <>
       <h1 className={"title"}>All Products</h1>
       <div>
+        {user.isAdmin && setFormIsShown && (
+          <CreateNewProduct
+            products={products}
+            // setFormIsShown={setFormIsShown}
+          />
+        )}
         {products.length &&
           products?.map((product) => {
             return (
