@@ -1,5 +1,4 @@
 import { DoNotDisturbOnTotalSilenceSharp } from "@mui/icons-material";
-import { Table, TableRow, TableHead, TableCell, TableBody } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
@@ -8,8 +7,6 @@ import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
 
 const AllUsers = () => {
-  // const {user} = useSelector
-  // const userAdmin = user.isAdmin.toString();
   //Customs Hooks:
   const dispatch = useDispatch();
 
@@ -30,24 +27,23 @@ const AllUsers = () => {
     fetchUsers();
   }, []);
   return (
-    <div style={{ textAlign: "center" }}>
-        <h2>All users</h2>
-        <Table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ width:"175px" }}>Update</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Admin</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.length &&
-              users.map((user) => {
-                return <UsersTable key={user.id} user={user}/>;
+    <>
+      <div style={{ textAlign: "center" }}>
+        <h1>All users</h1>
+        <table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Password</th>
+            <th>Update</th>
+          </tr>
+          {users.length &&
+            users.map((user) => {
+              return <UsersTable user={user} />;
             })}
-          </TableBody>
-        </Table>
+        </table>
       </div>
+    </>
   );
 };
 export default AllUsers;

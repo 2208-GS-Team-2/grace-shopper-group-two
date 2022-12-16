@@ -1,4 +1,3 @@
-import { Button, Table, TableCell, TableRow } from "@mui/material";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -52,24 +51,26 @@ const SingleUser = () => {
   }
   return (
     <>
-      <h2>User Information</h2>
-      <Table border={2} style={{minWidth:"1vw"}}>
-        <TableRow>
-          <TableCell style={{width:"175px"}}>Edit/Delete</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>Email</TableCell>
-          <TableCell>IsAdmin</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell >
-            <Button variant="contained" onClick={() => setFormIsShown(true)}>Edit</Button>
-            <Button variant="contained" onClick={() => deleteSingleUser()}>Delete</Button>
-          </TableCell>
-          <TableCell>{singleUser.username}</TableCell>
-          <TableCell>{singleUser.email}</TableCell>
-          <TableCell>{singleUser.isAdmin ? "True" : "False"}</TableCell>
-        </TableRow>
-      </Table>
+      <h3>User Information</h3>
+      <table border={1}>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>IsAdmin</td>
+          <td colSpan={2}>Status</td>
+        </tr>
+        <tr>
+          <td>{singleUser.username}</td>
+          <td>{singleUser.email}</td>
+          <td>{singleUser.isAdmin ? "True" : "False"}</td>
+          <td>
+            <button onClick={() => setFormIsShown(true)}>Edit</button>
+          </td>
+          <td>
+            <button onClick={() => deleteSingleUser()}>Delete</button>
+          </td>
+        </tr>
+      </table>
     </>
   );
 };

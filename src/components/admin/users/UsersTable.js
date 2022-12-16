@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TableCell, TableBody, Button, TableRow } from '@mui/material';
 
 const UsersTable = ({ user }) => {
-  const userAdmin = user.isAdmin.toString();
   return (
-      <TableRow>
-          <TableCell>
-            <Link key={user.id} to={`/allUsers/${user.id}`}>
-                <Button variant="contained">Update User Info</Button>
-            </Link>
-          </TableCell>
-          <TableCell>{user.username}</TableCell>
-          <TableCell>{userAdmin}</TableCell>
-      </TableRow>
+    <tbody>
+      <td>{user.username}</td>
+      <td>{user.id}</td>
+      <td>{user.password}</td>
+      <Link key={user.id} to={`/allUsers/${user.id}`}>
+        <td>
+          <button>Click to update user info</button>
+        </td>
+      </Link>
+    </tbody>
   );
 };
 

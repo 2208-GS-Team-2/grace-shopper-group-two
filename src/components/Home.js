@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from "../store/userSlice";
+import CreateUserPage from "./CreateUser";
 
 const Home = () => {
   const { user } = useSelector((state) => state.user);
