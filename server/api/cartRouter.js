@@ -10,7 +10,6 @@ router.get("/", async (req, res, next) => {
 });
 
 //Get localhost:3000/api/cart/userCart
-
 router.post("/usercart", async (req, res, next) => {
   try {
     const userCart = req.body.userCart;
@@ -21,10 +20,28 @@ router.post("/usercart", async (req, res, next) => {
       where: { userId: userCart },
       include: [Product],
     });
+    console.log(findCartOfUserId);
     res.send(findCartOfUserId);
     // 1.get req.body from the front end and pass it he } = req.body;
     // 2. find the cart where the userIds is equal to the userId
     // send the findCartOfUserId  to the front end for the user.
+  } catch (err) {
+    return res.status(501).send(err.message);
+  }
+});
+
+//Delete a specific product in a cart:
+//Get localhost:3000/api/cart/userCart
+
+router.delete("/usercart/:id", async (req, res, next) => {
+  try {
+    const productId = req.params.id;
+    console.log("productId", productId);
+    // const findProductIdInCart = await CartProduct.findAll({
+    //   where: { productId: productId },
+    //   include: [Product],
+    // });
+    res.send(productId);
   } catch (err) {
     return res.status(501).send(err.message);
   }
