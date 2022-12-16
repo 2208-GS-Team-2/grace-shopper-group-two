@@ -12,7 +12,7 @@ const CreateNewProduct = () => {
 
   //LOCAL STATES TO HOLD THE INPUT DATA
   const [name, setName] = useState("");
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
 

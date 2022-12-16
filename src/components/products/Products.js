@@ -73,9 +73,7 @@ const Products = () => {
       <h1 className={"title"}>All Products</h1>
       <div>
         {user.isAdmin && (
-          <button>
-            <CreateNewProduct products={products} />
-          </button>
+            <CreateNewProduct key={products} products={products} />
         )}
         {products.length &&
           products?.map((product) => {
