@@ -1,4 +1,13 @@
-import { Button, Table, TableCell, TableRow } from "@mui/material";
+import { Link } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -10,18 +19,39 @@ import {
   setDeleteUser,
 } from "../../../store/userSlice";
 import UpdateUser from "./UpdateUser";
+import { Button } from "@mui/material";
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
 
 const SingleUser = () => {
-  //STATE
-  const [formIsShown, setFormIsShown] = useState(false);
-
   //Custom Hooks
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //STATE
+  const [formIsShown, setFormIsShown] = useState(false);
+
   //Selectors
-  const { singleUser } = useSelector((state) => state.user);
+  const { singleUser, user } = useSelector((state) => state.user);
 
   const fetchSingleUser = async () => {
     try {
@@ -51,26 +81,43 @@ const SingleUser = () => {
     );
   }
   return (
-    <>
-      <h2>User Information</h2>
-      <Table border={2} style={{minWidth:"1vw"}}>
-        <TableRow>
-          <TableCell style={{width:"175px"}}>Edit/Delete</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>Email</TableCell>
-          <TableCell>IsAdmin</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell >
-            <Button variant="contained" onClick={() => setFormIsShown(true)}>Edit</Button>
-            <Button variant="contained" onClick={() => deleteSingleUser()}>Delete</Button>
-          </TableCell>
-          <TableCell>{singleUser.username}</TableCell>
-          <TableCell>{singleUser.email}</TableCell>
-          <TableCell>{singleUser.isAdmin ? "True" : "False"}</TableCell>
-        </TableRow>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="center">Name</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Admin Status</StyledTableCell>
+            <StyledTableCell align="center">Update Role</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <StyledTableRow key={singleUser.id}>
+            <StyledTableCell component="th" scope="row" align="center">
+              {singleUser.username}
+            </StyledTableCell>
+            <StyledTableCell component="th" scope="row" align="center">
+              {singleUser.email}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {singleUser.isAdmin ? "True" : "False"}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              <Button
+                variant="contained"
+                onClick={() => setFormIsShown(true)}
+                style={{ margin: "5px" }}
+              >
+                Edit
+              </Button>
+              <Button variant="contained" onClick={() => deleteSingleUser()}>
+                Delete
+              </Button>
+            </StyledTableCell>
+          </StyledTableRow>
+        </TableBody>
       </Table>
-    </>
+    </TableContainer>
   );
 };
 

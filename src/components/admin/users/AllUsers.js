@@ -57,25 +57,27 @@ const AllUsers = () => {
     fetchUsers();
   }, []);
   return (
-    <TableContainer>
-      <Table>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>User Name</StyledTableCell>
-            <StyledTableCell align="right">Email</StyledTableCell>
-            <StyledTableCell align="right">Admin Status</StyledTableCell>
-            <StyledTableCell align="right">Update</StyledTableCell>
+            <StyledTableCell align="center">User Name</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Admin Status</StyledTableCell>
+            <StyledTableCell align="center">Update</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {users?.map((user) => (
-            <UsersTable
-              StyledTableCell={StyledTableCell}
-              StyledTableRow={StyledTableRow}
-              key={user.id}
-              user={user}
-            />
-          ))}
+          {users.length
+            ? users.map((user) => (
+                <UsersTable
+                  StyledTableCell={StyledTableCell}
+                  StyledTableRow={StyledTableRow}
+                  key={user.id}
+                  user={user}
+                />
+              ))
+            : ""}
         </TableBody>
       </Table>
     </TableContainer>
