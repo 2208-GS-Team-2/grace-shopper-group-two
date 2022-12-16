@@ -39,11 +39,11 @@ const CreateUserPage = () => {
         style={{ display: "flex", flexDirection: "column", gap: "3px" }}
       >
         <label>Username:</label>
-        <input type={"text"} value={username} onChange={handleUsernameChange} />
+        <input type={"text"} key={username} value={username} onChange={handleUsernameChange} />
         <label>Password:</label>
-        <input type={"text"} value={password} onChange={handlePasswordChange} />
+        <input type={"text"} key={password} value={password} onChange={handlePasswordChange} />
         <label>Email:</label>
-        <input type={"email"} value={email} onChange={handleEmailChange} />
+        <input type={"email"} key={email} value={email} onChange={handleEmailChange} />
         <button type={"submit"}>Submit</button>
       </form>
     </div>

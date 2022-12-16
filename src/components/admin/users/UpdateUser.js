@@ -50,15 +50,17 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
       <div>
         <label htmlFor="username">Name: </label>
         <input
+          key={username}
           type="text"
           id="username"
           value={username}
           onChange={updateUserNameHandler}
         />
-      </div>
       <div>
+      </div>
         <label htmlFor="email">Email: </label>
         <input
+          key={email}
           type="email"
           id="email"
           value={email}
@@ -77,7 +79,7 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
           value={isAdmin}
           onChange={updateIsAdminHandler}
         /> */}
-        <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
+        <select key={isAdmin} value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
         <option value="true">true</option>
         <option value="false">false</option>
         </select>
