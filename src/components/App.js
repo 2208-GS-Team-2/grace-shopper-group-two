@@ -81,7 +81,7 @@ const App = () => {
           </Link>
           {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
         </nav>
-        
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -89,6 +89,7 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/carts/usercart" element={<Cart />} />
+          <Route path="/allUsers" element={<AllUsers />} />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>
