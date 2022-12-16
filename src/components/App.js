@@ -37,10 +37,7 @@ const App = () => {
 
   const fetchUserCart = async () => {
     const userCart = user.id;
-    console.log(user);
-    console.log(userCart);
     const response = await axios.post("/api/carts/usercart", { userCart });
-    console.log(response.data);
     dispatch(setCart(response.data));
   };
 
@@ -87,7 +84,9 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/products/:id"
+            key={cart.id}
+            element={<SingleProduct cart={cart} />} />
           <Route path="/carts/usercart" element={<Cart />} />
           <Route path="/allUsers" element={<AllUsers />} />
           <Route path="/allUsers/:id" element={<SingleUser />} />

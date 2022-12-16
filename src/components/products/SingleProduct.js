@@ -6,16 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { setLoadingProduct, setSingleProduct, setDeleteProduct } from "../../store/productSlice";
 import UpdateProduct from "./UpdateProduct";
+import { setCart } from "../../store/cartSlice";
 
-const SingleProduct = () => {
+const SingleProduct = ({cart}) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
-
-  const [cart, setCart] = useState("");
   const [formIsShown, setFormIsShown] = useState(false);
 
   const fetchSingleProduct = async () => {
@@ -45,11 +44,14 @@ const SingleProduct = () => {
   // update a single product
 
   const handleAddToCart = async (productId) => {
-    const cartId = cart;
+    const cartId = cart[0].id;
 
     await axios.put(`/api/carts/${cartId}`, {
       productId,
     });
+    const userCart = user.id;
+    const response = await axios.post("/api/carts/usercart", { userCart });
+    dispatch(setCart(response.data));
   };
 
   useEffect(() => {
