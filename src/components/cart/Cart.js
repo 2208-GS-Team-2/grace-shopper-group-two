@@ -7,6 +7,7 @@ const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
 
+
   console.log("cart", cart);
   const renderCartData =
     cart.length &&

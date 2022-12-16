@@ -13,6 +13,7 @@ const SingleProduct = ({cart}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { setCart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
   const [formIsShown, setFormIsShown] = useState(false);
@@ -49,8 +50,8 @@ const SingleProduct = ({cart}) => {
     await axios.put(`/api/carts/${cartId}`, {
       productId,
     });
-    const userCart = user.id;
-    const response = await axios.post("/api/carts/usercart", { userCart });
+
+    const response = await axios.get(`/api/carts/${cartId}`);
     dispatch(setCart(response.data));
   };
 

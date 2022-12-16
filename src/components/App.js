@@ -40,7 +40,7 @@ const App = () => {
     const response = await axios.post("/api/carts/usercart", { userCart });
     dispatch(setCart(response.data));
   };
-
+  //! how will we call for cart.cartQuantity?
   //To Display the quantity of the cart as a bade on the cart
   const cartQuantity =
     cart.length &&
