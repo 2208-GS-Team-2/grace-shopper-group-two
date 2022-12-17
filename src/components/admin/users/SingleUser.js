@@ -4,11 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  setHasError,
-  setSingleUser,
-  setDeleteUser,
-} from "../../../store/userSlice";
+import { setHasError, setSingleUser, setDeleteUser } from "../../../store/userSlice";
 import UpdateUser from "./UpdateUser";
 
 const SingleUser = () => {

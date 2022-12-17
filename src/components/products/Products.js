@@ -3,11 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts, setHasError } from "../../store/productSlice.js";
 import ProductCard from "./ProductCard.js";
-import {
-  setSingleProduct,
-  setLoadingProduct,
-  setDeleteProduct,
-} from "../../store/productSlice";
+import { setSingleProduct, setLoadingProduct, setDeleteProduct } from "../../store/productSlice";
 import "./productStyle.css";
 import { useNavigate, Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";

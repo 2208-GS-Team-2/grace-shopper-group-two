@@ -6,11 +6,11 @@ const Cart = () => {
   const { cart } = useSelector((state) => state.cart);
 
 
-  //!resume after postman 👺  🤌🤌 🤌🤌🤌
+  //!resume building this 👺  🤌🤌 🤌🤌🤌
   // const handleRemoveItemFromCart = async (productId) => {
   //   try{
 
-  //     await axios.delete()
+  //     await axios.delete(``)
   //   }catch(err){
   //     console.log(err);
   //   }
