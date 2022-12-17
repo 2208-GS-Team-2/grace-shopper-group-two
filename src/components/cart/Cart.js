@@ -49,10 +49,6 @@ const Cart = () => {
     );
   }
 
-
-
-
-
   const renderCartData =
     cart.length &&
     cart.map((cartItem) => {
@@ -99,13 +95,16 @@ const Cart = () => {
     );
   });
 
+  if (!cart[0].products.length){renderCartData};
+
   return (
-    <>
+      <>
       <h2>cart</h2>
       {displayProducts}
       {renderCartData}
     </>
   );
+
 };
 
 export default Cart;

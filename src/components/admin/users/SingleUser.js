@@ -28,7 +28,7 @@ const SingleUser = () => {
     }
   };
 
-  // to delete a single user info by the admin
+  //!ADMIN: deletes a user's info
   const deleteSingleUser = async () => {
     dispatch(setDeleteUser(id));
     const { data, deleted } = await axios.delete(`/api/users/${id}`, {});
