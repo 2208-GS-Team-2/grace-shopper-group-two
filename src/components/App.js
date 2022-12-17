@@ -9,11 +9,11 @@ import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
-import Cart from "./cart/Cart";
-import { setCart } from "../store/cartSlice";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
+import Cart from "./cart/Cart";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { setHasError, setUser } from "../store/userSlice";
+import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 
 const App = () => {
   //custom hooks:
@@ -21,7 +21,7 @@ const App = () => {
 
   //selectors:
   const { user } = useSelector((state) => state.user);
-  const { cart } = useSelector((state) => state.cart);
+  const { cart, quantity } = useSelector((state) => state.cart);
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -40,17 +40,23 @@ const App = () => {
     const response = await axios.post("/api/carts/usercart", { userCart });
     dispatch(setCart(response.data));
   };
+
+  const updateCartIcon = (cart) => {
+    cart.length && dispatch(setQuantity(cart[0].cartQuantity));
+  }
+  // console.log(quantity);
   //! how will we call for cart.cartQuantity?
   //To Display the quantity of the cart as a bade on the cart
-  const cartQuantity =
-    cart.length &&
-    cart.map((cartItem) => {
-      return (
-        <>
-          <p>{cartItem.cartQuantity}</p>
-        </>
-      );
-    });
+
+  // const cartQuantity = cart.length && cart[0].cartQuantity
+  // const cartQuantity = cart[0].cartQuantity;
+  // console.log(cartQuantity);
+  // console.log(cart[0]);
+
+
+  useEffect(() => {
+    loginWithToken();
+  }, []);
 
   useEffect(() => {
     if (user.id) {
@@ -59,8 +65,8 @@ const App = () => {
   }, [user]);
 
   useEffect(() => {
-    loginWithToken();
-  }, []);
+  updateCartIcon(cart)
+}, [cart]);
 
   return (
     <div>
@@ -72,9 +78,9 @@ const App = () => {
           <Link to="/createuser">Create Account</Link>
           <Link to="/products">Products</Link>
           <Link to="/carts/usercart">
-            <Badge badgeContent={cartQuantity}>
+            <Badge badgeContent={quantity}>
               <ShoppingCartIcon fontSize={"large"} />
-            </Badge>{" "}
+            </Badge>
           </Link>
           {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
         </nav>

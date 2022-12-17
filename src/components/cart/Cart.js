@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../../store/cartSlice";
+import { setCart } from "../../store/cartSlices/cartSlice";
 
 const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
 
-
-  console.log("cart", cart);
   const renderCartData =
     cart.length &&
     cart.map((cartItem) => {

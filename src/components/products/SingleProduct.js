@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { setLoadingProduct, setSingleProduct, setDeleteProduct } from "../../store/productSlice";
 import UpdateProduct from "./UpdateProduct";
-import { setCart } from "../../store/cartSlice";
+import { setCart, setQuantity } from "../../store/cartSlices/cartSlice";
 
-const SingleProduct = ({cart}) => {
+const SingleProduct = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { setCart } = useSelector((state) => state.cart);
+  //!This will let you add to cart twice in a row.
+  const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
   const [formIsShown, setFormIsShown] = useState(false);
@@ -45,19 +45,33 @@ const SingleProduct = ({cart}) => {
   // update a single product
 
   const handleAddToCart = async (productId) => {
-    const cartId = cart[0].id;
+    try{
+      const cartId = cart[0].id;
+      await axios.put(`/api/carts/${cartId}`, {
+        productId,
+      });
+      const userCart = user.id;
 
-    await axios.put(`/api/carts/${cartId}`, {
-      productId,
-    });
-
-    const response = await axios.get(`/api/carts/${cartId}`);
-    dispatch(setCart(response.data));
+      const newResponse = await axios.post("/api/carts/usercart", { userCart });
+      dispatch(setCart(newResponse.data));
+    }catch(err){
+      console.log(err);
+    }
   };
 
-  useEffect(() => {
-    fetchSingleProduct(id);
-  }, []);
+// const updateCartIcon = (cart) => {
+//   cart.length && dispatch(setQuantity(cart[0].cartQuantity));
+// }
+
+
+useEffect(() => {
+  fetchSingleProduct(id);
+}, []);
+
+// useEffect(() => {
+//   fetchSingleProduct(id);
+//   // updateCartIcon(cart)
+// }, [cart]);
 
   if (!Object.keys(singleProduct).length || !user) {
     return (
@@ -90,11 +104,9 @@ const SingleProduct = ({cart}) => {
           style: "currency",
           currency: "USD",
         })}`}</h2>
-        <Link>
-          <button onClick={() => handleAddToCart(singleProduct.id)}>
-            add to cart
-          </button>
-        </Link>
+        <Button variant="contained" onClick={() => handleAddToCart(singleProduct.id)}>
+          add to cart
+        </Button>
         <h3>{singleProduct.description}</h3>
         <div>
           {user.isAdmin && (
