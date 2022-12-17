@@ -47,7 +47,7 @@ const App = () => {
   //To Display the quantity of the cart as a bade on the cart
   const cartQuantity =
     cart.length &&
-    cart.map((cartItem) => {
+    cart?.map((cartItem) => {
       return (
         <>
           <p>{cartItem.cartQuantity}</p>

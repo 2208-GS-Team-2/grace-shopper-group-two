@@ -30,9 +30,6 @@ router.post("/usercart", async (req, res, next) => {
   }
 });
 
-//Delete a specific product in a cart:
-//Get localhost:3000/api/cart/userCart
-
 router.delete("/usercart/:id", async (req, res, next) => {
   try {
     const productId = req.params.id;
