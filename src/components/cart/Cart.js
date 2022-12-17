@@ -12,20 +12,18 @@ const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
 
-  const renderCartData =
-    cart.length &&
-    cart.map((cartItem) => {
-      return (
-        <>
-          <p>Item in the cart:{cartItem.cartQuantity}</p>
-          <p>TotalPrice:{cartItem.totalPrice}</p>
-        </>
-      );
-    });
+  // const renderCartData =
+  //   cart.length &&
+  //   cart.map((cartItem) => {
+  //     return (
+  //       <>
+  //         <p>Item in the cart:{cartItem.cartQuantity}</p>
+  //         <p>TotalPrice:{cartItem.totalPrice}</p>
+  //       </>
+  //     );
+  //   });
 
   const deleteProductFromCart = async (productId, cartId) => {
-    console.log(productId);
-    console.log(cartId);
     try {
       await axios.put(`/api/cartproducts`, {
         productId,
