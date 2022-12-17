@@ -15,14 +15,10 @@ const cartSlice = createSlice({
     setQuantity: (state, action) => {
       state.quantity = action.payload;
     },
-    addToCart: (state, action) => {
-      state.cart = action.payload;
-    },
-
   },
 });
 
 //ACTION CREATORS
-export const { setCart, setQuantity, addToCart} = cartSlice.actions;
+export const { setCart, setQuantity} = cartSlice.actions;
 
 export default cartSlice.reducer;

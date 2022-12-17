@@ -1,12 +1,12 @@
 
-import { Button, Card, CardContent, CircularProgress, Typography } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { setLoadingProduct, setSingleProduct, setDeleteProduct } from "../../store/productSlice";
 import UpdateProduct from "./UpdateProduct";
-import { setCart, setQuantity } from "../../store/cartSlices/cartSlice";
+import { setCart } from "../../store/cartSlices/cartSlice";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -59,19 +59,9 @@ const SingleProduct = () => {
     }
   };
 
-// const updateCartIcon = (cart) => {
-//   cart.length && dispatch(setQuantity(cart[0].cartQuantity));
-// }
-
-
 useEffect(() => {
   fetchSingleProduct(id);
 }, []);
-
-// useEffect(() => {
-//   fetchSingleProduct(id);
-//   // updateCartIcon(cart)
-// }, [cart]);
 
   if (!Object.keys(singleProduct).length || !user) {
     return (

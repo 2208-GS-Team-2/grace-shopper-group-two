@@ -1,36 +1,36 @@
-import { Typography } from "@mui/material";
-import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../../store/cartSlices/cartSlice";
 
 const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
 
 
+  //!resume after postman 👺  🤌🤌 🤌🤌🤌
+  // const handleRemoveItemFromCart = async (productId) => {
+  //   try{
+
+  //     await axios.delete()
+  //   }catch(err){
+  //     console.log(err);
+  //   }
+  // }
 
   const renderCartData =
     cart.length &&
     cart.map((cartItem) => {
       return (
-        <>
+        <div key={cartItem.id}>
           <p>Total Number of Items: {cartItem.cartQuantity}</p>
           <p>Total Price: {
-          ` ${(cartItem.totalPrice / 100).toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })}`}</p>
-        </>
+            ` ${(cartItem.totalPrice / 100).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+          })}`}</p>
+        </div>
       );
     });
 
-  // const mapOverProducts =
-  //   cart.length &&
-  //   cart.map((product) => {
-  //     return product.products;
-  //   });
-  console.log(cart[0].products[0].CartProduct.productQuantity);
   const displayProducts = cart[0]["products"].map((product) => {
     return (
       <div key={product.id} style={{ display: "flex", padding: "5px" }}>
@@ -52,7 +52,7 @@ const Cart = () => {
 
   return (
     <>
-      <h1>cart</h1>
+      <h2>cart</h2>
       {displayProducts}
       {renderCartData}
     </>
