@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../store/cartSlices/cartSlice";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
+import axios from "axios";
+
 
 const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+
   //!resume building this 👺  🤌🤌 🤌🤌🤌
   // const handleRemoveItemFromCart = async (productId) => {
   //   try{
@@ -19,15 +23,35 @@ const Cart = () => {
   // }
 
   const deleteProductFromCart = async (productId, cartId) => {
+
+    const fetchUserCart = async () => {
+      const userCart = user.id;
+      const response = await axios.post("/api/carts/usercart", { userCart });
+      dispatch(setCart(response.data));
+    };
+
     try {
-      await axios.put(`/api/cartproducts`, {
-        productId,
-        cartId,
-      });
+      await axios.put(`/api/cartproducts`, { productId, cartId });
+
+      fetchUserCart();
+
+      return console.log("Item has been removed from cart");
     } catch (err) {
       console.log(`nothing to delete`);
     }
   };
+
+  if (!Object.keys(cart).length) {
+    return (
+      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+        <CircularProgress />
+      </div>
+    );
+  }
+
+
+
+
 
   const renderCartData =
     cart.length &&
