@@ -4,11 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  setHasError,
-  setSingleUser,
-  setDeleteUser,
-} from "../../../store/userSlice";
+import { setHasError, setSingleUser, setDeleteUser } from "../../../store/userSlice";
 import UpdateUser from "./UpdateUser";
 
 const SingleUser = () => {
@@ -32,7 +28,7 @@ const SingleUser = () => {
     }
   };
 
-  // to delete a single user info by the admin
+  //!ADMIN: deletes a user's info
   const deleteSingleUser = async () => {
     dispatch(setDeleteUser(id));
     const { data, deleted } = await axios.delete(`/api/users/${id}`, {});

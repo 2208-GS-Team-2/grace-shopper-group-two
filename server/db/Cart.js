@@ -7,7 +7,6 @@ const Cart = db.define("cart", {
     primaryKey: true,
     defaultValue: UUIDV4,
   },
-
   totalPrice: {
     type: INTEGER,
     allowNull: true,
@@ -60,7 +59,8 @@ const Cart = db.define("cart", {
 
   cartQuantity: {
     type: INTEGER,
-    allowNull: true,
+    allowNull: false,
+    defaultValue: 0,
     get: function () {
       const products = this.products;
       const quantities =

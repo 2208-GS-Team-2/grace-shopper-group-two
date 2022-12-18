@@ -3,14 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts, setHasError } from "../../store/productSlice.js";
 import ProductCard from "./ProductCard.js";
-import {
-  setSingleProduct,
-  setLoadingProduct,
-  setDeleteProduct,
-} from "../../store/productSlice";
+import { setSingleProduct, setLoadingProduct, setDeleteProduct } from "../../store/productSlice";
 import "./productStyle.css";
-import { useNavigate, Link } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
 import CreateNewProduct from "./CreateNewProduct";
 import { useState } from "react";
 
@@ -29,7 +23,7 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
       const fetchedProducts = await axios.get("/api/products");
-      console.log(fetchedProducts);
+      // console.log(fetchedProducts);
       dispatch(setProducts(fetchedProducts.data));
     } catch (err) {
       console.log(err);

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import CreateUserPage from './CreateUser';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -34,11 +33,9 @@ const Login = () => {
         const response = await axios.post('/api/auth', credentials);
         const token = response.data;
         window.localStorage.setItem('token', token);
-
         loginWithToken(token)
         navigate('/')
     };
-
 
     return (
         <div>

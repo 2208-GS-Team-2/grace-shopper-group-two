@@ -5,7 +5,6 @@ const volleyball = require("volleyball");
 
 // Set up middleware
 app.use(volleyball);
-app.use(express.json());
 
 // Body parsing middleware
 app.use(express.json());
@@ -18,9 +17,9 @@ app.use("/api", require("./api"));
 
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use("/static", express.static(path.join(__dirname, "../static")));
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "../static/index.html"))
-);
+// app.get("/", (req, res) =>
+//   res.sendFile(path.join(__dirname, "../static/index.html"))
+// );
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../static/index.html"));
 });

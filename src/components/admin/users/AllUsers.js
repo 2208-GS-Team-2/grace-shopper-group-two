@@ -1,4 +1,3 @@
-import { DoNotDisturbOnTotalSilenceSharp } from "@mui/icons-material";
 import { Table, TableRow, TableHead, TableCell, TableBody } from "@mui/material";
 import axios from "axios";
 import React from "react";
@@ -8,13 +7,12 @@ import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
 
 const AllUsers = () => {
-  // const {user} = useSelector
-  // const userAdmin = user.isAdmin.toString();
+
   //Customs Hooks:
   const dispatch = useDispatch();
 
   //Selectors
-  const { users, hasError } = useSelector((state) => state.user);
+  const { users } = useSelector((state) => state.user);
 
   //Fetch all users information
   const fetchUsers = async () => {
