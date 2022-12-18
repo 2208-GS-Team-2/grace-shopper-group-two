@@ -4,7 +4,6 @@ import { setCart } from "../../store/cartSlices/cartSlice";
 import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 
-
 const Cart = () => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
@@ -12,18 +11,22 @@ const Cart = () => {
 
   const dispatch = useDispatch();
 
-  //!resume building this 👺  🤌🤌 🤌🤌🤌
-  // const handleRemoveItemFromCart = async (productId) => {
-  //   try{
+  const handleQtyUpdate = async (thisProduct) => {
+    const productId = thisProduct;
+    const cartId = cart[0].id;
+    const productQuantity = event.target.value;
 
-  //     await axios.delete(``)
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-  // }
+    await axios.put("/api/cartproducts/update", {
+      cartId,
+      productId,
+      productQuantity,
+    });
+    const userCart = user.id;
+    const newResponse = await axios.post("/api/carts/usercart", { userCart });
+    dispatch(setCart(newResponse.data));
+  };
 
   const deleteProductFromCart = async (productId, cartId) => {
-
     const fetchUserCart = async () => {
       const userCart = user.id;
       const response = await axios.post("/api/carts/usercart", { userCart });
@@ -43,7 +46,7 @@ const Cart = () => {
 
   if (!Object.keys(cart).length) {
     return (
-      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+      <div style={{ textAlign: "center", paddingTop: "100px" }}>
         <CircularProgress />
       </div>
     );
@@ -75,9 +78,9 @@ const Cart = () => {
           style={{ width: "50px", height: "auto", borderRadius: "50%" }}
         />
         <h5 style={{ padding: "5px" }}>{product.name}</h5>
-        <h5 style={{ padding: "5px" }}>
+        {/* <h5 style={{ padding: "5px" }}>
           {product.CartProduct.productQuantity} Qty.
-        </h5>
+        </h5> */}
         <h5 style={{ padding: "5px" }}>{`${(
           (product.price * product.CartProduct.productQuantity) /
           100
@@ -85,6 +88,17 @@ const Cart = () => {
           style: "currency",
           currency: "USD",
         })}`}</h5>
+        <form>
+          <label>Qty:</label>
+          <input
+            type={"number"}
+            value={product.CartProduct.productQuantity}
+            min="0"
+            max="100"
+            onChange={() => handleQtyUpdate(product.id)}
+          />
+        </form>
+
         <Button
           variant="contained"
           onClick={() => deleteProductFromCart(product.id, cart[0].id)}
@@ -95,16 +109,17 @@ const Cart = () => {
     );
   });
 
-  if (!cart[0].products.length){renderCartData};
+  if (!cart[0].products.length) {
+    renderCartData;
+  }
 
   return (
-      <>
+    <>
       <h2>cart</h2>
       {displayProducts}
       {renderCartData}
     </>
   );
-
 };
 
 export default Cart;
