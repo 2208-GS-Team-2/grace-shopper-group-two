@@ -77,7 +77,6 @@ router.put("/:id", async (req, res, next) => {
     await cartProduct[0].update({
       productQuantity: quantity,
     });
-
     console.log(quantity);
     return res.sendStatus(200);
   } else {
