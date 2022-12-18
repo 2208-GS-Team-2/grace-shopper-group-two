@@ -12,7 +12,7 @@ import CreateUserPage from "./CreateUser";
 import { Badge } from "@mui/material";
 import Cart from "./cart/Cart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { setHasError, setUser } from "../store/userSlice";
+import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 
 const App = () => {
@@ -44,15 +44,6 @@ const App = () => {
   const updateCartIcon = (cart) => {
     cart.length && dispatch(setQuantity(cart[0].cartQuantity));
   }
-  // console.log(quantity);
-  //! how will we call for cart.cartQuantity?
-  //To Display the quantity of the cart as a bade on the cart
-
-  // const cartQuantity = cart.length && cart[0].cartQuantity
-  // const cartQuantity = cart[0].cartQuantity;
-  // console.log(cartQuantity);
-  // console.log(cart[0]);
-
 
   useEffect(() => {
     loginWithToken();

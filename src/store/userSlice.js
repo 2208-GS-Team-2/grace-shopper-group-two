@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {}, //this is for log in user
+  user: {},
   users: [],
-  singleUser: [], // this is for single user for admin to update their information.
+  singleUser: [],
   hasError: false,
 };
 
