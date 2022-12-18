@@ -83,6 +83,7 @@ router.put("/:id", async (req, res, next) => {
   } else {
     const product = await Product.findByPk(productId);
     cart.addProducts(product);
+    return res.sendStatus(200);
   }
 });
 
