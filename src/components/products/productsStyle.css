@@ -11,7 +11,7 @@
 .create-product-button Button {
   font-size: 50px;
   /* background-color: beige; */
-  color: #7b5244;
+  color: #d85023;
 }
 
 .create-product-button Button:before {
@@ -50,21 +50,34 @@
   transform: scale3d(1, 1, 1);
 }
 
+.product-content {
+  display: flex;
+  flex-wrap: wrap;
+}
 .product-card {
   display: flex;
-  /* background-color: red; */
+  background-color: rgb(238, 229, 229);
   margin: 100px;
-  border: 1px solid black;
-  flex-basis: 33.333333%;
-  /* flex: 2; */
-  width: 30%;
+  /* border: 1px solid black; */
+  flex-basis: 20.333333%;
+  width: 10%;
+  align-items: center;
+  justify-content: center;
 }
 
 .link-item-products {
   padding: 20px;
+  align-items: center;
+  justify-content: center;
   /* background-color: blue; */
 }
 
+.product-buttons Button {
+  padding: 20px;
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+}
 /* .link-item-products {
   background-color: blue;
   display: flex;

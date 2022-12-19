@@ -30,8 +30,8 @@ const ProductCard = ({ product }) => {
           </h5>
 
           <div className="product-buttons">
-            <Button>Edit</Button>
-            <Button>Delete</Button>
+            <Button className="edit-button">Edit</Button>
+            <Button className="delete-button">Delete</Button>
           </div>
         </div>
       </Link>
