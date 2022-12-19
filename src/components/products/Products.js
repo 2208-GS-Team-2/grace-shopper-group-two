@@ -3,12 +3,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts, setHasError } from "../../store/productSlice.js";
 import ProductCard from "./ProductCard.js";
-import { setSingleProduct, setLoadingProduct, setDeleteProduct } from "../../store/productSlice";
+import {
+  setSingleProduct,
+  setLoadingProduct,
+  setDeleteProduct,
+} from "../../store/productSlice";
 import "./productStyle.css";
 import CreateNewProduct from "./CreateNewProduct";
 import { useState } from "react";
+import "./productsStyle.css";
+import Navbar from "../mainPage/Navbar";
 
-const Products = () => {
+const Products = ({ quantity }) => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
 
@@ -30,8 +36,8 @@ const Products = () => {
     }
   };
 
-   //Delete a single product
-   const deleteProductHandler = async (id) => {
+  //Delete a single product
+  const deleteProductHandler = async (id) => {
     dispatch(setDeleteProduct(id));
     const { data, deleted } = await axios.delete(`/api/products/${id}`, {});
     navigate("/products");
@@ -63,24 +69,26 @@ const Products = () => {
     fetchProducts();
   }, []);
   return (
-    <div>
-      <h1 className={"title"}>All Products</h1>
-      <div>
-        {user.isAdmin && (
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+        <div>
+          {user.isAdmin && (
             <CreateNewProduct key={products} products={products} />
-        )}
-        {products.length &&
-          products?.map((product) => {
-            return (
-              <div key={product.id}>
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  fetchSingleProduct={fetchSingleProduct}
-                />
-              </div>
-            );
-          })}
+          )}
+          {products.length &&
+            products?.map((product) => {
+              return (
+                <div key={product.id}>
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    fetchSingleProduct={fetchSingleProduct}
+                  />
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
