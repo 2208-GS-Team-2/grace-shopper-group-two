@@ -1,21 +1,28 @@
-
-import { Button, Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { setLoadingProduct, setSingleProduct, setDeleteProduct } from "../../store/productSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  setLoadingProduct,
+  setSingleProduct,
+  setDeleteProduct,
+} from "../../store/productSlice";
 import UpdateProduct from "./UpdateProduct";
+import { setCart } from "../../store/cartSlices/cartSlice";
+import Navbar from "../mainPage/Navbar";
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
+import { Button, CircularProgress, Tooltip } from "@mui/material";
 
-const SingleProduct = () => {
+import "./singleProductStyle.css";
+const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  //!This will let you add to cart twice in a row.
+  const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
-
-  const [cart, setCart] = useState("");
   const [formIsShown, setFormIsShown] = useState(false);
 
   const fetchSingleProduct = async () => {
@@ -43,13 +50,19 @@ const SingleProduct = () => {
   };
 
   // update a single product
-
   const handleAddToCart = async (productId) => {
-    const cartId = cart;
+    try {
+      const cartId = cart[0].id;
+      await axios.put(`/api/carts/${cartId}`, {
+        productId,
+      });
+      const userCart = user.id;
 
-    await axios.put(`/api/carts/${cartId}`, {
-      productId,
-    });
+      const newResponse = await axios.post("/api/carts/usercart", { userCart });
+      dispatch(setCart(newResponse.data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -58,7 +71,7 @@ const SingleProduct = () => {
 
   if (!Object.keys(singleProduct).length || !user) {
     return (
-      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+      <div style={{ textAlign: "center", paddingTop: "100px" }}>
         <CircularProgress />
       </div>
     );
@@ -68,6 +81,8 @@ const SingleProduct = () => {
     return (
       <>
         <UpdateProduct
+          user={user}
+          quantity={quantity}
           singleProduct={singleProduct}
           setFormIsShown={setFormIsShown}
         />
@@ -75,8 +90,11 @@ const SingleProduct = () => {
     );
   }
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+      </div>
+      <div className="single-product-content">
         <img
           src={`/${singleProduct.img}`}
           alt={`${singleProduct.name}`}
@@ -87,22 +105,34 @@ const SingleProduct = () => {
           style: "currency",
           currency: "USD",
         })}`}</h2>
-        <Link>
-          <button onClick={() => handleAddToCart(singleProduct.id)}>
-            add to cart
-          </button>
-        </Link>
+        <Button
+          className="addtocart"
+          onClick={() => handleAddToCart(singleProduct.id)}
+        >
+          <div class="pretext"> add to cart</div>
+        </Button>
         <h3>{singleProduct.description}</h3>
-        <div>
-          {user.isAdmin && (
-            <Button onClick={() => deleteProductHandler(singleProduct.id)}>
-              Delete
-            </Button>
-          )}
-          {user.isAdmin && (
-            <Button onClick={() => setFormIsShown(true)}>Edit</Button>
-          )}
-        </div>
+
+        {user.isAdmin && (
+          <div className="single-product-buttons">
+            <Tooltip title="Delete Product">
+              <Button onClick={() => deleteProductHandler(singleProduct.id)}>
+                <DeleteForeverTwoToneIcon
+                  className="single-product-icon"
+                  fontSize={"large"}
+                />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Edit Product">
+              <Button onClick={() => setFormIsShown(true)}>
+                <EditTwoToneIcon
+                  className="single-product-icon"
+                  fontSize={"large"}
+                />
+              </Button>
+            </Tooltip>
+          </div>
+        )}
       </div>
     </div>
   );

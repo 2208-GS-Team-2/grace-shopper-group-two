@@ -7,14 +7,14 @@ import {
   setSingleProduct,
   setLoadingProduct,
   setDeleteProduct,
-} from "../../store/productSlice";
-import "./productStyle.css";
-import { useNavigate, Link } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
-import CreateNewProduct from "./CreateNewProduct";
+} from "../../store/productSlice.js";
+import CreateNewProduct from "./CreateNewProduct.js";
 import { useState } from "react";
+import "./productsStyle.css";
+import Navbar from "../mainPage/Navbar.js";
+import { Button, Tooltip } from "@mui/material";
 
-const Products = () => {
+const Products = ({ quantity }) => {
   //CUSTOM HOOKS:
   const dispatch = useDispatch();
 
@@ -29,18 +29,11 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
       const fetchedProducts = await axios.get("/api/products");
-      console.log(fetchedProducts);
+      // console.log(fetchedProducts);
       dispatch(setProducts(fetchedProducts.data));
     } catch (err) {
       console.log(err);
     }
-  };
-
-   //Delete a single product
-   const deleteProductHandler = async (id) => {
-    dispatch(setDeleteProduct(id));
-    const { data, deleted } = await axios.delete(`/api/products/${id}`, {});
-    navigate("/products");
   };
 
   //Fetch a single product data
@@ -68,25 +61,37 @@ const Products = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  if (formIsShown) {
+    return <CreateNewProduct key={products} products={products} user={user} />;
+  }
   return (
-    <div>
-      <h1 className={"title"}>All Products</h1>
-      <div>
-        {user.isAdmin && (
-            <CreateNewProduct key={products} products={products} />
-        )}
-        {products.length &&
-          products?.map((product) => {
-            return (
-              <div key={product.id}>
+    <div className="container products">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+        <div className="create-product-button">
+          {user.isAdmin && (
+            <Tooltip title={<h3>Only admin can add a new product.</h3>}>
+              <Button onClick={() => setFormIsShown(true)}>
+                Add a new product
+              </Button>
+            </Tooltip>
+          )}
+        </div>
+        <h3 className="our-products-title">Our Products</h3>
+        <div className="product-content">
+          {products.length &&
+            products?.map((product) => {
+              return (
                 <ProductCard
+                  user={user}
                   key={product.id}
                   product={product}
                   fetchSingleProduct={fetchSingleProduct}
                 />
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
       </div>
     </div>
   );

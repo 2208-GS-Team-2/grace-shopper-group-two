@@ -188,6 +188,72 @@ const products = [
     img: 'static/images/glasscup2.webp',
     type: 'merch',
   },
+  {
+    name: 'China',
+    price: '3000',
+    origin: 'Yunnan',
+    description:
+      'Since specialty coffee is getting popular in China, coffee quality have gotten so much better compared to 8 years ago.',
+    roastLevel: 'light',
+    type: 'coffeeBean',
+    treatmentProcess: 'natural',
+    img: 'static/images/yunnan.jpeg',
+  },
+  {
+    name: 'Golondrina',
+    price: '1800',
+    origin: 'timbio colombia',
+    description:
+      'The Orgánica cooperative in the region of Cauca, Colombia, has produced coffee for our La Golondrina offering since 2007. La Golondrina has layered flavors of milk chocolate, cherry, and nut.',
+    roastLevel: 'medium',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: 'static/images/Counter-Culture-La-Golondrina-2.jpeg',
+  },
+  {
+    name: 'Finca El Puente',
+    price: '6400',
+    origin: 'Honduras',
+    description:
+      'They were the first to cultivate Gesha in Honduras, a variety that traces its origins to Ethiopia. Under their care, a plant of this pedigree creates an exceptional coffee with tropical fruit, lime, and delicate floral notes.',
+    roastLevel: 'light',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: 'static/images/Finca_El_Puente_Gesha_12oz_box_2021-600x600.webp',
+  },
+  {
+    name: 'Iridescent',
+    price: '2000',
+    origin: 'ethiopia, kenya, latin america',
+    description:
+      'Limited release! It is our winter blend, a combination of some of our best, most interesting coffees, and features notes of dark chocolate and berry. ',
+    roastLevel: 'medium',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed, natural',
+    img: 'static/images/iridescent_2022-e1669992016607-600x600.webp',
+  },
+  {
+    name: 'Baroida',
+    price: '2500',
+    origin: 'Papua New Guinea',
+    description:
+      'Despite the immense challenges of cultivating coffee in the beautiful, remote highlands of Papua New Guinea, Nichol Colbran and his team at Baroida produce coffee so exceptional, we consider it the best in Papua New Guinea and, possibly, the entire Pacific.',
+    roastLevel: 'medium',
+    type: 'coffeeBean',
+    treatmentProcess: 'washed',
+    img: 'static/images/Baroida_12oz_bag_2019-e1640889948505-600x600.webp',
+  },
+  {
+    name: 'Hassan Assalol',
+    price: '3000',
+    origin: 'Yemen',
+    description:
+      'Yemen, one of the oldest coffee-producing countries in the world, has played an integral role in coffee history and continues to be important to coffee future. .',
+    roastLevel: 'medium',
+    type: 'coffeeBean',
+    treatmentProcess: 'natural',
+    img: 'static/images/Hassan_Assalol_NatSun_12oz_box_2021-1-600x600.webp',
+  },
 ];
 
 const carts = [

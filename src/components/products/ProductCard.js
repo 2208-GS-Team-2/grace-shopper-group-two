@@ -1,63 +1,45 @@
 import {
   Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
+  Tooltip,
   Typography,
-} from '@mui/material';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './productStyle.css';
+} from "@mui/material";
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, user }) => {
   return (
-    <div
-      key={product.id}
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        background: 'lightgray',
-      }}
-    >
-      <Card
-        key={product.id}
-        sx={{ maxWidth: 500 }}
-        style={{
-          margin: '50px',
-          display: 'flex',
-          flexDirection: 'row',
-          border: '4mm ridge rgba(193, 188, 188, 0.1)',
-          justifyContent: 'center',
-        }}
-      >
-        <Link key={product.id} to={`/products/${product.id}`}>
-          <CardMedia
-            key={product.id}
-            component="img"
-            height="140"
-            image={product.img}
-            alt="product-image"
-          />
-          <CardContent>
-            <Typography
-              style={{ color: 'darkblue' }}
-              gutterBottom
-              variant="h4"
-              component="div"
-            >
-              {product.name}
-            </Typography>
-            <Typography>{`${(product.price / 100).toLocaleString('en-US', {
-              style: 'currency',
-              currency: 'USD',
-            })}`}</Typography>
-          </CardContent>
-          <Button>Edit</Button>
-          <Button>Delete</Button>
-        </Link>
-      </Card>
+    <div key={product.id} className="product-card">
+      <Link key={product.id} to={`/products/${product.id}`}>
+        <div className="link-item-products">
+          <img src={product.img} alt="product-image" />
+          <h3>{product.name}</h3>
+          <h5>
+            {`${(product.price / 100).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}`}
+          </h5>
+        </div>
+      </Link>
+      {user.isAdmin && (
+        <div className="product-buttons">
+          <Tooltip title="Edit Product">
+            <Button className="edit-button">
+              <EditTwoToneIcon fontSize={"large"} />
+            </Button>
+          </Tooltip>
+          <Tooltip title="Delete Product">
+            <Button className="delete-button">
+              <DeleteForeverTwoToneIcon fontSize={"large"} />
+            </Button>
+          </Tooltip>
+        </div>
+      )}
     </div>
   );
 };
