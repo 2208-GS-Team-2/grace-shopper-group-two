@@ -20,6 +20,7 @@ router.post("/usercart", async (req, res, next) => {
     const findCartOfUserId = await Cart.findAll({
       where: { userId: userCart },
       include: [Product],
+      order: [[Product, "id", "DESC"]]
     });
     res.send(findCartOfUserId);
     // 1.get req.body from the front end and pass it he } = req.body;
@@ -79,10 +80,12 @@ router.put("/:id", async (req, res, next) => {
     });
 
     console.log(quantity);
+    // await new Promise(r => setTimeout(r, 20000));
     return res.sendStatus(200);
   } else {
     const product = await Product.findByPk(productId);
-    cart.addProducts(product);
+    await cart.addProducts(product);
+    // await new Promise(r => setTimeout(r, 20000));
     return res.sendStatus(200);
   }
 });
