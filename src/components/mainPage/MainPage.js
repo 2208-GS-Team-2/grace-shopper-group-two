@@ -43,11 +43,6 @@ const MainPage = ({ quantity, user }) => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <p className="copyright">
-          copyright &copy; 2022 .all right reserved by L.A.S.T.
-        </p>
-      </div>
     </body>
   );
 };

@@ -34,7 +34,7 @@ const AllUsers = ({ user, quantity }) => {
     fetchUsers();
   }, []);
   return (
-    <div className="container">
+    <div className="con">
       <div className="header-content">
         {/* <div style={{ textAlign: "center" }}> */}
         <Navbar user={user} quantity={quantity} />
