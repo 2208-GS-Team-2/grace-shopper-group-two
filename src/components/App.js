@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
-import Home from "./Home";
 import Login from "./Login";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Products from "./products/Products";
 import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
-import { Badge } from "@mui/material";
 import Cart from "./cart/Cart";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
@@ -35,6 +32,14 @@ const App = () => {
       dispatch(setUser(response.data));
     }
   };
+
+  //!Add logout button somewhere, replacing login after a user logs in.
+  // const logout = () => {
+  //   window.localStorage.removeItem("token");
+  //   dispatch(resetUser());
+  // };
+  // <button onClick={logout}>Logout</button>
+
 
   const fetchUserCart = async () => {
     const userCart = user.id;

@@ -10,6 +10,8 @@ const Home = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
   };
+  <button onClick={logout}>Logout</button>
+
 
   return (
     <div>
