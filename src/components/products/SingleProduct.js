@@ -81,6 +81,8 @@ const SingleProduct = ({ quantity }) => {
     return (
       <>
         <UpdateProduct
+          user={user}
+          quantity={quantity}
           singleProduct={singleProduct}
           setFormIsShown={setFormIsShown}
         />
