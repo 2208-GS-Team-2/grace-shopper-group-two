@@ -14,7 +14,8 @@ import Cart from "./cart/Cart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
-
+import MainPage from "./mainPage/MainPage";
+import "./appStyle.css";
 const App = () => {
   //custom hooks:
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const App = () => {
 
   const updateCartIcon = (cart) => {
     cart.length && dispatch(setQuantity(cart[0].cartQuantity));
-  }
+  };
 
   useEffect(() => {
     loginWithToken();
@@ -56,36 +57,30 @@ const App = () => {
   }, [user]);
 
   useEffect(() => {
-  updateCartIcon(cart)
-}, [cart]);
+    updateCartIcon(cart);
+  }, [cart]);
 
   return (
     <div>
-      <h1>L.A.S.T Coffee Shop</h1>
       <div>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/login">login</Link>
-          <Link to="/createuser">Create Account</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/carts/usercart">
-            <Badge badgeContent={quantity}>
-              <ShoppingCartIcon fontSize={"large"} />
-            </Badge>
-          </Link>
-          {user.isAdmin && <Link to="/allUsers">All Active Users</Link>}
-        </nav>
-
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<MainPage quantity={quantity} user={user} />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/createuser" element={<CreateUserPage />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id"
+          <Route path="/products" element={<Products quantity={quantity} />} />
+          <Route
+            path="/products/:id"
             key={cart.id}
-            element={<SingleProduct cart={cart} />} />
+            element={<SingleProduct cart={cart} quantity={quantity} />}
+          />
           <Route path="/carts/usercart" element={<Cart />} />
-          <Route path="/allUsers" element={<AllUsers />} />
+          <Route
+            path="/allUsers"
+            element={<AllUsers user={user} quantity={quantity} />}
+          />
           <Route path="/allUsers/:id" element={<SingleUser />} />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>

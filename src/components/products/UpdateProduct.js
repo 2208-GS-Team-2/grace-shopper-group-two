@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUpdatedProduct } from "../../store/productSlice";
+import Navbar from "../mainPage/Navbar";
 
-const UpdateProduct = ({ singleProduct, setFormIsShown }) => {
+const UpdateProduct = ({ singleProduct, setFormIsShown, user, quantity }) => {
   //Custom Hooks:
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,58 +46,49 @@ const UpdateProduct = ({ singleProduct, setFormIsShown }) => {
 
   const renderForm = (
     <form onSubmit={handleSumbitForm}>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={updateNameHandler}
-        />
+      <div className="form-label">
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={updateNameHandler}
+          />
+        </div>
+        <div>
+          <label htmlFor="price">Price</label>
+          <input
+            id="price"
+            type="text"
+            value={price}
+            onChange={updatePriceHandler}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            type="text"
+            value={description}
+            onChange={updateDescriptionHandler}
+          />
+        </div>
       </div>
-      <div>
-        <label htmlFor="price">Price</label>
-        <input
-          id="price"
-          type="text"
-          value={price}
-          onChange={updatePriceHandler}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          type="text"
-          value={description}
-          onChange={updateDescriptionHandler}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          padding: "5px",
-        }}
-      >
-        <input
-          type="submit"
-          style={{
-            marginLeft: "5px",
-            margin: "5px",
-            padding: "5p",
-            backgroundColor: "dodgerblue",
-          }}
-        />
-        <button
-          style={{ background: "lightgray", color: "black" }}
-          //   onClick={cancelUpdatedForm}
-        >
-          Cancel
-        </button>
+      <div className="cancel-submit-button">
+        <input className="submit-button" type="submit" />
+        <button className="create-product-cancel-button">Cancel</button>
       </div>
     </form>
   );
-  return <>{renderForm}</>;
+  return (
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+      </div>
+      <div className="create-product-content">{renderForm}</div>
+    </div>
+  );
 };
 
 export default UpdateProduct;

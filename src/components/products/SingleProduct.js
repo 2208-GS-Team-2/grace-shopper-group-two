@@ -1,14 +1,21 @@
-
-import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { setLoadingProduct, setSingleProduct, setDeleteProduct } from "../../store/productSlice";
+import {
+  setLoadingProduct,
+  setSingleProduct,
+  setDeleteProduct,
+} from "../../store/productSlice";
 import UpdateProduct from "./UpdateProduct";
 import { setCart } from "../../store/cartSlices/cartSlice";
+import Navbar from "../mainPage/Navbar";
+import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
+import { Button, CircularProgress, Tooltip } from "@mui/material";
 
-const SingleProduct = () => {
+import "./singleProductStyle.css";
+const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,9 +50,8 @@ const SingleProduct = () => {
   };
 
   // update a single product
-
   const handleAddToCart = async (productId) => {
-    try{
+    try {
       const cartId = cart[0].id;
       await axios.put(`/api/carts/${cartId}`, {
         productId,
@@ -54,18 +60,18 @@ const SingleProduct = () => {
 
       const newResponse = await axios.post("/api/carts/usercart", { userCart });
       dispatch(setCart(newResponse.data));
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
   };
 
-useEffect(() => {
-  fetchSingleProduct(id);
-}, []);
+  useEffect(() => {
+    fetchSingleProduct(id);
+  }, []);
 
   if (!Object.keys(singleProduct).length || !user) {
     return (
-      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+      <div style={{ textAlign: "center", paddingTop: "100px" }}>
         <CircularProgress />
       </div>
     );
@@ -75,6 +81,8 @@ useEffect(() => {
     return (
       <>
         <UpdateProduct
+          user={user}
+          quantity={quantity}
           singleProduct={singleProduct}
           setFormIsShown={setFormIsShown}
         />
@@ -82,8 +90,11 @@ useEffect(() => {
     );
   }
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+      </div>
+      <div className="single-product-content">
         <img
           src={`/${singleProduct.img}`}
           alt={`${singleProduct.name}`}
@@ -94,20 +105,34 @@ useEffect(() => {
           style: "currency",
           currency: "USD",
         })}`}</h2>
-        <Button variant="contained" onClick={() => handleAddToCart(singleProduct.id)}>
-          add to cart
+        <Button
+          className="addtocart"
+          onClick={() => handleAddToCart(singleProduct.id)}
+        >
+          <div class="pretext"> add to cart</div>
         </Button>
         <h3>{singleProduct.description}</h3>
-        <div>
-          {user.isAdmin && (
-            <Button onClick={() => deleteProductHandler(singleProduct.id)}>
-              Delete
-            </Button>
-          )}
-          {user.isAdmin && (
-            <Button onClick={() => setFormIsShown(true)}>Edit</Button>
-          )}
-        </div>
+
+        {user.isAdmin && (
+          <div className="single-product-buttons">
+            <Tooltip title="Delete Product">
+              <Button onClick={() => deleteProductHandler(singleProduct.id)}>
+                <DeleteForeverTwoToneIcon
+                  className="single-product-icon"
+                  fontSize={"large"}
+                />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Edit Product">
+              <Button onClick={() => setFormIsShown(true)}>
+                <EditTwoToneIcon
+                  className="single-product-icon"
+                  fontSize={"large"}
+                />
+              </Button>
+            </Tooltip>
+          </div>
+        )}
       </div>
     </div>
   );

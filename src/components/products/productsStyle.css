@@ -1,0 +1,153 @@
+.create-product-button {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+.create-product-button Button {
+  font-size: 50px;
+  /* background-color: beige; */
+  color: #d85023;
+}
+
+.create-product-button Button:before {
+  content: "";
+  position: absolute;
+  border-width: 0 2px;
+  border-color: var(--mainColor);
+  border-style: solid;
+  width: 99%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s;
+  transform: scale3d(1, 0, 1);
+}
+
+.create-product-button Button:hover:before {
+  transform: scale3d(1, 1, 1);
+}
+
+.create-product-button Button:after {
+  content: "";
+  position: absolute;
+  border-width: 2px 0;
+  border-color: var(--mainColor);
+  border-style: solid;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s;
+  transform: scale3d(1, 0, 1);
+}
+
+.create-product-button Button:hover:after {
+  transform: scale3d(1, 1, 1);
+}
+
+.product-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-card {
+  display: flex;
+  background-color: rgb(238, 229, 229);
+  margin: 100px;
+  border: 1px solid #eab9b9;
+  flex-basis: 20%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20%;
+}
+
+.link-item-products {
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-item-products h3,
+h5 {
+  text-align: center;
+  padding: 20px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.link-item-products h5 {
+  text-align: center;
+  padding: 20px;
+  color: rgb(206, 92, 31);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.product-buttons Button {
+  padding-left: 100px;
+  font-weight: bold;
+  color: rgb(84, 6, 6);
+  font-size: 30px;
+  background-color: aliceblue;
+}
+
+.our-products-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  margin: auto;
+}
+
+/* create new product page styling */
+
+form div {
+  text-align: center;
+  font-size: 40px;
+}
+
+.create-product-content {
+  padding: 200px;
+}
+.add-product-title {
+  text-align: center;
+  font-size: 40px;
+  color: rgb(84, 6, 6);
+}
+.form-label {
+  display: flex;
+}
+
+.form-label label {
+  color: rgb(43, 9, 9);
+  padding: 20px;
+}
+
+.form-label input {
+  color: rgb(43, 9, 9);
+  padding: 10px;
+}
+.cancel-submit-button {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 20px;
+}
+.submit-button,
+.create-product-cancel-button {
+  width: 20em;
+  height: 2em;
+  margin: 20px;
+  font-weight: bolder;
+}
+
+.submit-button {
+  background-color: rgb(124, 51, 17);
+  color: white;
+}
+
+/* update new product page styling */
