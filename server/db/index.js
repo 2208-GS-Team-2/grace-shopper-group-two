@@ -13,7 +13,7 @@ Cart.belongsTo(User);
 
 //Many-to-Many relationship between cart and product tables.
 //One cart can have multiple products, and one product can belong to many carts.
-// We create a through table called cartProduct table.
+//Created a through table called cartProduct table.
 Cart.belongsToMany(Product, { through: CartProduct });
 Product.belongsToMany(Cart, { through: CartProduct });
 

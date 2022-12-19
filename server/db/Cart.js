@@ -10,22 +10,9 @@ const Cart = db.define("cart", {
   totalPrice: {
     type: INTEGER,
     allowNull: true,
-    // defaultValue: 0,
-    // ! get the total price of all items in the cart
-    // get: function() {
-    // const products = this.getProducts();
-    // console.log("products", products)
-    // const itemTotalPrice = products[0].CartProduct.itemTotalPrice;
-    // const totalPrice = itemTotalPrice;
-    // console.log("💰", totalPrice);
-    // return this.totalPrice =  //totalPrice;
-    // },
     // ! get the total price of all items in the cart
     get: function () {
-      // console.log(products.price);
-      // console.log('products in cart', products);
       const products = this.products;
-      // console.log(products);
       const productsMapping =
         products &&
         products.map(
@@ -37,7 +24,6 @@ const Cart = db.define("cart", {
           (accumulator, currentValue) => accumulator + currentValue,
           0
         );
-      // console.log('totalCartPrice', totalCartPrice);
       return (this.totalPrice = totalCartPrice);
     },
   },
@@ -73,7 +59,6 @@ const Cart = db.define("cart", {
           (accumulator, currentValue) => accumulator + currentValue,
           initialValue
         );
-      //  console.log("🤌", sumQuantity)
       return (this.cartQuantity = sumQuantity);
     },
   },

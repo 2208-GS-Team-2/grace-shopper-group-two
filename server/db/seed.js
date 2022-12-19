@@ -55,7 +55,7 @@ const products = [
     roastLevel: 'light',
     type: 'coffeeBean',
     treatmentProcess: 'natural',
-    img: 'static/images/geisha crown jew.jpeg',
+    img: 'static/images/geisha crown jewel.jpeg',
   },
   {
     name: 'Guatemalan',
@@ -294,6 +294,13 @@ const seed = async () => {
     product19,
     product20,
     product21,
+    product22,
+    product23,
+    product24,
+    product25,
+    product26,
+    product27,
+    product28,
   ] = await Promise.all(products.map((item) => Product.create(item)));
 
   const [steve, lena, topher, anton] = await Promise.all([

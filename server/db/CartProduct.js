@@ -12,10 +12,6 @@ const CartProduct = db.define('CartProduct', {
     type: VIRTUAL,
     get: async function() {
       const product = await Product.findByPk(this.productId)
-      // console.log(product.price * this.productQuantity);
-      // console.log(product.price);
-      // console.log(typeof this.productPrice);
-      // const totalPrice = product.price;
       return product.price;
     },
   },
@@ -26,9 +22,6 @@ const CartProduct = db.define('CartProduct', {
   itemTotalPrice: {
     type: INTEGER,
     get() {
-      // const totalPrice = product.price * this.productQuantity
-      // console.log(totalPrice);
-      // return (this.productPrice = totalPrice);
       const totalPrice = this.quantity * this.price;
       return totalPrice;
     },
