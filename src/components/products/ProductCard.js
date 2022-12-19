@@ -10,7 +10,6 @@ import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./productStyle.css";
 
 const ProductCard = ({ product, user }) => {
   return (

@@ -7,12 +7,11 @@ import {
   setSingleProduct,
   setLoadingProduct,
   setDeleteProduct,
-} from "../../store/productSlice";
-import "./productStyle.css";
-import CreateNewProduct from "./CreateNewProduct";
+} from "../../store/productSlice.js";
+import CreateNewProduct from "./CreateNewProduct.js";
 import { useState } from "react";
 import "./productsStyle.css";
-import Navbar from "../mainPage/Navbar";
+import Navbar from "../mainPage/Navbar.js";
 import { Button, Tooltip } from "@mui/material";
 
 const Products = ({ quantity }) => {
@@ -35,13 +34,6 @@ const Products = ({ quantity }) => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  //Delete a single product
-  const deleteProductHandler = async (id) => {
-    dispatch(setDeleteProduct(id));
-    const { data, deleted } = await axios.delete(`/api/products/${id}`, {});
-    navigate("/products");
   };
 
   //Fetch a single product data
@@ -91,14 +83,12 @@ const Products = ({ quantity }) => {
           {products.length &&
             products?.map((product) => {
               return (
-                // <div key={product.id}>
                 <ProductCard
                   user={user}
                   key={product.id}
                   product={product}
                   fetchSingleProduct={fetchSingleProduct}
                 />
-                // </div>
               );
             })}
         </div>
