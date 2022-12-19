@@ -30,6 +30,10 @@ Link {
 a {
   text-decoration: none;
 }
+
+.pd-y {
+  padding: 120px 0;
+}
 /* Header Section */
 
 header {
@@ -93,7 +97,7 @@ header .header-content .login ul li a {
   font-weight: bold;
   position: relative;
 }
-.header-content nav ul li .link-item:first-child:before {
+.header-content nav ul li .link-item:before {
   content: "";
   position: absolute;
   border-width: 0 2px;
@@ -107,11 +111,11 @@ header .header-content .login ul li a {
   transform: scale3d(1, 0, 1);
 }
 
-.header-content nav ul li .link-item:first-child:hover:before {
+.header-content nav ul li .link-item:hover:before {
   transform: scale3d(1, 1, 1);
 }
 
-.header-content nav ul li .link-item:first-child:after {
+.header-content nav ul li .link-item:after {
   content: "";
   position: absolute;
   border-width: 2px 0;
@@ -125,7 +129,7 @@ header .header-content .login ul li a {
   transform: scale3d(1, 0, 1);
 }
 
-.header-content nav ul li .link-item:first-child:hover:after {
+.header-content nav ul li .link-item:hover:after {
   transform: scale3d(1, 1, 1);
 }
 /* Slider Section */
@@ -183,4 +187,9 @@ section.slider img {
 .email,
 .address {
   color: var(--grayColor);
+}
+.copyright {
+  font-weight: bold;
+  color: rgb(84, 56, 56);
+  font-size: 30px;
 }

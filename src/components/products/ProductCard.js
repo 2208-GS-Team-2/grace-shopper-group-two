@@ -11,27 +11,36 @@ import "./productStyle.css";
 
 const ProductCard = ({ product }) => {
   return (
-    <div
-      key={product.id}
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        // background: 'lightgray',
-      }}
-    >
-      <Card
-        key={product.id}
-        sx={{ maxWidth: 500 }}
-        style={{
-          margin: "50px",
-          display: "flex",
-          flexDirection: "row",
-          border: "4mm ridge rgba(193, 188, 188, 0.1)",
-          justifyContent: "center",
-        }}
-      >
-        <Link key={product.id} to={`/products/${product.id}`}>
+    <div key={product.id} className="product-card">
+      <Link key={product.id} to={`/products/${product.id}`}>
+        <div className="link-item-products">
+          <div>
+            <img src={product.img} alt="product-image" />
+          </div>
+
+          <div>
+            {" "}
+            <h3>{product.name}</h3>
+          </div>
+          <h5>
+            {`${(product.price / 100).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}`}
+          </h5>
+
+          <div className="product-buttons">
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </div>
+        </div>
+      </Link>
+      {/* <Card key={product.id} sx={{ maxWidth: 300 }} className="product-card">
+        <Link
+          className="link-item"
+          key={product.id}
+          to={`/products/${product.id}`}
+        >
           <CardMedia
             key={product.id}
             component="img"
@@ -48,15 +57,17 @@ const ProductCard = ({ product }) => {
             >
               {product.name}
             </Typography>
-            <Typography>{`${(product.price / 100).toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}`}</Typography>
+            <Typography>
+              {`${(product.price / 100).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}`}
+            </Typography>
           </CardContent>
           <Button>Edit</Button>
           <Button>Delete</Button>
         </Link>
-      </Card>
+      </Card> */}
     </div>
   );
 };

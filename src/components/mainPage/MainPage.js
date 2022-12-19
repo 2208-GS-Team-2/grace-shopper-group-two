@@ -22,7 +22,7 @@ const MainPage = ({ quantity, user }) => {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">get in touch</h2>
-            <span class="line"></span>
+            <span className="line"></span>
           </div>
           <div className="touch-content">
             <div className="touch-item">
@@ -42,6 +42,11 @@ const MainPage = ({ quantity, user }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="container">
+        <p className="copyright">
+          copyright &copy; 2022 .all right reserved by L.A.S.T.
+        </p>
       </div>
     </body>
   );

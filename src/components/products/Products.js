@@ -13,6 +13,7 @@ import CreateNewProduct from "./CreateNewProduct";
 import { useState } from "react";
 import "./productsStyle.css";
 import Navbar from "../mainPage/Navbar";
+import { Button, Tooltip } from "@mui/material";
 
 const Products = ({ quantity }) => {
   //CUSTOM HOOKS:
@@ -68,24 +69,34 @@ const Products = ({ quantity }) => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  if (formIsShown) {
+    return <CreateNewProduct key={products} products={products} />;
+  }
   return (
-    <div className="container">
+    <div className="container products">
       <div className="header-content">
         <Navbar user={user} quantity={quantity} />
-        <div>
+        <div className="create-product-button">
           {user.isAdmin && (
-            <CreateNewProduct key={products} products={products} />
+            <Tooltip title="Only admin can add a new product." arrow>
+              <Button onClick={() => setFormIsShown(true)}>
+                Add a new product
+              </Button>
+            </Tooltip>
           )}
+        </div>
+        <div className="product-content">
           {products.length &&
             products?.map((product) => {
               return (
-                <div key={product.id}>
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    fetchSingleProduct={fetchSingleProduct}
-                  />
-                </div>
+                // <div key={product.id}>
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  fetchSingleProduct={fetchSingleProduct}
+                />
+                // </div>
               );
             })}
         </div>
