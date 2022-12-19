@@ -93,6 +93,7 @@ h5 {
   font-weight: bold;
   color: rgb(84, 6, 6);
   font-size: 30px;
+  background-color: aliceblue;
 }
 
 .our-products-title {
@@ -100,4 +101,51 @@ h5 {
   font-weight: bold;
   font-size: 50px;
   margin: auto;
+}
+
+/* create new product page styling */
+
+form div {
+  text-align: center;
+  font-size: 40px;
+}
+
+.create-product-content {
+  padding: 200px;
+}
+.add-product-title {
+  text-align: center;
+  font-size: 40px;
+  color: rgb(84, 6, 6);
+}
+.form-label {
+  display: flex;
+}
+
+.form-label label {
+  color: rgb(43, 9, 9);
+  padding: 20px;
+}
+
+.form-label input {
+  color: rgb(43, 9, 9);
+  padding: 10px;
+}
+.cancel-submit-button {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 20px;
+}
+.submit-button,
+.create-product-cancel-button {
+  width: 20em;
+  height: 2em;
+  margin: 20px;
+  font-weight: bolder;
+}
+
+.submit-button {
+  background-color: rgb(124, 51, 17);
+  color: white;
 }

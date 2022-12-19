@@ -63,7 +63,7 @@ const Products = ({ quantity }) => {
   }, []);
 
   if (formIsShown) {
-    return <CreateNewProduct key={products} products={products} />;
+    return <CreateNewProduct key={products} products={products} user={user} />;
   }
   return (
     <div className="container products">
@@ -71,7 +71,7 @@ const Products = ({ quantity }) => {
         <Navbar user={user} quantity={quantity} />
         <div className="create-product-button">
           {user.isAdmin && (
-            <Tooltip title="Only admin can add a new product." arrow>
+            <Tooltip title={<h3>Only admin can add a new product.</h3>}>
               <Button onClick={() => setFormIsShown(true)}>
                 Add a new product
               </Button>
