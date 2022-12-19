@@ -86,12 +86,14 @@ const Products = ({ quantity }) => {
             </Tooltip>
           )}
         </div>
+        <h3 className="our-products-title">Our Products</h3>
         <div className="product-content">
           {products.length &&
             products?.map((product) => {
               return (
                 // <div key={product.id}>
                 <ProductCard
+                  user={user}
                   key={product.id}
                   product={product}
                   fetchSingleProduct={fetchSingleProduct}
