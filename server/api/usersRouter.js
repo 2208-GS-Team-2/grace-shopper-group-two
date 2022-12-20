@@ -4,7 +4,10 @@ const router = express.Router();
 
 //get all users
 router.get("/", async (req, res, next) => {
-  const users = await User.findAll({ include: [Review, Cart] });
+  const users = await User.findAll({
+    include: [Review, Cart],
+    order: [["username", "ASC"]],
+  });
   res.send(users);
 });
 

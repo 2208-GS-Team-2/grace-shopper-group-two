@@ -140,6 +140,11 @@ const Cart = ({ quantity }) => {
                 <span>Total Items:</span>
                 <span> {cartItem.cartQuantity}</span>
               </p>
+              <p>
+                <Button>
+                  Checkout <Checkout />
+                </Button>
+              </p>
             </div>
           ))}
         </div>
