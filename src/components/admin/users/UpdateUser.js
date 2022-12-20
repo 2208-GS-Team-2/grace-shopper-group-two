@@ -71,15 +71,9 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
   */}
       <div>
         <label htmlFor="isAdmin">Admin: </label>
-        {/* <input
-          type="text"
-          id="isAdmin"
-          value={isAdmin}
-          onChange={updateIsAdminHandler}
-        /> */}
         <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
-          <option value="true">true</option>
-          <option value="false">false</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
       </div>
       <div
