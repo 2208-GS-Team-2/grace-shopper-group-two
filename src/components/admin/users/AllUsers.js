@@ -1,11 +1,17 @@
-import { Table, TableRow, TableHead, TableCell, TableBody, TableContainer, Paper, styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
-import Navbar from "../../mainPage/Navbar";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -50,9 +56,9 @@ const AllUsers = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  
+
   return (
-  
+
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
