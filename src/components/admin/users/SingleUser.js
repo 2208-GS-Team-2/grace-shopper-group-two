@@ -7,15 +7,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { setHasError, setSingleUser, setDeleteUser } from "../../../store/userSlice";
+import {
+  setHasError,
+  setSingleUser,
+  setDeleteUser,
+} from "../../../store/userSlice";
 import UpdateUser from "./UpdateUser";
 import { Button } from "@mui/material";
+import Navbar from "../../mainPage/Navbar";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,7 +41,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const SingleUser = () => {
+const SingleUser = ({ quantity }) => {
   //Custom Hooks
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -77,43 +81,53 @@ const SingleUser = () => {
     );
   }
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">Name</StyledTableCell>
-            <StyledTableCell align="center">Email</StyledTableCell>
-            <StyledTableCell align="center">Admin Status</StyledTableCell>
-            <StyledTableCell align="center">Update Role</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <StyledTableRow key={singleUser.id}>
-            <StyledTableCell component="th" scope="row" align="center">
-              {singleUser.username}
-            </StyledTableCell>
-            <StyledTableCell component="th" scope="row" align="center">
-              {singleUser.email}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {singleUser.isAdmin ? "True" : "False"}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              <Button
-                variant="contained"
-                onClick={() => setFormIsShown(true)}
-                style={{ margin: "5px" }}
-              >
-                Edit
-              </Button>
-              <Button variant="contained" onClick={() => deleteSingleUser()}>
-                Delete
-              </Button>
-            </StyledTableCell>
-          </StyledTableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+      </div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">Name</StyledTableCell>
+              <StyledTableCell align="center">Email</StyledTableCell>
+              <StyledTableCell align="center">Admin Status</StyledTableCell>
+              <StyledTableCell align="center">Update Role</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <StyledTableRow key={singleUser.id}>
+              <StyledTableCell component="th" scope="row" align="center">
+                {singleUser.username}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {singleUser.email}
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                {singleUser.isAdmin ? "Admin" : "-"}
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <div>
+                  <Button
+                    variant="contained"
+                    onClick={() => setFormIsShown(true)}
+                    style={{ margin: "5px" }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => deleteSingleUser()}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              </StyledTableCell>
+            </StyledTableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 

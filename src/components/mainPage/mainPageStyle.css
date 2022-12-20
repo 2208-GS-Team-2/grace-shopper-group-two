@@ -14,7 +14,7 @@ Link {
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
@@ -45,16 +45,16 @@ header {
   border-radius: 20%;
   width: 200px;
   max-width: 250px;
-  flex: 1;
+  flex: 2;
 }
 
 .header-content nav {
-  flex: 6;
+  flex: 8;
   justify-content: space-evenly;
 }
 
 .header-content .right-navbar {
-  flex: 4;
+  flex: 3;
   text-align: right;
 }
 

@@ -80,7 +80,10 @@ const App = () => {
             path="/allUsers"
             element={<AllUsers user={user} quantity={quantity} />}
           />
-          <Route path="/allUsers/:id" element={<SingleUser />} />
+          <Route
+            path="/allUsers/:id"
+            element={<SingleUser quantity={quantity} />}
+          />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>

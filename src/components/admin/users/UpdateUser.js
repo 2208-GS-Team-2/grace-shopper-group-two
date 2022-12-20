@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUpdatedSingleUser } from "../../../store/userSlice";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const UpdateUser = ({ singleUser, setFormIsShown }) => {
   //Custom Hooks:
@@ -45,60 +45,59 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
   };
 
   const renderForm = (
-    <form onSubmit={handleSumbitForm}>
-      <h2>Change User Fields</h2>
-      <div>
-        <label htmlFor="username">Name: </label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={updateUserNameHandler}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={updateEmailHandler}
-        />
-      </div>
-      {/* Change this to a boolean type field.
-      Site crashes if typing anything else
-      other than True, Yes, False, and No.
-  */}
-      <div>
-        <label htmlFor="isAdmin">Admin: </label>
-        {/* <input
-          type="text"
-          id="isAdmin"
-          value={isAdmin}
-          onChange={updateIsAdminHandler}
-        /> */}
-        <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
-          <option value="true">true</option>
-          <option value="false">false</option>
-        </select>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          padding: "5px",
-        }}
-      >
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-        <Button
-          variant="contained"
-          //   onClick={cancelUpdatedForm}
+    <div>
+      <form onSubmit={handleSumbitForm}>
+        <Box
+          display="flex"
+          flexDirection={"column"}
+          maxWidth={400}
+          alignItems="center"
+          justifyContent={"center"}
+          margin="auto"
+          marginTop={5}
+          padding={5}
+          borderRadius={5}
         >
-          Cancel
-        </Button>
-      </div>
-    </form>
+          <Typography className="update-user-title">
+            Change User Fields
+          </Typography>
+          <TextField
+            margin="normal"
+            type={"text"}
+            variant="outlined"
+            placeholder="username"
+            name="username"
+            value={username}
+            onChange={updateUserNameHandler}
+          ></TextField>
+          <TextField
+            margin="normal"
+            type={"text"}
+            variant="outlined"
+            placeholder="email"
+            name="email"
+            value={email}
+            onChange={updateEmailHandler}
+          ></TextField>
+
+          <Typography htmlFor="isAdmin">Admin: </Typography>
+          <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+
+          <Button
+            type="submit"
+            sx={{ marginTop: 5, borderRadius: 3 }}
+            variant="contained"
+            color="warning"
+          >
+            submit
+          </Button>
+          <Button onClick={() => navigate("/allusers")}>Cancel</Button>
+        </Box>
+      </form>
+    </div>
   );
   return <>{renderForm}</>;
 };

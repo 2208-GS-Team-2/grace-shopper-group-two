@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { setProducts } from "../../store/productSlice";
 import Navbar from "../mainPage/Navbar";
 import "./productsStyle.css";
-import { Button } from "@mui/material";
 
 const CreateNewProduct = ({ user, quantity }) => {
   //Custom hooks
