@@ -5,6 +5,7 @@ import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
 import PersonAddAltTwoToneIcon from "@mui/icons-material/PersonAddAltTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
+import Logout from "../Logout";
 
 const Navbar = ({ user, quantity }) => {
   return (
@@ -44,11 +45,13 @@ const Navbar = ({ user, quantity }) => {
                   <PersonAddAltTwoToneIcon fontSize={"large"} />
                 </Link>
               </li>
-              <li>
+              {!user.id ? <li>
                 <Link className="link" to="/login">
                   <AccountBoxTwoToneIcon fontSize={"large"} />
                 </Link>
-              </li>
+              </li>:
+                <Logout />
+              }
               <li>
                 <Link className="link" to="/carts/usercart">
                   <Badge className="badge" badgeContent={quantity}>
