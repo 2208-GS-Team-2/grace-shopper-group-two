@@ -4,7 +4,7 @@ import "./mainPageStyle.css";
 import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
 import PersonAddAltTwoToneIcon from "@mui/icons-material/PersonAddAltTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import Logout from "../Logout";
 import Login from "../Login";
 
@@ -44,13 +44,14 @@ const Navbar = ({ user, quantity }) => {
               <li>
                 <Link className="link" to="/createuser">
                   <PersonAddAltTwoToneIcon fontSize={"large"} />
+                  <Button sx={{ textTransform: "none" }}> Signup</Button>
                 </Link>
               </li>
               {!user.id ? (
                 <li>
                   <Link className="link" to="/login">
                     <AccountBoxTwoToneIcon fontSize={"large"} />
-                    <button> Sing In</button>
+                    <Button sx={{ textTransform: "none" }}> Singin</Button>
                   </Link>
                 </li>
               ) : (

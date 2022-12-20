@@ -151,13 +151,17 @@ section.slider img {
   width: 100%;
 }
 
+.list-unstyled-right-navbar Button {
+  background-color: rgb(226, 103, 41);
+  color: rgb(25, 22, 22);
+  font-weight: bold;
+}
 /* Touch section */
 .section-header {
   text-align: center;
 }
 .section-header .section-title {
   font-size: 35px;
-  text-transform: capitalize;
   margin: 20px;
 }
 .line {
@@ -188,12 +192,10 @@ section.slider img {
 
 .touch-item .touch-email {
   margin-bottom: 20px;
-  text-transform: capitalize;
 }
 
 .touch-item .touch-address {
   margin-bottom: 15px;
-  text-transform: capitalize;
 }
 
 .touch-phone-number,
