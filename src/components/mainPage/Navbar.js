@@ -6,7 +6,7 @@ import PersonAddAltTwoToneIcon from "@mui/icons-material/PersonAddAltTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import Logout from "../Logout";
-import Login from '../Login';
+import Login from "../Login";
 
 const Navbar = ({ user, quantity }) => {
   return (
@@ -39,26 +39,33 @@ const Navbar = ({ user, quantity }) => {
             </ul>
           </nav>
 
-          <div className="login">
-            <ul className="list-unstyled">
+          <div className="right-navbar">
+            <ul className="list-unstyled-right-navbar">
               <li>
                 <Link className="link" to="/createuser">
                   <PersonAddAltTwoToneIcon fontSize={"large"} />
                 </Link>
               </li>
-              {!user.id ? <li>
-                <Link className="link" to="/login">
-                  <AccountBoxTwoToneIcon fontSize={"large"} />
-                </Link>
-              </li>:
-                <Logout />
-              }
+              {!user.id ? (
+                <li>
+                  <Link className="link" to="/login">
+                    <AccountBoxTwoToneIcon fontSize={"large"} />
+                    <button> Sing In</button>
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  {/* <Link className="link" to="/logout"> */}
+                  {/* <button> Log out</button> */}
+                  <Logout />
+                  {/* </Link> */}
+                </li>
+              )}
               <li>
                 <Link className="link" to="/carts/usercart">
                   <Badge className="badge" badgeContent={quantity}>
                     <ShoppingCartIcon fontSize={"large"} />
                   </Badge>
-                  Your bag
                 </Link>
               </li>
             </ul>
