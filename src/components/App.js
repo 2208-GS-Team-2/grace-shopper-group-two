@@ -14,6 +14,7 @@ import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
 import "./appStyle.css";
 import Logout from "./Logout";
+
 const App = () => {
   //custom hooks:
   const dispatch = useDispatch();
@@ -75,7 +76,10 @@ const App = () => {
             key={cart.id}
             element={<SingleProduct cart={cart} quantity={quantity} />}
           />
-          <Route path="/carts/usercart" element={<Cart />} />
+          <Route
+            path="/carts/usercart"
+            element={<Cart quantity={quantity} />}
+          />
           <Route
             path="/allUsers"
             element={<AllUsers user={user} quantity={quantity} />}
