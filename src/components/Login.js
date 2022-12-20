@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import CreateUser from "./CreateUser";
 const Login = () => {
@@ -40,12 +40,15 @@ const Login = () => {
     const token = response.data;
     window.localStorage.setItem("token", token);
     loginWithToken(token);
-    console.log("log in");
     navigate("/");
   };
 
   if (createAccount) {
-    return <CreateUser />;
+    return (
+      <Link to="/createuser">
+        <CreateUser />
+      </Link>
+    );
   }
   return (
     <div>
