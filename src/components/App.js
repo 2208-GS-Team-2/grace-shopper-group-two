@@ -54,6 +54,14 @@ const App = () => {
     }
   }, [user]);
 
+  useEffect(async () => {
+    // go to localStorage and get the cartId
+    const cartId = localStorage.getItem("cartId");
+    if (!user.id && !cartId) {
+      const createNewCart = await axios.get();
+    }
+  }, []);
+
   useEffect(() => {
     updateCartIcon(cart);
   }, [cart]);

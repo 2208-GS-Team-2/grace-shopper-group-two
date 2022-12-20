@@ -20,7 +20,7 @@ router.post("/usercart", async (req, res, next) => {
     const findCartOfUserId = await Cart.findAll({
       where: { userId: userCart },
       include: [Product],
-      order: [[Product, "id", "DESC"]]
+      order: [[Product, "id", "DESC"]],
     });
     res.send(findCartOfUserId);
     // 1.get req.body from the front end and pass it he } = req.body;
@@ -54,7 +54,6 @@ router.post("/", async (req, res, next) => {
   try {
     const { totalPrice, quantity } = req.body;
     const newCart = await Cart.create({ totalPrice, quantity });
-
     res.sendStatus(204);
   } catch (err) {
     return res.status(501).send(err.message);
