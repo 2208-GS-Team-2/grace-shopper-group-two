@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import CreateUser from "./CreateUser";
 const Login = () => {
+  //Custom Hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //Local States
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
+  const [createAccount, setCreateAccount] = useState(false);
+  console.log(createAccount);
+
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
   };
@@ -38,25 +44,69 @@ const Login = () => {
     navigate("/");
   };
 
+  if (createAccount) {
+    return <CreateUser />;
+  }
   return (
     <div>
-      <h2>Sign In</h2>
       <form onSubmit={attemptLogin}>
-        <input
-          placeholder="username"
-          value={credentials.username}
-          name="username"
-          onChange={onChange}
-        />
-        <input
-          placeholder="password"
-          name="password"
-          value={credentials.password}
-          onChange={onChange}
-        />
-        <button>Login</button>
+        <Box
+          display="flex"
+          flexDirection={"column"}
+          maxWidth={400}
+          alignItems="center"
+          justifyContent={"center"}
+          margin="auto"
+          marginTop={5}
+          padding={5}
+          borderRadius={5}
+          boxShadow={"5px 5px 10px #ccc"}
+          sx={{
+            ":hover": {
+              boxShadow: "10px 10px 20px #ccc",
+            },
+          }}
+        >
+          <Typography variant="h2" padding={3} textAlign="center">
+            Login
+          </Typography>
+          <TextField
+            margin="normal"
+            type={"text"}
+            variant="outlined"
+            placeholder="username"
+            name="username"
+            value={credentials.username}
+            onChange={onChange}
+          ></TextField>
+          <TextField
+            margin="normal"
+            type={"password"}
+            variant="outlined"
+            placeholder="password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+          ></TextField>
+          <Button
+            type="submit"
+            sx={{ marginTop: 5, borderRadius: 3 }}
+            variant="contained"
+            color="warning"
+          >
+            Login
+          </Button>
+          <Button
+            type="submit"
+            sx={{ marginTop: 5, borderRadius: 3 }}
+            variant="contained"
+            color="success"
+            onClick={() => setCreateAccount(!createAccount)}
+          >
+            Create a new account
+          </Button>
+        </Box>
       </form>
-      <Link to="/createuser">Create a user account</Link>
     </div>
   );
 };
