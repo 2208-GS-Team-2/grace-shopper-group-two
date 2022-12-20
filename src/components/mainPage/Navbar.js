@@ -46,9 +46,7 @@ const Navbar = ({ user, quantity }) => {
                 </Link>
               </li>
               {!user.id ? <li>
-
                   <AccountBoxTwoToneIcon fontSize={"large"} />
-
               </li>:
                 <Logout />
               }
