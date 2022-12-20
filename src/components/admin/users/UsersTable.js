@@ -18,7 +18,7 @@ const UsersTable = ({ user, StyledTableCell, StyledTableRow }) => {
       <StyledTableCell align="center">{user.username}</StyledTableCell>
       <StyledTableCell align="center">{user.email}</StyledTableCell>
       <StyledTableCell align="center">
-        {userAdmin === "true" ? "Yes" : "No"}
+        {userAdmin === "true" ? "Admin" : "-"}
       </StyledTableCell>
 
       <StyledTableCell align="center">
