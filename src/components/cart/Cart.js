@@ -76,90 +76,75 @@ const Cart = ({ quantity }) => {
         </div>
       );
     });
-
-  const displayProducts = cart[0]["products"].map((product) => {
-    return (
-      <div key={product.id} style={{ display: "flex", padding: "5px" }}>
-        <img
-          src={`/${product.img}`}
-          alt={"image"}
-          style={{ width: "50px", height: "auto", borderRadius: "50%" }}
-        />
-        <h5 style={{ padding: "5px" }}>{product.name}</h5>
-        {/* <h5 style={{ padding: "5px" }}>
-          {product.CartProduct.productQuantity} Qty.
-        </h5> */}
-        <h5 style={{ padding: "5px" }}>{`${(
-          (product.price * product.CartProduct.productQuantity) /
-          100
-        ).toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}`}</h5>
-        <form>
-          <label>Qty:</label>
-          <input
-            type={"number"}
-            value={product.CartProduct.productQuantity}
-            min="0"
-            max="100"
-            onChange={() => handleQtyUpdate(product.id)}
-          />
-        </form>
-
-        <Button
-          variant="contained"
-          onClick={() => deleteProductFromCart(product.id, cart[0].id)}
-        >
-          Remove
-        </Button>
-      </div>
-    );
-  });
-
-  const cartDataTable = (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell>Image</TableCell>
-            <TableCell align="right">Product Name</TableCell>
-            <TableCell align="right">Price</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+  const shoppingCartData = (
+    <div className="wrapper">
+      <h1>Shooping Cart</h1>
+      <div className="project">
+        <div className="shop">
           {cart[0]["products"].map((product) => (
-            <TableRow
-              key={product.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <img
-                  style={{
-                    width: "150px",
-                    height: "auto",
-                    borderRadius: "50%",
-                  }}
-                  src={`/${product.img}`}
-                  alt="product-image"
-                />
-              </TableCell>
-              <TableCell align="right">{product.name}</TableCell>
-              <TableCell align="right">{product.price}</TableCell>
-              <TableCell align="right">{product.quantity}</TableCell>
-              <TableCell align="right">
-                <Button
-                  variant="contained"
-                  onClick={() => deleteProductFromCart(product.id, cart[0].id)}
-                >
-                  Remove
-                </Button>
-              </TableCell>
-            </TableRow>
+            <div className="box">
+              <img src={`/${product.img}`} alt="product-image" />
+              <div className="content">
+                <h3>{product.name}</h3>
+                <h4>
+                  Price:{" "}
+                  {`${(
+                    (product.price * product.CartProduct.productQuantity) /
+                    100
+                  ).toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}`}
+                </h4>
+                <p className="unit">
+                  <h4> Quantity:</h4>
+                  <form>
+                    <input
+                      type={"number"}
+                      value={product.CartProduct.productQuantity}
+                      min="0"
+                      max="100"
+                      onChange={() => handleQtyUpdate(product.id)}
+                    />
+                  </form>
+                </p>
+                <p className="btn-area">
+                  <i className="trash"></i>
+                  <button
+                    onClick={() =>
+                      deleteProductFromCart(product.id, cart[0].id)
+                    }
+                    className="btn2"
+                  >
+                    Remove
+                  </button>
+                </p>
+              </div>
+            </div>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </div>
+        <div className="right-bar">
+          {cart.map((cartItem) => (
+            <div className="right-bar">
+              <p>
+                <span>Total Price:</span>
+                <span>
+                  {` ${(cartItem.totalPrice / 100).toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}`}
+                </span>
+              </p>
+              <hr />
+              <p>
+                <span>Total Items:</span>
+                <span> {cartItem.cartQuantity}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 
   if (!cart[0].products.length) {
@@ -171,9 +156,7 @@ const Cart = ({ quantity }) => {
       <div className="header-content">
         <Navbar user={user} quantity={quantity} />
       </div>
-      {/* {displayProducts} */}
-      {renderCartData}
-      {cartDataTable}
+      {shoppingCartData}
     </div>
   );
 };
