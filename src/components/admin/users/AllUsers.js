@@ -1,10 +1,4 @@
-import {
-  Table,
-  TableRow,
-  TableHead,
-  TableCell,
-  TableBody,
-} from "@mui/material";
+import { Table, TableRow, TableHead, TableCell, TableBody, TableContainer, Paper, styled } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
@@ -13,7 +7,30 @@ import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
 import Navbar from "../../mainPage/Navbar";
 
-const AllUsers = ({ user, quantity }) => {
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+const AllUsers = () => {
+  // const {user} = useSelector
+  // const userAdmin = user.isAdmin.toString();
+
   //Customs Hooks:
   const dispatch = useDispatch();
 
@@ -33,31 +50,33 @@ const AllUsers = ({ user, quantity }) => {
   useEffect(() => {
     fetchUsers();
   }, []);
+  
   return (
-    <div className="con">
-      <div className="header-content">
-        {/* <div style={{ textAlign: "center" }}> */}
-        <Navbar user={user} quantity={quantity} />
-
-        <h2>All users</h2>
-        <Table border={1} style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ width: "175px" }}>Update</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Admin</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.length &&
-              users.map((user) => {
-                return <UsersTable key={user.id} user={user} />;
-              })}
-          </TableBody>
-        </Table>
-        {/* </div> */}
-      </div>
-    </div>
+  
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="center">User Name</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Admin Status</StyledTableCell>
+            <StyledTableCell align="center">Update</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {users.length
+            ? users.map((user) => (
+                <UsersTable
+                  StyledTableCell={StyledTableCell}
+                  StyledTableRow={StyledTableRow}
+                  key={user.id}
+                  user={user}
+                />
+              ))
+            : ""}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 export default AllUsers;

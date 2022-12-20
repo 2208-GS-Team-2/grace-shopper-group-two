@@ -13,6 +13,7 @@ import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
 import "./appStyle.css";
+import Logout from "./Logout";
 const App = () => {
   //custom hooks:
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ const App = () => {
             element={<MainPage quantity={quantity} user={user} />}
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products quantity={quantity} />} />
           <Route

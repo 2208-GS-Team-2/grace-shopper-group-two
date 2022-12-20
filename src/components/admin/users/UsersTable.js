@@ -1,19 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { TableCell, TableBody, Button, TableRow } from '@mui/material';
+import React from "react";
+import { Link } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
-const UsersTable = ({ user }) => {
+const UsersTable = ({ user, StyledTableCell, StyledTableRow }) => {
   const userAdmin = user.isAdmin.toString();
   return (
-      <TableRow>
-          <TableCell>
-            <Link key={user.id} to={`/allUsers/${user.id}`}>
-                <Button variant="contained">Update User Info</Button>
-            </Link>
-          </TableCell>
-          <TableCell>{user.username}</TableCell>
-          <TableCell>{userAdmin}</TableCell>
-      </TableRow>
+    <StyledTableRow key={user.id}>
+      <StyledTableCell align="center">{user.username}</StyledTableCell>
+      <StyledTableCell align="center">{user.email}</StyledTableCell>
+      <StyledTableCell align="center">{userAdmin}</StyledTableCell>
+
+      <StyledTableCell align="center">
+        <Link key={user.id} to={`/allUsers/${user.id}`}>
+          Update Info
+        </Link>
+      </StyledTableCell>
+    </StyledTableRow>
   );
 };
 

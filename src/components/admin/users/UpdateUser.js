@@ -12,7 +12,7 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
   const navigate = useNavigate();
   //States:
   const [username, setUserName] = useState(singleUser.username);
-  const [email, setEmail] = useState(singleUser.email);
+  const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(singleUser.isAdmin);
   //Handler functions
   const updateUserNameHandler = (event) => {
@@ -38,7 +38,7 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
     } catch (err) {
       console.log(`there is ${err} updating the data`);
     }
-    dispatch(setUpdatedSingleUser(updateUserInfo));
+    dispatch(setUpdatedSingleUser(updateUserInfo.data));
     const allUsers = await axios.get("/api/users");
     setFormIsShown(false);
     navigate("/allUsers");
@@ -65,7 +65,7 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
           onChange={updateEmailHandler}
         />
       </div>
-  {/* Change this to a boolean type field.
+      {/* Change this to a boolean type field.
       Site crashes if typing anything else
       other than True, Yes, False, and No.
   */}
@@ -78,8 +78,8 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
           onChange={updateIsAdminHandler}
         /> */}
         <select value={isAdmin} id="isAdmin" onChange={updateIsAdminHandler}>
-        <option value="true">true</option>
-        <option value="false">false</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
         </select>
       </div>
       <div
@@ -91,7 +91,8 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
         <Button variant="contained" type="submit">
           Submit
         </Button>
-        <Button variant="contained"
+        <Button
+          variant="contained"
           //   onClick={cancelUpdatedForm}
         >
           Cancel
