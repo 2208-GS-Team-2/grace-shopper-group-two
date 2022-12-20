@@ -1,21 +1,19 @@
 import React, { useEffect } from "react";
-import Home from "./Home";
 import Login from "./Login";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Products from "./products/Products";
 import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
 import SingleProduct from "./products/SingleProduct.js";
 import CreateUserPage from "./CreateUser";
-import { Badge } from "@mui/material";
 import Cart from "./cart/Cart";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
 import "./appStyle.css";
+import Logout from "./Logout";
 const App = () => {
   //custom hooks:
   const dispatch = useDispatch();
@@ -69,6 +67,7 @@ const App = () => {
             element={<MainPage quantity={quantity} user={user} />}
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/createuser" element={<CreateUserPage />} />
           <Route path="/products" element={<Products quantity={quantity} />} />
           <Route
