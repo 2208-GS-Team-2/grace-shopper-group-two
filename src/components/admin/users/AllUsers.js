@@ -12,6 +12,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
+import Navbar from "../../mainPage/Navbar";
+import "./userStyle.css";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-const AllUsers = () => {
+const AllUsers = ({ user, quantity }) => {
   // const {user} = useSelector
   // const userAdmin = user.isAdmin.toString();
   //Customs Hooks:
@@ -52,30 +54,35 @@ const AllUsers = () => {
   }, []);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">User Name</StyledTableCell>
-            <StyledTableCell align="center">Email</StyledTableCell>
-            <StyledTableCell align="center">Admin Status</StyledTableCell>
-            <StyledTableCell align="center">Update</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.length
-            ? users.map((user) => (
-                <UsersTable
-                  StyledTableCell={StyledTableCell}
-                  StyledTableRow={StyledTableRow}
-                  key={user.id}
-                  user={user}
-                />
-              ))
-            : ""}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="container">
+      <div className="header-content">
+        <Navbar user={user} quantity={quantity} />
+      </div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">User Name</StyledTableCell>
+              <StyledTableCell align="center">Email</StyledTableCell>
+              <StyledTableCell align="center">Admin Status</StyledTableCell>
+              <StyledTableCell align="center">Update</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.length
+              ? users.map((user) => (
+                  <UsersTable
+                    StyledTableCell={StyledTableCell}
+                    StyledTableRow={StyledTableRow}
+                    key={user.id}
+                    user={user}
+                  />
+                ))
+              : ""}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 export default AllUsers;

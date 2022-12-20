@@ -8,14 +8,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const UsersTable = ({ user, StyledTableCell, StyledTableRow }) => {
   const userAdmin = user.isAdmin.toString();
+
   return (
     <StyledTableRow key={user.id}>
       <StyledTableCell align="center">{user.username}</StyledTableCell>
       <StyledTableCell align="center">{user.email}</StyledTableCell>
-      <StyledTableCell align="center">{userAdmin}</StyledTableCell>
+      <StyledTableCell align="center">
+        {userAdmin === "true" ? "Yes" : "No"}
+      </StyledTableCell>
 
       <StyledTableCell align="center">
         <Link key={user.id} to={`/allUsers/${user.id}`}>
