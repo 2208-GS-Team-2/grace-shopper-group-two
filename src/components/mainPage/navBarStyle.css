@@ -1,0 +1,143 @@
+/* General styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Link {
+  color: black;
+} */
+
+/* .container {
+  width: 90%;
+  margin: auto;
+} */
+
+/* .list-unstyled {
+  list-style: none;
+} */
+
+/* :root {
+  --mainColor: #7b5244;
+  --subColor: #333;
+} */
+
+.pd-y {
+  padding: 120px 0;
+}
+/* Header Section */
+
+header {
+  padding: 20px;
+  width: 100%;
+}
+.header-content img {
+  border-radius: 20%;
+  width: 200px;
+  max-width: 250px;
+  flex: 2;
+}
+
+.header-content nav {
+
+  justify-content: space-evenly;
+}
+
+.header-content .right-navbar {
+
+  text-align: right;
+}
+
+header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header-content ul li {
+  display: inline-block;
+}
+
+header .header-content ul li,
+header .header-content ul li a {
+  color: var(--subColor);
+  font-weight: bold;
+}
+
+header .header-content nav ul li a {
+  padding: 5px 25px;
+  display: flex;
+  font-size: 40px;
+  justify-content: space-evenly;
+  color: rgb(126, 41, 15);
+}
+
+header .header-content .login ul li a {
+  padding: 20px;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+/* .badge {
+  color: rgb(126, 41, 15);
+} */
+
+/* .header-content nav ul li .link-item {
+  padding: 10px 24px;
+  display: block;
+  font-weight: bold;
+  position: relative;
+} */
+
+.header-content nav ul li .link-item:before {
+  content: "";
+  position: absolute;
+  border-width: 0 2px;
+  border-color: var(--mainColor);
+  border-style: solid;
+  width: 99%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s;
+  transform: scale3d(1, 0, 1);
+}
+
+.header-content nav ul li .link-item:hover:before {
+  transform: scale3d(1, 1, 1);
+}
+
+.header-content nav ul li .link-item:after {
+  content: "";
+  position: absolute;
+  border-width: 2px 0;
+  border-color: var(--mainColor);
+  border-style: solid;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  transition: transform 0.2s;
+  transform: scale3d(1, 0, 1);
+}
+
+.header-content nav ul li .link-item:hover:after {
+  transform: scale3d(1, 1, 1);
+}
+
+.list-unstyled-right-navbar {
+  display: right;
+  justify-content: space-between;
+  text-align: center;
+  margin: auto;
+}
+
+.list-unstyled-right-navbar li {
+  padding: 10px;
+}
+
+

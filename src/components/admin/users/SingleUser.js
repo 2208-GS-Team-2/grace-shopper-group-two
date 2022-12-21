@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -19,7 +18,6 @@ import {
 } from "../../../store/userSlice";
 import UpdateUser from "./UpdateUser";
 import { Button } from "@mui/material";
-import Navbar from "../../mainPage/Navbar";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -82,9 +80,6 @@ const SingleUser = ({ quantity }) => {
   }
   return (
     <div className="container">
-      <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
-      </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>

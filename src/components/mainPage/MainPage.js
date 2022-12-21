@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./mainPageStyle.css";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import BusinessIcon from "@mui/icons-material/Business";
 
-import Navbar from "./Navbar";
 const MainPage = ({ quantity, user }) => {
   return (
     <body>
-      <Navbar user={user} quantity={quantity} />
+      <div>
+
       {/* Slider section */}
       <section className="slider">
         <div className="container">
@@ -39,6 +38,7 @@ const MainPage = ({ quantity, user }) => {
               <BusinessIcon fontSize={"large"} />
               <h3 className="touch-address">address</h3>
               <span className="address">1234 Bubby Drive</span>
+            </div>
             </div>
           </div>
         </div>

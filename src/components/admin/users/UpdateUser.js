@@ -1,6 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUpdatedSingleUser } from "../../../store/userSlice";
@@ -31,15 +30,12 @@ const UpdateUser = ({ singleUser, setFormIsShown }) => {
     event.preventDefault();
     const updateUserInfo = { username, email, isAdmin };
     try {
-      const response = await axios.put(
-        `/api/users/${singleUser.id}`,
-        updateUserInfo
-      );
+      await axios.put(`/api/users/${singleUser.id}`, updateUserInfo);
     } catch (err) {
       console.log(`there is ${err} updating the data`);
     }
     dispatch(setUpdatedSingleUser(updateUserInfo.data));
-    const allUsers = await axios.get("/api/users");
+    await axios.get("/api/users");
     setFormIsShown(false);
     navigate("/allUsers");
   };

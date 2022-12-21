@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUpdatedProduct } from "../../store/productSlice";
-import Navbar from "../mainPage/Navbar";
 
 const UpdateProduct = ({ singleProduct, setFormIsShown, user, quantity }) => {
   //Custom Hooks:
@@ -84,7 +83,6 @@ const UpdateProduct = ({ singleProduct, setFormIsShown, user, quantity }) => {
   return (
     <div className="container">
       <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
       </div>
       <div className="create-product-content">{renderForm}</div>
     </div>

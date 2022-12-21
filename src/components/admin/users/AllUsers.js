@@ -12,7 +12,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHasError, setUsers } from "../../../store/userSlice";
 import UsersTable from "./UsersTable";
-import Navbar from "../../mainPage/Navbar";
 import "./userStyle.css";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,8 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const AllUsers = ({ user, quantity }) => {
-  // const {user} = useSelector
-  // const userAdmin = user.isAdmin.toString();
+
   //Customs Hooks:
   const dispatch = useDispatch();
   //Selectors
@@ -56,7 +54,6 @@ const AllUsers = ({ user, quantity }) => {
   return (
     <div className="container">
       <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
       </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">

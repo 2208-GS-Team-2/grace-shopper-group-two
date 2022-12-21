@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { resetUser } from "../store/userSlice";
 import { resetQuantity, resetCart } from "../store/cartSlices/cartSlice";
-
 import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
 
 const Logout = () => {
@@ -15,13 +14,13 @@ const Logout = () => {
     dispatch(resetUser());
     dispatch(resetQuantity());
     dispatch(resetCart());
-    console.log("log out");
+    console.log("user is logged out");
     navigate("/");
   };
 
   return (
     <div>
-      <button onClick={() => logout()}>Sing Out</button>
+      <button onClick={() => logout()}>Log Out</button>
     </div>
   );
 };

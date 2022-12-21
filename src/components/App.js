@@ -12,8 +12,9 @@ import Cart from "./cart/Cart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
-import "./appStyle.css";
+// import "./appStyle.css";
 import Logout from "./Logout";
+import Navbar from "./mainPage/Navbar";
 
 const App = () => {
   //custom hooks:
@@ -62,6 +63,9 @@ const App = () => {
   return (
     <div>
       <div>
+        <nav>
+        <Navbar user={user} quantity={quantity} />
+        </nav>
         <Routes>
           <Route
             path="/"

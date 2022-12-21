@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./mainPageStyle.css";
 import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
 import PersonAddAltTwoToneIcon from "@mui/icons-material/PersonAddAltTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge, Button } from "@mui/material";
 import Logout from "../Logout";
-import Login from "../Login";
+import "./navBarStyle.css";
 
 const Navbar = ({ user, quantity }) => {
   return (
@@ -51,7 +50,7 @@ const Navbar = ({ user, quantity }) => {
                 <li>
                   <Link className="link" to="/login">
                     <AccountBoxTwoToneIcon fontSize={"large"} />
-                    <Button sx={{ textTransform: "none" }}> Singin</Button>
+                    <Button sx={{ textTransform: "none" }}>Login</Button>
                   </Link>
                 </li>
               ) : (

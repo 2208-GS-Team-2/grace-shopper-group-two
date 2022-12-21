@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setProducts } from "../../store/productSlice";
-import Navbar from "../mainPage/Navbar";
 import "./productsStyle.css";
 
 const CreateNewProduct = ({ user, quantity }) => {
@@ -84,7 +83,6 @@ const CreateNewProduct = ({ user, quantity }) => {
   return (
     <div className="container">
       <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
       </div>
       <div className="create-product-content">
         <h3 className="add-product-title">Add A New Product</h3>

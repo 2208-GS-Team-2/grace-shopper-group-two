@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../store/cartSlices/cartSlice";
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import axios from "axios";
-import Navbar from "../mainPage/Navbar";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import "./cartStyle.css";
+
 const Cart = ({ quantity }) => {
   //Selectors
   const { cart } = useSelector((state) => state.cart);
@@ -61,7 +54,7 @@ const Cart = ({ quantity }) => {
   }
 
   const renderCartData =
-    cart.length &&
+    // cart.length &&
     cart.map((cartItem) => {
       return (
         <div key={cartItem.id}>
@@ -78,7 +71,7 @@ const Cart = ({ quantity }) => {
     });
   const shoppingCartData = (
     <div className="wrapper">
-      <h1>Shooping Cart</h1>
+      <h2>Shopping Cart</h2>
       <div className="project">
         <div className="shop">
           {cart[0]["products"].map((product) => (
@@ -96,7 +89,7 @@ const Cart = ({ quantity }) => {
                     currency: "USD",
                   })}`}
                 </h4>
-                <p className="unit">
+                <div className="unit">
                   <h4> Quantity:</h4>
                   <form>
                     <input
@@ -107,7 +100,7 @@ const Cart = ({ quantity }) => {
                       onChange={() => handleQtyUpdate(product.id)}
                     />
                   </form>
-                </p>
+                </div>
                 <p className="btn-area">
                   <i className="trash"></i>
                   <button
@@ -140,11 +133,6 @@ const Cart = ({ quantity }) => {
                 <span>Total Items:</span>
                 <span> {cartItem.cartQuantity}</span>
               </p>
-              <p>
-                <Button>
-                  Checkout <Checkout />
-                </Button>
-              </p>
             </div>
           ))}
         </div>
@@ -159,7 +147,6 @@ const Cart = ({ quantity }) => {
   return (
     <div className="container">
       <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
       </div>
       {shoppingCartData}
     </div>

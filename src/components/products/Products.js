@@ -11,7 +11,6 @@ import {
 import CreateNewProduct from "./CreateNewProduct.js";
 import { useState } from "react";
 import "./productsStyle.css";
-import Navbar from "../mainPage/Navbar.js";
 import { Button, Tooltip } from "@mui/material";
 
 const Products = ({ quantity }) => {
@@ -68,7 +67,6 @@ const Products = ({ quantity }) => {
   return (
     <div className="container products">
       <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
         <div className="create-product-button">
           {user.isAdmin && (
             <Tooltip title={<h3>Only admin can add a new product.</h3>}>
