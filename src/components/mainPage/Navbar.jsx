@@ -26,7 +26,9 @@ const Navbar = ({ user, quantity }) => {
                 </Link>
               </li>
               <li>
-                <Link className="link-item">About Us</Link>
+                <Link className="link-item" to="/about">
+                  About Us
+                </Link>
               </li>
               <li>
                 {user.isAdmin && (
@@ -55,10 +57,7 @@ const Navbar = ({ user, quantity }) => {
                 </li>
               ) : (
                 <li>
-                  {/* <Link className="link" to="/logout"> */}
-                  {/* <button> Log out</button> */}
                   <Logout />
-                  {/* </Link> */}
                 </li>
               )}
               <li>

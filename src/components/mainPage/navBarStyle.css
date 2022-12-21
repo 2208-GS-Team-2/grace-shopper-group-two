@@ -41,13 +41,13 @@ header {
   flex: 2;
 }
 
-.header-content nav {
-
+.header-content nav .navbar {
+  /* display: flex;
+  flex-direction: row; */
   justify-content: space-evenly;
 }
 
 .header-content .right-navbar {
-
   text-align: right;
 }
 
@@ -130,10 +130,11 @@ header .header-content .login ul li a {
 }
 
 .list-unstyled-right-navbar {
-  display: right;
-  justify-content: space-between;
-  text-align: center;
-  margin: auto;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* text-align: center; */
+  /* margin: auto; */
 }
 
 .list-unstyled-right-navbar li {

@@ -14,6 +14,7 @@ import MainPage from "./mainPage/MainPage";
 import Login from "./Login";
 import Logout from "./Logout";
 import Navbar from "./mainPage/Navbar";
+import AboutUs from "./AboutUs";
 
 const App = () => {
   //custom hooks:
@@ -73,6 +74,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/createuser" element={<CreateUserPage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/products" element={<Products quantity={quantity} />} />
           <Route
             path="/products/:id"
