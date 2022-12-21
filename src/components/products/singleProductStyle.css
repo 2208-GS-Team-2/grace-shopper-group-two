@@ -1,5 +1,8 @@
 .single-product-content {
-  margin: 200px;
+  margin: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;

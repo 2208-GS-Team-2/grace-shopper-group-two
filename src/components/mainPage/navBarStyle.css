@@ -16,9 +16,10 @@
   margin: auto;
 } */
 
-/* .list-unstyled {
-  list-style: none;
-} */
+.list-unstyled {
+  display: flex;
+  flex-direction: row;
+}
 
 /* :root {
   --mainColor: #7b5244;

@@ -6,9 +6,9 @@ import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import { Button, CircularProgress, Tooltip } from "@mui/material";
 import UpdateProduct from "./UpdateProduct";
-import "./singleProductStyle.css";
 import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productSlice";
 import { setCart } from "../../store/cartSlices/cartSlice";
+import "./singleProductStyle.css";
 
 const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
@@ -85,9 +85,7 @@ const SingleProduct = ({ quantity }) => {
     );
   }
   return (
-    <div className="container">
-      <div className="header-content">
-      </div>
+    <div>
       <div className="single-product-content">
         <img
           src={`/${singleProduct.img}`}
