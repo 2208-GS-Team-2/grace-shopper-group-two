@@ -33,6 +33,7 @@
 header {
   padding: 20px;
   width: 100%;
+  margin-bottom: 0px;
 }
 .header-content img {
   border-radius: 20%;

@@ -1,5 +1,5 @@
 .create-product-button {
-  padding: 50px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +52,11 @@
 
 .product-content {
   display: flex;
+  row-gap: 50px;
+  column-gap: 50px;
   flex-wrap: wrap;
+  margin-top: 20px;
+  align-content: center;
 }
 .product-card {
   display: flex;
@@ -66,7 +70,7 @@
 }
 
 .link-item-products {
-  padding: 20px;
+  padding: 5px;
   align-items: center;
   justify-content: center;
 }
