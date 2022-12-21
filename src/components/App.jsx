@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
-import Login from "./Login";
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Products from "./products/Products";
 import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
-import SingleProduct from "./products/SingleProduct.js";
+import SingleProduct from "./products/SingleProduct";
 import CreateUserPage from "./CreateUser";
 import Cart from "./cart/Cart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
-// import "./appStyle.css";
+import Login from "./Login";
 import Logout from "./Logout";
 import Navbar from "./mainPage/Navbar";
 

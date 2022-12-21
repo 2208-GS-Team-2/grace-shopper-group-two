@@ -7,17 +7,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  setHasError,
-  setSingleUser,
-  setDeleteUser,
-} from "../../../store/userSlice";
-import UpdateUser from "./UpdateUser";
 import { Button } from "@mui/material";
+import { setHasError, setSingleUser, setDeleteUser } from "../../../store/userSlice";
+import UpdateUser from "./UpdateUser";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

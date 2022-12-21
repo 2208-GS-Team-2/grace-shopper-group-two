@@ -2,18 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  setLoadingProduct,
-  setSingleProduct,
-  setDeleteProduct,
-} from "../../store/productSlice";
-import UpdateProduct from "./UpdateProduct";
-import { setCart } from "../../store/cartSlices/cartSlice";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import { Button, CircularProgress, Tooltip } from "@mui/material";
-
+import UpdateProduct from "./UpdateProduct";
 import "./singleProductStyle.css";
+import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productSlice";
+import { setCart } from "../../store/cartSlices/cartSlice";
+
 const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
   const dispatch = useDispatch();

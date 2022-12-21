@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUpdatedSingleUser } from "../../../store/userSlice";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { setUpdatedSingleUser } from "../../../store/userSlice";
 
 const UpdateUser = ({ singleUser, setFormIsShown }) => {
   //Custom Hooks:

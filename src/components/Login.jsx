@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/userSlice";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import CreateUser from "./CreateUser";
+import { setUser } from "../store/userSlice";
 
 const Login = () => {
   //Custom Hooks

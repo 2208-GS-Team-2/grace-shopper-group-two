@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../../store/cartSlices/cartSlice";
-import { CircularProgress } from "@mui/material";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 import "./cartStyle.css";
+import { setCart } from "../../store/cartSlices/cartSlice";
 
 const Cart = ({ quantity }) => {
   //Selectors

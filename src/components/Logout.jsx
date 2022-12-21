@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
+import { Button } from "@mui/material";
 import { resetUser } from "../store/userSlice";
 import { resetQuantity, resetCart } from "../store/cartSlices/cartSlice";
-import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
 
 const Logout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+Button
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
@@ -20,7 +21,10 @@ const Logout = () => {
 
   return (
     <div>
-      <button onClick={() => logout()}>Log Out</button>
+      <LogoutTwoToneIcon fontSize={"large"} />
+      <Button
+        sx={{ textTransform: "none"}}
+        onClick={() => logout()}>Logout</Button>
     </div>
   );
 };

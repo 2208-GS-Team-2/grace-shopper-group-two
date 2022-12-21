@@ -1,17 +1,13 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts, setHasError } from "../../store/productSlice.js";
-import ProductCard from "./ProductCard.js";
-import {
-  setSingleProduct,
-  setLoadingProduct,
-  setDeleteProduct,
-} from "../../store/productSlice.js";
-import CreateNewProduct from "./CreateNewProduct.js";
 import { useState } from "react";
-import "./productsStyle.css";
 import { Button, Tooltip } from "@mui/material";
+import CreateNewProduct from "./CreateNewProduct.jsx";
+import ProductCard from "./ProductCard.jsx";
+import { setProducts, setHasError } from "../../store/productSlice.js";
+import { setSingleProduct, setLoadingProduct, setDeleteProduct, } from "../../store/productSlice.js";
+import "./productsStyle.css";
 
 const Products = ({ quantity }) => {
   //CUSTOM HOOKS:
