@@ -1,6 +1,6 @@
 const app = require("./app");
 const seed = require("./db/seed");
-import dotenv from "dotenv";
+const dotenv = require('dotenv');
 
 dotenv.config();
 
