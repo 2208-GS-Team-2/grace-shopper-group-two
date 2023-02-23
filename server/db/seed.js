@@ -1,8 +1,9 @@
-const dotenv = require('dotenv');
+require('dotenv').config()
 const db = require('./db');
 const { User, Product, Cart, Review } = require('./');
-
-dotenv.config();
+console.log("🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀");
+console.log(process.env);
+// dotenv.config();
 
 const products = [
   {
