@@ -1,5 +1,8 @@
 const db = require('./db');
 const { User, Product, Cart, Review } = require('./');
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const products = [
   {
