@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
-import Login from "./Login";
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Products from "./products/Products";
 import AllUsers from "./admin/users/AllUsers";
 import SingleUser from "./admin/users/SingleUser";
-import SingleProduct from "./products/SingleProduct.js";
+import SingleProduct from "./products/SingleProduct";
 import CreateUserPage from "./CreateUser";
 import Cart from "./cart/Cart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
 import MainPage from "./mainPage/MainPage";
-import "./appStyle.css";
+import Login from "./Login";
 import Logout from "./Logout";
+import Navbar from "./mainPage/Navbar";
+import AboutUs from "./AboutUs";
+
 const App = () => {
   //custom hooks:
   const dispatch = useDispatch();
@@ -61,6 +63,9 @@ const App = () => {
   return (
     <div>
       <div>
+        <nav>
+        <Navbar user={user} quantity={quantity} />
+        </nav>
         <Routes>
           <Route
             path="/"
@@ -69,18 +74,25 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/createuser" element={<CreateUserPage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/products" element={<Products quantity={quantity} />} />
           <Route
             path="/products/:id"
-            key={cart.id}
+
             element={<SingleProduct cart={cart} quantity={quantity} />}
           />
-          <Route path="/carts/usercart" element={<Cart />} />
+          <Route
+            path="/carts/usercart"
+            element={<Cart quantity={quantity} />}
+          />
           <Route
             path="/allUsers"
             element={<AllUsers user={user} quantity={quantity} />}
           />
-          <Route path="/allUsers/:id" element={<SingleUser />} />
+          <Route
+            path="/allUsers/:id"
+            element={<SingleUser quantity={quantity} />}
+          />
           <Route exact path="/*" element={<p>Page Not Found</p>}></Route>
         </Routes>
       </div>

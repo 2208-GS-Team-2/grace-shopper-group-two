@@ -1,15 +1,9 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Button, Tooltip, } from "@mui/material";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./productCardStyle.css"
 
 const ProductCard = ({ product, user }) => {
   return (

@@ -4,7 +4,10 @@ const router = express.Router();
 
 //get all users
 router.get("/", async (req, res, next) => {
-  const users = await User.findAll({ include: [Review, Cart] });
+  const users = await User.findAll({
+    include: [Review, Cart],
+    order: [["username", "ASC"]],
+  });
   res.send(users);
 });
 
@@ -52,23 +55,25 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+//To create a new user
 router.post("/", async (req, res, next) => {
+  // take name, password and email from the user.
   const { username, password, email } = req.body;
-
   const users = await User.findAll();
   const usersEmail = users.map((user) => user.email);
 
+  // if the email exists, direct them to use a different email
   if (usersEmail.includes(email)) {
     return res.sendStatus(403);
     // return res.status(403).send({ message: USE A DIFFERENT EMAIL })
   }
-
+  // the email is not found, create a new user.
   const newUser = await User.create({
     username,
     password,
     email,
   });
-
+  // the email is not found, create a new user; then create a new cart.
   const newCart = await Cart.create();
   newCart.setUser(newUser);
 

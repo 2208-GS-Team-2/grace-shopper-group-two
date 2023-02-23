@@ -5,31 +5,26 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "PT Sans", sans-serif;
-}
 
-Link {
+
+/* Link {
   color: black;
-}
+} */
 
-.container {
+/* .container {
   width: 90%;
   margin: auto;
-}
+} */
 
 .list-unstyled {
-  list-style: none;
+  display: flex;
+  flex-direction: row;
 }
 
-:root {
+/* :root {
   --mainColor: #7b5244;
   --subColor: #333;
-}
-
-a {
-  text-decoration: none;
-}
+} */
 
 .pd-y {
   padding: 120px 0;
@@ -37,9 +32,9 @@ a {
 /* Header Section */
 
 header {
-  padding: 20px 0;
-  /* position: fixed;
-  width: 100%; */
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 0px;
 }
 .header-content img {
   border-radius: 20%;
@@ -48,13 +43,13 @@ header {
   flex: 2;
 }
 
-.header-content nav {
-  flex: 8;
+.header-content nav .navbar {
+  /* display: flex;
+  flex-direction: row; */
   justify-content: space-evenly;
 }
 
 .header-content .right-navbar {
-  flex: 3;
   text-align: right;
 }
 
@@ -89,16 +84,17 @@ header .header-content .login ul li a {
   justify-content: space-between;
 }
 
-.badge {
+/* .badge {
   color: rgb(126, 41, 15);
-}
+} */
 
-.header-content nav ul li .link-item {
+/* .header-content nav ul li .link-item {
   padding: 10px 24px;
   display: block;
   font-weight: bold;
   position: relative;
-}
+} */
+
 .header-content nav ul li .link-item:before {
   content: "";
   position: absolute;
@@ -136,75 +132,15 @@ header .header-content .login ul li a {
 }
 
 .list-unstyled-right-navbar {
-  display: right;
-  justify-content: space-between;
-  text-align: center;
-  margin: auto;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* text-align: center; */
+  /* margin: auto; */
 }
 
 .list-unstyled-right-navbar li {
   padding: 10px;
 }
-/* Slider Section */
 
-section.slider img {
-  width: 100%;
-}
 
-.list-unstyled-right-navbar Button {
-  background-color: rgb(226, 103, 41);
-  color: rgb(25, 22, 22);
-  font-weight: bold;
-}
-/* Touch section */
-.section-header {
-  text-align: center;
-}
-.section-header .section-title {
-  font-size: 35px;
-  margin: 20px;
-}
-.line {
-  display: block;
-  height: 5px;
-  width: 60px;
-  margin: 0 auto 70px auto;
-  background-color: var(--mainColor);
-}
-
-.touch-item {
-  float: left;
-  width: 30%;
-  text-align: center;
-}
-
-.touch-item.mg {
-  margin: 0 5%;
-}
-.touch-item .touch-icon {
-  color: var(--mainColor);
-  margin-bottom: 40px;
-}
-
-.touch-phone {
-  margin-bottom: 20px;
-}
-
-.touch-item .touch-email {
-  margin-bottom: 20px;
-}
-
-.touch-item .touch-address {
-  margin-bottom: 15px;
-}
-
-.touch-phone-number,
-.email,
-.address {
-  color: var(--grayColor);
-}
-.copyright {
-  font-weight: bold;
-  color: rgb(84, 56, 56);
-  font-size: 30px;
-}

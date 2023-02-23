@@ -2,19 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  setLoadingProduct,
-  setSingleProduct,
-  setDeleteProduct,
-} from "../../store/productSlice";
-import UpdateProduct from "./UpdateProduct";
-import { setCart } from "../../store/cartSlices/cartSlice";
-import Navbar from "../mainPage/Navbar";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import { Button, CircularProgress, Tooltip } from "@mui/material";
-
+import UpdateProduct from "./UpdateProduct";
+import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productSlice";
+import { setCart } from "../../store/cartSlices/cartSlice";
 import "./singleProductStyle.css";
+
 const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -90,10 +85,7 @@ const SingleProduct = ({ quantity }) => {
     );
   }
   return (
-    <div className="container">
-      <div className="header-content">
-        <Navbar user={user} quantity={quantity} />
-      </div>
+    <div>
       <div className="single-product-content">
         <img
           src={`/${singleProduct.img}`}
@@ -109,7 +101,7 @@ const SingleProduct = ({ quantity }) => {
           className="addtocart"
           onClick={() => handleAddToCart(singleProduct.id)}
         >
-          <div class="pretext"> add to cart</div>
+          <div className="pretext"> add to cart</div>
         </Button>
         <h3>{singleProduct.description}</h3>
 

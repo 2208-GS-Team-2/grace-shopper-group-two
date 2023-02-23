@@ -20,7 +20,7 @@ router.post("/usercart", async (req, res, next) => {
     const findCartOfUserId = await Cart.findAll({
       where: { userId: userCart },
       include: [Product],
-      order: [[Product, "id", "DESC"]]
+      order: [[Product, "name", "ASC"]],
     });
     res.send(findCartOfUserId);
     // 1.get req.body from the front end and pass it he } = req.body;
