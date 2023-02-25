@@ -1,22 +1,22 @@
 module.exports = {
-  devtool: 'source-map',
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: ["@babel/preset-env", "@babel/preset-react"],
         },
       },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
-  },
+    extensions: ["*", ".js", ".jsx"],
+  }
 };
