@@ -1,6 +1,6 @@
 const db = require('./db');
 const { INTEGER, UUID, UUIDV4, VIRTUAL } = require('sequelize');
-const Product = require('./product')
+const Product = require('./Product')
 
 const CartProduct = db.define('CartProduct', {
   id: {

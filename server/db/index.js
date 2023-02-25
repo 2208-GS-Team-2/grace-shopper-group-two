@@ -1,6 +1,6 @@
 const db = require("./db");
 const User = require("./User");
-const CartProduct = require("./cartProduct");
+const CartProduct = require("./CartProduct");
 const Cart = require("./Cart");
 const Product = require("./Product");
 const Review = require("./Review");
