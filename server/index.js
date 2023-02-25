@@ -1,9 +1,5 @@
 const app = require("./app");
 const seed = require("./db/seed");
-require('dotenv').config()
-
-
-// dotenv.config();
 
 const init = async () => {
 	try {
