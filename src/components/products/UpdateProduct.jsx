@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUpdatedProduct } from "../../store/productSlice";
+import { setUpdatedProduct } from "../../store/productStuffSlice";
 
 const UpdateProduct = ({ singleProduct, setFormIsShown, user, quantity }) => {
   //Custom Hooks:
