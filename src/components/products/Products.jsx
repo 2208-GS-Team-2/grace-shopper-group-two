@@ -5,8 +5,7 @@ import { useState } from "react";
 import { Button, Tooltip } from "@mui/material";
 import CreateNewProduct from "./CreateNewProduct.jsx";
 import ProductCard from "./ProductCard.jsx";
-import { setProducts, setHasError } from "../../store/productSlice.js";
-import { setSingleProduct, setLoadingProduct, setDeleteProduct, } from "../../store/productSlice.js";
+import { setSingleProduct, setLoadingProduct, setDeleteProduct, setProducts, setHasError } from "../../store/productStuffSlice";
 import "./productsStyle.css";
 
 const Products = ({ quantity }) => {

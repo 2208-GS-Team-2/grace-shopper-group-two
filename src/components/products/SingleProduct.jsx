@@ -6,7 +6,7 @@ import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import { Button, CircularProgress, Tooltip } from "@mui/material";
 import UpdateProduct from "./UpdateProduct";
-import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productSlice";
+import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productStuffSlice";
 import { setCart } from "../../store/cartSlices/cartSlice";
 import "./singleProductStyle.css";
 

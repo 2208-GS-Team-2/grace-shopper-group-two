@@ -7,7 +7,7 @@ const initialState = {
   hasError: false,
 };
 
-const productSlice = createSlice({
+const productStuffSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
@@ -49,6 +49,6 @@ export const {
   setDeleteProduct,
   setUpdatedProduct,
   setHasError,
-} = productSlice.actions;
+} = productStuffSlice.actions;
 
-export default productSlice.reducer;
+export default productStuffSlice.reducer;
