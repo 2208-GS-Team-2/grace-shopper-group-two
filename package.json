@@ -34,13 +34,13 @@
     "react-router-dom": "^6.4.2",
     "sequelize": "^6.25.3",
     "style-loader": "^3.3.1",
-    "volleyball": "^1.5.1"
-  },
-  "devDependencies": {
+    "volleyball": "^1.5.1",
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "babel-loader": "^9.0.0",
+    "babel-loader": "^8.0.4"
+  },
+  "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
