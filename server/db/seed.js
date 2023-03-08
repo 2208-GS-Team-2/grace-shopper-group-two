@@ -1,6 +1,7 @@
 // require('dotenv').config()
 const db = require("./db");
 const { User, Product, Cart, Review } = require("./");
+const { BatteryCharging50TwoTone } = require("@mui/icons-material");
 
 const products = [
 	{
@@ -262,6 +263,7 @@ const carts = [
 	{ totalPrice: 10 },
 	{ totalPrice: 10 },
 	{ totalPrice: 10 },
+	{ totalPrice: 0 },
 ];
 
 const reviews = [
@@ -297,7 +299,7 @@ const seed = async () => {
 		product21,
 	] = await Promise.all(products.map((item) => Product.create(item)));
 
-	const [steve, lena, topher, anton] = await Promise.all([
+	const [steve, lena, topher, anton, guest] = await Promise.all([
 		User.create({ username: "steve", password: "123" }),
 		User.create({ username: "lena", password: "123" }),
 		User.create({ username: "topher", password: "123" }),
@@ -306,7 +308,7 @@ const seed = async () => {
 		User.create({ username: "guest", password: "123" }),
 	]);
 
-	const [cart1, cart2, cart3, cart4] = await Promise.all(
+	const [cart1, cart2, cart3, cart4, cart5] = await Promise.all(
 		carts.map((cartItem) => Cart.create(cartItem))
 	);
 
@@ -336,6 +338,8 @@ const seed = async () => {
 	cart2.setUser(anton);
 	cart3.setUser(topher);
 	cart4.setUser(lena);
+	cart5.setUser(guest);
+
 	console.log("DONE RUNNING SEED...");
 };
 
