@@ -263,7 +263,7 @@ const carts = [
 	{ totalPrice: 10 },
 	{ totalPrice: 10 },
 	{ totalPrice: 10 },
-	{ totalPrice: 0 },
+	{ totalPrice: 10 },
 ];
 
 const reviews = [
@@ -328,6 +328,7 @@ const seed = async () => {
 		product6,
 		product7,
 	]);
+	cart5.addProducts([product15]);
 
 	review1.setProduct(product1);
 	review2.setProduct(product2);
