@@ -299,7 +299,7 @@ const seed = async () => {
 		product21,
 	] = await Promise.all(products.map((item) => Product.create(item)));
 
-	const [steve, lena, topher, anton, guest] = await Promise.all([
+	const [steve, lena, topher, anton, admin, guest] = await Promise.all([
 		User.create({ username: "steve", password: "123" }),
 		User.create({ username: "lena", password: "123" }),
 		User.create({ username: "topher", password: "123" }),
@@ -328,7 +328,6 @@ const seed = async () => {
 		product6,
 		product7,
 	]);
-	cart5.addProducts([product15]);
 
 	review1.setProduct(product1);
 	review2.setProduct(product2);
