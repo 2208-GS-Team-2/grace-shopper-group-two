@@ -10,7 +10,7 @@ const ProductCard = ({ product, user }) => {
     <div key={product.id} className="product-card">
       <Link key={product.id} to={`/products/${product.id}`}>
         <div className="link-item-products">
-          <img src={product.img} alt="product-image" />
+          <img className="productCardImg" src={product.img} alt="product-image" />
           <h3>{product.name}</h3>
           <h5>
             {`${(product.price / 100).toLocaleString("en-US", {

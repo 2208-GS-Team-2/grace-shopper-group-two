@@ -9,14 +9,15 @@ body {
   font-family: "PT Sans", sans-serif;
 }
 
+.container {
+  width: 80%;
+  margin: auto;
+}
+
 Link {
   color: black;
 }
 
-.container {
-  width: 90%;
-  margin: auto;
-}
 
 .list-unstyled {
   list-style: none;

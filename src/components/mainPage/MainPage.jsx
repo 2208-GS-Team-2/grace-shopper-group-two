@@ -6,9 +6,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 
 const MainPage = ({ quantity, user }) => {
   return (
-    <body>
       <div>
-
       {/* Slider section */}
       <section className="slider">
         <div className="container">
@@ -43,7 +41,6 @@ const MainPage = ({ quantity, user }) => {
           </div>
         </div>
       </div>
-    </body>
   );
 };
 

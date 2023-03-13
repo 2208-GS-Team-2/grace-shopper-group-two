@@ -4,12 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-
-
-/* Link {
-  color: black;
-} */
+.button {
+  flex-wrap: nowrap;
+}
 
 /* .container {
   width: 90%;
@@ -19,6 +16,10 @@
 .list-unstyled {
   display: flex;
   flex-direction: row;
+}
+.link-item {
+  font-size: 60%;
+  
 }
 
 /* :root {
