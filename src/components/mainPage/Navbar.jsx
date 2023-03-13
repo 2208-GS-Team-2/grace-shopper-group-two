@@ -45,7 +45,7 @@ const Navbar = ({ user, quantity }) => {
               <li>
                 <Link className="link" to="/createuser">
                   <PersonAddAltTwoToneIcon fontSize={"large"} />
-                  <Button sx={{ textTransform: "none" }}> Signup</Button>
+                  <Button sx={{ textTransform: "none" }}> Sign Up</Button>
                 </Link>
               </li>
               {!user.id ? (

@@ -49,7 +49,7 @@ const CreateUserPage = () => {
           }}
         >
           <Typography variant="h2" padding={3} textAlign="center">
-            Singup
+            Sign Up
           </Typography>
           <TextField
             margin="normal"
