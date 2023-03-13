@@ -103,7 +103,7 @@ const SingleProduct = ({ quantity }) => {
         >
           <div className="pretext"> add to cart</div>
         </Button>
-        <h3>{singleProduct.description}</h3>
+        <h5>{singleProduct.description}</h5>
 
         {user.isAdmin && (
           <div className="single-product-buttons">
@@ -112,7 +112,7 @@ const SingleProduct = ({ quantity }) => {
                 <DeleteForeverTwoToneIcon
                   className="single-product-icon"
                   fontSize={"large"}
-                />
+              />
               </Button>
             </Tooltip>
             <Tooltip title="Edit Product">

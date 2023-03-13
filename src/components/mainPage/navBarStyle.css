@@ -17,6 +17,10 @@
   display: flex;
   flex-direction: row;
 }
+.link-item {
+  font-size: 60%;
+  
+}
 
 /* :root {
   --mainColor: #7b5244;
