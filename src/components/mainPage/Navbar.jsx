@@ -12,7 +12,9 @@ const Navbar = ({ user, quantity }) => {
     <header>
       <div className="container">
         <div className="header-content">
+        <Link to="/">
           <img src="static/images/logo2-jpg.png" alt="logo" />
+        </Link>  
           <nav className="navbar">
             <ul className="list-unstyled">
               <li>
@@ -26,7 +28,7 @@ const Navbar = ({ user, quantity }) => {
                 </Link>
               </li>
               <li>
-                <Link className="link-item" to="/about">
+                <Link className="link-item" to="/about" style={{whiteSpace: "nowrap"}}>
                   About Us
                 </Link>
               </li>
@@ -45,7 +47,7 @@ const Navbar = ({ user, quantity }) => {
               <li>
                 <Link className="link" to="/createuser">
                   <PersonAddAltTwoToneIcon fontSize={"large"} />
-                  <Button sx={{ textTransform: "none" }}> Sign Up</Button>
+                  <Button sx={{textTransform: "none", whiteSpace: "nowrap" }}> Sign Up</Button>
                 </Link>
               </li>
               {!user.id ? (
