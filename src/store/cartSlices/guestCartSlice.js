@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	guestCart: {},
+	guestCart: [],
 	quantity: 0,
 };
 
@@ -10,13 +10,13 @@ const guestCartSlice = createSlice({
 	initialState,
 	reducers: {
 		setGuestCart: (state, action) => {
-			state.cart = action.payload;
+			state.guestCart.push(action.payload);
 		},
 		resetGuestCart: (state, action) => {
-			state.cart = [];
+			state.guestCart = [];
 		},
 		setGuestCartQuantity: (state, action) => {
-			state.quantity = action.payload;
+			state.quantity += action.payload;
 		},
 		resetGuestCartQuantity: (state, action) => {
 			state.quantity = 0;

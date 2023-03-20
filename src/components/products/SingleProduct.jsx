@@ -9,6 +9,7 @@ import UpdateProduct from "./UpdateProduct";
 import { setLoadingProduct, setSingleProduct, setDeleteProduct, } from "../../store/productStuffSlice";
 import { setCart } from "../../store/cartSlices/cartSlice";
 import "./singleProductStyle.css";
+import { setGuestCart, setGuestCartQuantity } from "../../store/cartSlices/guestCartSlice";
 
 const SingleProduct = ({ quantity }) => {
   const { id } = useParams();
@@ -16,10 +17,11 @@ const SingleProduct = ({ quantity }) => {
   const navigate = useNavigate();
   //!This will let you add to cart twice in a row.
   const { cart } = useSelector((state) => state.cart);
+  const {guestCart} = useSelector((state) => state.guestCart);
+  const {guestCartQuantity} = useSelector((state) => state.guestCart);
   const { user } = useSelector((state) => state.user);
   const { singleProduct } = useSelector((state) => state.product);
   const [formIsShown, setFormIsShown] = useState(false);
-
   const fetchSingleProduct = async () => {
     try {
       dispatch(setLoadingProduct(true));
@@ -47,14 +49,22 @@ const SingleProduct = ({ quantity }) => {
   // update a single product
   const handleAddToCart = async (productId) => {
     try {
-      const cartId = cart[0].id;
-      await axios.put(`/api/carts/${cartId}`, {
-        productId,
-      });
-      const userCart = user.id;
+      if (user.id) {
+        const cartId = cart[0].id;
+        await axios.put(`/api/carts/${cartId}`, {
+          productId,
+        });
+        const userCart = user.id;
 
-      const newResponse = await axios.post("/api/carts/usercart", { userCart });
-      dispatch(setCart(newResponse.data));
+        const newResponse = await axios.post("/api/carts/usercart", { userCart });
+        dispatch(setCart(newResponse.data));
+      } else if (!user.id) {
+        //Logic for the guest redux slice
+        dispatch(setGuestCart(productId));
+        dispatch(setGuestCartQuantity(1));
+        console.log(guestCart.cart);
+        // dispatch(setGuestCart(guestCart.push(productId)));
+      }
     } catch (err) {
       console.log(err);
     }

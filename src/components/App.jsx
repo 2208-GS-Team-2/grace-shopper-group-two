@@ -53,7 +53,7 @@ const App = () => {
   useEffect(() => {
     if (user.id) {
       fetchUserCart();
-    }
+    } //! else redux guest cart?
   }, [user]);
 
   useEffect(() => {
