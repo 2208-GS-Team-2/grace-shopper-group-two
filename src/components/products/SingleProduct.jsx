@@ -62,8 +62,7 @@ const SingleProduct = ({ quantity }) => {
         //Logic for the guest redux slice
         dispatch(setGuestCart(productId));
         dispatch(setGuestCartQuantity(1));
-        console.log(guestCart.cart);
-        // dispatch(setGuestCart(guestCart.push(productId)));
+        console.log(guestCart);
       }
     } catch (err) {
       console.log(err);

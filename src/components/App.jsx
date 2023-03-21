@@ -10,6 +10,7 @@ import CreateUserPage from "./CreateUser";
 import Cart from "./cart/Cart";
 import { setUser } from "../store/userSlice";
 import { setCart, setQuantity } from "../store/cartSlices/cartSlice";
+import { setGuestCart, setGuestCartQuantity} from "../store/cartSlices/guestCartSlice";
 import MainPage from "./mainPage/MainPage";
 import Login from "./Login";
 import Logout from "./Logout";
@@ -21,6 +22,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   //selectors:
+  setGuestCartQuantity
+  const {guestCart} = useSelector((state) => state.guestCart);
+  const {guestCartQuantity} = useSelector((state) => state.guestCart);
   const { user } = useSelector((state) => state.user);
   const { cart, quantity } = useSelector((state) => state.cart);
 
@@ -38,8 +42,21 @@ const App = () => {
 
   const fetchUserCart = async () => {
     const userCart = user.id;
+    
     const response = await axios.post("/api/carts/usercart", { userCart });
+    
     dispatch(setCart(response.data));
+    
+    // ! code logic to add guestCart to user's cart
+  
+    // const cartId = cart[0].id;
+    // await guestCart.forEach(productId => {
+    //   axios.put(`/api/carts/${cartId}`, {
+    //     productId,
+    //   })
+    // });
+    // console.log("🛒 " + cartId)
+    
   };
 
   const updateCartIcon = (cart) => {

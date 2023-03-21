@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import CreateUser from "./CreateUser";
 import { setUser } from "../store/userSlice";
+
+import { setCart } from "../store/cartSlices/cartSlice";
+
 
 const Login = () => {
   //Custom Hooks
@@ -18,6 +21,8 @@ const Login = () => {
   });
   const [createAccount, setCreateAccount] = useState(false);
   console.log(createAccount);
+
+
 
   const onChange = (ev) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
