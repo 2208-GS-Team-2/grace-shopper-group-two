@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import CreateUser from "./CreateUser";
 import { setUser } from "../store/userSlice";
+import guestCartSlice from "../store/cartSlices/guestCartSlice";
 
-import { setCart } from "../store/cartSlices/cartSlice";
+// import { setCart } from "../store/cartSlices/cartSlice";
 
 
 const Login = () => {
@@ -46,6 +47,15 @@ const Login = () => {
     const token = response.data;
     window.localStorage.setItem("token", token);
     loginWithToken(token);
+    
+    await guestCart.forEach((productId) => {
+      
+      axios.post("/guesttocart", {
+        username, productId
+      })
+    })
+    guestCart = [];
+    // * /guestToCart
     navigate("/");
   };
 

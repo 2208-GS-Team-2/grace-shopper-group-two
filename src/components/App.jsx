@@ -22,9 +22,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   //selectors:
-  setGuestCartQuantity
-  const {guestCart} = useSelector((state) => state.guestCart);
-  const {guestCartQuantity} = useSelector((state) => state.guestCart);
+  //! logic for guestCart
+  // setGuestCartQuantity
+  // const {guestCart} = useSelector((state) => state.guestCart);
+  // const {guestCartQuantity} = useSelector((state) => state.guestCart);
   const { user } = useSelector((state) => state.user);
   const { cart, quantity } = useSelector((state) => state.cart);
 
@@ -48,7 +49,7 @@ const App = () => {
     dispatch(setCart(response.data));
     
     // ! code logic to add guestCart to user's cart
-  
+    // ? if userCart!== 0 then do below
     // const cartId = cart[0].id;
     // await guestCart.forEach(productId => {
     //   axios.put(`/api/carts/${cartId}`, {
@@ -70,7 +71,8 @@ const App = () => {
   useEffect(() => {
     if (user.id) {
       fetchUserCart();
-    } //! else redux guest cart?
+    }
+    //! guestCart To userCart 
   }, [user]);
 
   useEffect(() => {
