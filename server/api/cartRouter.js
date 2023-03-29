@@ -69,15 +69,23 @@ router.put("/guesttocart", async (req, res, next) => {
 			where: { username: username },
 		});
 
-		const userCart = await Cart.findAll({
+		const cart = await Cart.findAll({
 			where: { userId: foundUser[0].dataValues.id },
+			include: [Product],
 		});
-    // ! const cart = await Cart.findByPk(id, { include: [Product] });
+
+		console.log("🛒 CART is: ", cart);
+		// ! const cart = await Cart.findByPk(id, { include: [Product] });
 
 		const product = await Product.findByPk(productId);
-		console.log("this is your product", product);
-
-		await userCart.addProducts(product);
+		//product.dataValues
+		// res.send(cart);
+		// await cart.addProduct(product);
+		await CartProduct.create({
+			cartId: cart.dataValues.id,
+			productId: productId,
+		});
+		return res.sendStatus(200);
 	} catch (err) {
 		return res.status(501).send(err.message);
 	}
