@@ -12,9 +12,11 @@ const guestCartSlice = createSlice({
 		setGuestCart: (state, action) => {
 			state.guestCart.push(action.payload);
 		},
-		resetGuestCart: (state, action) => {
-			state.guestCart = [];
+
+		resetGuestCart: (state) => {
+			(state.guestCart = []), (state.quantity = 0);
 		},
+
 		setGuestCartQuantity: (state, action) => {
 			state.quantity += action.payload;
 		},
